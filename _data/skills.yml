@@ -1,0 +1,25 @@
+technical:
+  - title: Java
+    level: Intermediate
+  - title: Python
+    level: Advanced
+  - title: Microservices & REST APIs
+    level: Advanced
+  - title: Spring Boot
+    level: Intermediate
+  - title: Cloud Computing (AWS, Docker, Kubernetes)
+    level: Intermediate
+  - title: Machine Learning & Data Science
+    level: Intermediate
+  - title: SQL & NoSQL Databases
+    level: Advanced
+
+soft:
+  - title: Problem-Solving
+    level: Advanced
+  - title: Leadership
+    level: Intermediate
+  - title: Communication
+    level: Advanced
+  - title: Mentorship
+    level: Intermediate
