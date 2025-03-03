@@ -4,3 +4,10 @@
 
 layout: home
 ---
+
+
+
+![navneetha rajan](/assets/images/profile.png){: .avatar}
+# Hi There! I am Navneetha Rajan
+
+Check out my articles and projects below or go to [My Work](/mywork) or [My Writing](/mywriting) to see a categorized list.
