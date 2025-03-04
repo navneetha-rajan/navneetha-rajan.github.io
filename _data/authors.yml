@@ -1,0 +1,11 @@
+Navneetha Rajan:
+  name        : "Navneetha Rajan"
+  bio         : "Let's talk about code! Reach out via the links below."
+  avatar      : "/assets/images/profile.png"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:name@email.com"
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://www.mywebsite.com"
