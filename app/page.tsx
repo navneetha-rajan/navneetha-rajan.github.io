@@ -407,23 +407,15 @@ export default function Home() {
               I'm always interested in hearing about new opportunities and exciting projects. 
               Feel free to reach out if you'd like to collaborate or discuss potential roles!
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                          <motion.a
-              href="mailto:nrajan7@asu.edu"
-              className="inline-flex items-center space-x-2 bg-accent hover:bg-accent-dark text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200 shadow-md"
+            <div className="flex justify-center">
+              <motion.a
+                href="mailto:nrajan7@asu.edu"
+                className="inline-flex items-center space-x-2 bg-accent hover:bg-accent-dark text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200 shadow-md"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Mail size={20} />
                 <span>Email Me</span>
-              </motion.a>
-              <motion.a
-                href="tel:+16027514983"
-                className="inline-flex items-center space-x-2 border border-accent text-accent hover:bg-accent hover:text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200 shadow-sm"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <span>+1 (602) 751-4983</span>
               </motion.a>
             </div>
           </motion.div>
