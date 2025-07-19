@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react'
 import { useState } from 'react'
+import Link from 'next/link'
 
 export default function Home() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
@@ -270,12 +271,12 @@ export default function Home() {
           >
             <div className="flex justify-between items-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-bold">Blog</h2>
-              <a 
+              <Link 
                 href="/blog" 
                 className="text-accent hover:text-accent/80 transition-colors duration-200 font-medium"
               >
                 View all posts →
-              </a>
+              </Link>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
@@ -334,12 +335,12 @@ export default function Home() {
                         </span>
                       ))}
                     </div>
-                    <a 
-                      href="#" 
+                    <Link 
+                      href="/blog" 
                       className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200"
                     >
                       Read more →
-                    </a>
+                    </Link>
                   </div>
                 </motion.article>
               ))}
