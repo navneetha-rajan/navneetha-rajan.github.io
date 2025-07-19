@@ -137,51 +137,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Education Section */}
-      <section className="py-20 section-padding bg-sky-light/20">
-        <div className="container-max">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-12">Education</h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <motion.div
-                className="card-bg rounded-lg p-6"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-              >
-                <div className="mb-4">
-                  <h3 className="text-xl font-semibold text-elegant">Master of Science in Information Technology</h3>
-                </div>
-                <p className="text-accent font-medium mb-2 text-elegant">Arizona State University, Tempe</p>
-                <p className="text-muted text-sm mb-3">Expected Graduation: Dec 2025</p>
-                <p className="text-muted text-sm">Coursework: Information Systems Management, Analyzing Big Data</p>
-              </motion.div>
-
-              <motion.div
-                className="card-bg rounded-lg p-6"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="mb-4">
-                  <h3 className="text-xl font-semibold text-elegant">Bachelor of Technology in Computer Science</h3>
-                </div>
-                <p className="text-accent font-medium mb-2 text-elegant">PES University, Bengaluru</p>
-                <p className="text-muted text-sm mb-3">Aug 2017 - Jun 2021</p>
-                <p className="text-muted text-sm">Coursework: Operating Systems, Data Structures and Algorithms, Object-Oriented Design</p>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Experience Section */}
       <section className="py-20 section-padding">
         <div className="container-max">
@@ -388,6 +343,51 @@ export default function Home() {
                   </div>
                 </motion.article>
               ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section className="py-20 section-padding bg-sky-light/20">
+        <div className="container-max">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold mb-12">Education</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <motion.div
+                className="card-bg rounded-lg p-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <div className="mb-4">
+                  <h3 className="text-xl font-semibold text-elegant">Master of Science in Information Technology</h3>
+                </div>
+                <p className="text-accent font-medium mb-2 text-elegant">Arizona State University, Tempe</p>
+                <p className="text-muted text-sm mb-3">Expected Graduation: Dec 2025</p>
+                <p className="text-muted text-sm">Coursework: Information Systems Management, Analyzing Big Data</p>
+              </motion.div>
+
+              <motion.div
+                className="card-bg rounded-lg p-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="mb-4">
+                  <h3 className="text-xl font-semibold text-elegant">Bachelor of Technology in Computer Science</h3>
+                </div>
+                <p className="text-accent font-medium mb-2 text-elegant">PES University, Bengaluru</p>
+                <p className="text-muted text-sm mb-3">Aug 2017 - Jun 2021</p>
+                <p className="text-muted text-sm">Coursework: Operating Systems, Data Structures and Algorithms, Object-Oriented Design</p>
+              </motion.div>
             </div>
           </motion.div>
         </div>
