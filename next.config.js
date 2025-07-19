@@ -6,7 +6,7 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/navneetha-rajan.github.io' : '',
+  basePath: '',
 }
 
 module.exports = nextConfig 
