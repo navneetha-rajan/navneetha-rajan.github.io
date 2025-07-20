@@ -69,9 +69,6 @@ export default function Home() {
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 text-elegant">
               Hi, I'm <span className="gradient-text">Navneetha Rajan</span>
             </h1>
-            <p className="text-xl sm:text-2xl text-muted mb-8 max-w-2xl mx-auto text-elegant leading-relaxed">
-              I love building scalable products with technology. I characterize myself as having a passion for engineering with a knack for solving complex problems.
-            </p>
             <p className="text-lg text-muted mb-8 max-w-2xl mx-auto text-elegant leading-relaxed">
               I am currently pursuing my Master's in Information Technology at Arizona State University. I derive immense joy from designing microservices, optimizing cloud infrastructure, and working on distributed systems. I am also passionate about machine learning and large software architectures.
             </p>
