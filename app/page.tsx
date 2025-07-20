@@ -70,10 +70,10 @@ export default function Home() {
               Hi, I'm <span className="gradient-text">Navneetha Rajan</span>
             </h1>
             <p className="text-lg text-muted mb-8 max-w-2xl mx-auto text-elegant leading-relaxed">
-              I am currently pursuing my Master's in Information Technology at Arizona State University. I derive immense joy from designing microservices, optimizing cloud infrastructure, and working on distributed systems. I am also passionate about machine learning and large software architectures.
+              I'm passionate about crafting scalable, impactful technology solutions, always seeking ways to optimize and enhance system performance. Beyond coding, I thrive on adventure, travel, and genuine connections - sharing stories, exploring new places, and learning from diverse experiences.
             </p>
             <p className="text-lg text-muted mb-8 max-w-2xl mx-auto text-elegant leading-relaxed">
-              Beyond technology, I love reading about world affairs, staying updated with market trends, and connecting with people. I am a tech-optimist who believes in the power of innovation to solve real-world problems.
+              Let's connect and chat about technology, travel, or your next big idea!
             </p>
             <div className="flex justify-center space-x-6">
               {socialLinks.map((social, index) => (
@@ -110,12 +110,10 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <p className="text-lg text-muted leading-relaxed mb-6">
-                  I'm a Software Development Engineer with over 3 years of experience building scalable microservices and cloud-native applications. 
-                  Currently pursuing my Master's in Information Technology at Arizona State University with a perfect 4.0 GPA.
+                  I have a strong background in computer science and software engineering, specializing in distributed systems, cloud computing, and microservices. At SIXT Research and Development India, I optimized reservation processes serving millions globally, significantly reducing latency and boosting conversions.
                 </p>
                 <p className="text-lg text-muted leading-relaxed">
-                  I specialize in Java, Spring Boot, AWS, and microservices architecture. My experience includes optimizing systems 
-                  that serve millions of users and leading teams to deliver impactful solutions.
+                  I'm driven by the excitement of building robust systems that leverage big data and efficient information management. I enjoy solving complex real-world problems, creating scalable solutions, and delivering meaningful impact through innovative technology.
                 </p>
               </div>
               <div className="space-y-4">
@@ -250,7 +248,7 @@ export default function Home() {
                     {project.tech.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="text-xs bg-muted/20 text-muted px-2 py-1 rounded"
+                        className="text-xs bg-accent/10 text-accent px-2 py-1 rounded"
                       >
                         {tech}
                       </span>
@@ -362,7 +360,7 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl sm:text-4xl font-bold mb-12">Education</h2>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
               <motion.div
                 className="card-bg rounded-lg p-6"
                 initial={{ opacity: 0, y: 20 }}
@@ -370,12 +368,16 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <div className="mb-4">
-                  <h3 className="text-xl font-semibold text-elegant">Master of Science in Information Technology</h3>
+                <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <h3 className="text-xl font-semibold text-elegant">Master of Science</h3>
+                    <h4 className="text-lg font-medium text-elegant">Information Technology</h4>
+                  </div>
+                  <span className="text-accent font-bold text-lg">4.22 / 4.0 GPA</span>
                 </div>
                 <p className="text-accent font-medium mb-2 text-elegant">Arizona State University, Tempe</p>
-                <p className="text-muted text-sm mb-3">Expected Graduation: Dec 2025</p>
-                <p className="text-muted text-sm">Coursework: Information Systems Management, Analyzing Big Data</p>
+                <p className="text-muted text-sm mb-3">Aug 2024 - May 2026</p>
+                <p className="text-muted text-sm">Coursework: Information Systems Management, Analyzing Big Data and AI, Data in the Cloud</p>
               </motion.div>
 
               <motion.div
@@ -386,10 +388,11 @@ export default function Home() {
                 viewport={{ once: true }}
               >
                 <div className="mb-4">
-                  <h3 className="text-xl font-semibold text-elegant">Bachelor of Technology in Computer Science</h3>
+                  <h3 className="text-xl font-semibold text-elegant">Bachelor of Technology</h3>
+                  <h4 className="text-lg font-medium text-elegant">Computer Science and Engineering</h4>
                 </div>
                 <p className="text-accent font-medium mb-2 text-elegant">PES University, Bengaluru</p>
-                <p className="text-muted text-sm mb-3">Aug 2017 - Jun 2021</p>
+                <p className="text-muted text-sm mb-3">Aug 2017 - May 2021</p>
                 <p className="text-muted text-sm">Coursework: Operating Systems, Data Structures and Algorithms, Object-Oriented Design</p>
               </motion.div>
             </div>
