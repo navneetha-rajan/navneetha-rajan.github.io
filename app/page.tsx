@@ -157,16 +157,21 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                  <h3 className="text-xl font-semibold">Software Development Engineer II</h3>
-                  <span className="text-muted text-sm">Oct 2023 - Jul 2024</span>
+                <div className="flex justify-between items-start mb-2">
+                  <div className="flex-1">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                      <h3 className="text-xl font-semibold">Machine Learning Engineer</h3>
+                      <span className="text-muted text-sm">April 2025 - Present</span>
+                    </div>
+                    <p className="text-accent font-medium mb-2">Arizona State University</p>
+                  </div>
+                  <div className="ml-6 flex-shrink-0">
+                    <img src="/asu-logo.png" alt="Arizona State University" className="w-16 h-16 object-contain" />
+                  </div>
                 </div>
-                <p className="text-accent font-medium mb-2">SIXT Research and Development India</p>
-                <ul className="text-muted space-y-1 text-sm">
-                  <li>• Optimized reservation processes with resilient microservices, reducing latency by 25% and impacting 8M+ monthly users</li>
-                  <li>• Developed robust rebooking pricing system resulting in 20% increase in conversions and 8% revenue growth</li>
-                  <li>• Led migration from legacy monolithic system to modern Java stack, achieving 65% improvement in response time</li>
-                </ul>
+                <p className="text-muted text-sm leading-relaxed">
+                  Building an automated AI-driven pipeline leveraging Google Maps APIs and visual LLM models to digitally transform and optimize the design layouts of 200+ campus parking lots, enhancing operational efficiency and accuracy.
+                </p>
               </motion.div>
 
               <motion.div
@@ -176,16 +181,21 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                  <h3 className="text-xl font-semibold">Software Development Engineer I</h3>
-                  <span className="text-muted text-sm">Aug 2021 - Oct 2023</span>
+                <div className="flex justify-between items-start mb-2">
+                  <div className="flex-1">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                      <h3 className="text-xl font-semibold">Software Development Engineer II</h3>
+                      <span className="text-muted text-sm">Aug 2021 - Jul 2024</span>
+                    </div>
+                    <p className="text-accent font-medium mb-2">SIXT Research and Development India</p>
+                  </div>
+                  <div className="ml-6 flex-shrink-0">
+                    <img src="/sixt-logo.png" alt="SIXT" className="w-16 h-16 object-contain" />
+                  </div>
                 </div>
-                <p className="text-accent font-medium mb-2">SIXT Research and Development India</p>
-                <ul className="text-muted space-y-1 text-sm">
-                  <li>• Built microservice for auditing rental lifecycle, providing comprehensive activity history for 10M+ records</li>
-                  <li>• Developed customer-specific pickup/drop-off recommendations leading to 10% increase in conversion rates</li>
-                  <li>• Awarded Most Valuable Player for contributions to flagship product relaunch that increased revenue by 22%</li>
-                </ul>
+                <p className="text-muted text-sm leading-relaxed">
+                  Designed and delivered scalable microservices, modernized legacy architectures, enhanced platform reliability, and created personalized customer experiences, significantly impacting overall product success.
+                </p>
               </motion.div>
 
               <motion.div
@@ -195,14 +205,21 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                  <h3 className="text-xl font-semibold">Software Engineering Intern</h3>
-                  <span className="text-muted text-sm">Feb 2021 - Jul 2021</span>
+                <div className="flex justify-between items-start mb-2">
+                  <div className="flex-1">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                      <h3 className="text-xl font-semibold">Software Engineering Intern</h3>
+                      <span className="text-muted text-sm">Feb 2021 - Jul 2021</span>
+                    </div>
+                    <p className="text-accent font-medium mb-2">Hewlett Packard Enterprise</p>
+                  </div>
+                  <div className="ml-6 flex-shrink-0">
+                    <img src="/hpe-logo.png" alt="Hewlett Packard Enterprise" className="w-16 h-16 object-contain" />
+                  </div>
                 </div>
-                <p className="text-accent font-medium mb-2">Hewlett Packard Enterprise</p>
-                <ul className="text-muted space-y-1 text-sm">
-                  <li>• Developed automated web crawler using Python and Selenium for image validation and content translation</li>
-                </ul>
+                <p className="text-muted text-sm leading-relaxed">
+                  Developed automated web crawlers and testing frameworks to enhance software quality and efficiency, collaborating closely with cross-functional teams to deliver robust solutions.
+                </p>
               </motion.div>
             </div>
           </motion.div>
@@ -234,12 +251,9 @@ export default function Home() {
                 >
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-xl font-semibold">{project.title}</h3>
-                    <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                      <a href={project.github} className="text-muted hover:text-foreground">
+                    <div className="flex space-x-2">
+                      <a href={project.github} className="text-muted hover:text-accent transition-colors duration-200">
                         <Github size={16} />
-                      </a>
-                      <a href={project.link} className="text-muted hover:text-foreground">
-                        <ExternalLink size={16} />
                       </a>
                     </div>
                   </div>

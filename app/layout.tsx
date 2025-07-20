@@ -10,6 +10,10 @@ export const metadata: Metadata = {
   keywords: ['Navneetha Rajan', 'Software Engineer', 'Microservices', 'AWS', 'Java', 'Spring Boot', 'Arizona State University'],
   authors: [{ name: 'Navneetha Rajan' }],
   creator: 'Navneetha Rajan',
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+  },
   openGraph: {
     title: 'Navneetha Rajan - Software Development Engineer',
     description: 'Software Development Engineer with expertise in microservices, cloud technologies, and full-stack development. Currently pursuing MS in Information Technology at Arizona State University.',
