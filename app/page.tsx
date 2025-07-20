@@ -70,7 +70,13 @@ export default function Home() {
               Hi, I'm <span className="gradient-text">Navneetha Rajan</span>
             </h1>
             <p className="text-xl sm:text-2xl text-muted mb-8 max-w-2xl mx-auto text-elegant leading-relaxed">
-              Software Development Engineer with expertise in microservices, cloud technologies, and full-stack development. Based in Tempe, Arizona.
+              I love building scalable products with technology. I characterize myself as having a passion for engineering with a knack for solving complex problems.
+            </p>
+            <p className="text-lg text-muted mb-8 max-w-2xl mx-auto text-elegant leading-relaxed">
+              I am currently pursuing my Master's in Information Technology at Arizona State University. I derive immense joy from designing microservices, optimizing cloud infrastructure, and working on distributed systems. I am also passionate about machine learning and large software architectures.
+            </p>
+            <p className="text-lg text-muted mb-8 max-w-2xl mx-auto text-elegant leading-relaxed">
+              Beyond technology, I love reading about world affairs, staying updated with market trends, and connecting with people. I am a tech-optimist who believes in the power of innovation to solve real-world problems.
             </p>
             <div className="flex justify-center space-x-6">
               {socialLinks.map((social, index) => (
