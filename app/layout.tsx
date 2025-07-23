@@ -14,15 +14,45 @@ export const metadata: Metadata = {
     icon: '/favicon.svg',
     shortcut: '/favicon.svg',
   },
+  metadataBase: new URL('https://navneetha-rajan.github.io'),
+  alternates: {
+    canonical: 'https://navneetha-rajan.github.io/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      maxVideoPreview: -1,
+      maxImagePreview: 'large',
+      maxSnippet: -1,
+    },
+  },
   openGraph: {
     title: 'Navneetha Rajan - Software Development Engineer',
     description: 'Software Development Engineer with expertise in microservices, cloud technologies, and full-stack development. Currently pursuing MS in Information Technology at Arizona State University.',
     type: 'website',
+    url: 'https://navneetha-rajan.github.io/',
+    siteName: 'Navneetha Rajan Portfolio',
+    images: [
+      {
+        url: '/neetz-profile.png',
+        width: 460,
+        height: 257,
+        alt: 'Navneetha Rajan Profile',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Navneetha Rajan - Software Development Engineer',
     description: 'Software Development Engineer with expertise in microservices, cloud technologies, and full-stack development.',
+    site: '@navneetha08',
+    creator: '@navneetha08',
+    images: ['/neetz-profile.png'],
   },
 }
 

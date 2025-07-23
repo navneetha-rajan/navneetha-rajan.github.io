@@ -70,7 +70,7 @@ export default function Home() {
               Hi, I'm <span className="gradient-text">Navneetha Rajan</span>
             </h1>
             <p className="text-lg text-muted mb-8 max-w-2xl mx-auto text-elegant leading-relaxed">
-              I'm passionate about crafting scalable, impactful technology solutions, always seeking ways to optimize and enhance system performance. Beyond coding, I thrive on adventure, travel, and genuine connections - sharing stories, exploring new places, and learning from diverse experiences.
+            I love building technology solutions that work smoothly, scale easily, and genuinely help people—always looking for ways to make things faster and better. Beyond work, I thrive on adventure, travel, and genuine connections - sharing stories, exploring new places, and learning from diverse experiences.
             </p>
             <p className="text-lg text-muted mb-8 max-w-2xl mx-auto text-elegant leading-relaxed">
               Let's connect and chat about technology, travel, or your next big idea!
@@ -110,7 +110,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <p className="text-lg text-muted leading-relaxed mb-6">
-                  I have a strong background in computer science and software engineering, specializing in distributed systems, cloud computing, and microservices. At SIXT Research and Development India, I optimized reservation processes serving millions globally, significantly reducing latency and boosting conversions.
+                  I have a strong background in computer science and software engineering, specializing in distributed systems, cloud computing, and microservices. At SIXT, I optimized reservation processes serving millions globally, significantly reducing latency and boosting conversions.
                 </p>
                 <p className="text-lg text-muted leading-relaxed">
                   I'm driven by the excitement of building robust systems that leverage big data and efficient information management. I enjoy solving complex real-world problems, creating scalable solutions, and delivering meaningful impact through innovative technology.
@@ -187,7 +187,7 @@ export default function Home() {
                       <h3 className="text-xl font-semibold">Software Development Engineer II</h3>
                       <span className="text-muted text-sm">Aug 2021 - Jul 2024</span>
                     </div>
-                    <p className="text-accent font-medium mb-2">SIXT Research and Development India</p>
+                    <p className="text-accent font-medium mb-2">SIXT Research and Development</p>
                   </div>
                   <div className="ml-6 flex-shrink-0">
                     <img src="/sixt-logo.png" alt="SIXT" className="w-16 h-16 object-contain" />
