@@ -3,8 +3,40 @@
 import { motion } from 'framer-motion'
 import { ArrowLeft, Calendar, Clock, Tag } from 'lucide-react'
 import Link from 'next/link'
+import { isFeatureEnabled } from '../config/features'
 
 export default function BlogPage() {
+  // Check if blog feature is enabled
+  if (!isFeatureEnabled('BLOG_ENABLED')) {
+    return (
+      <main className="min-h-screen">
+        <section className="py-20 section-padding">
+          <div className="container-max text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="flex items-center justify-center mb-8">
+                <Link 
+                  href="/"
+                  className="flex items-center space-x-2 text-muted hover:text-foreground transition-colors duration-200"
+                >
+                  <ArrowLeft size={20} />
+                  <span>Back to Home</span>
+                </Link>
+              </div>
+              <h1 className="text-4xl sm:text-5xl font-bold mb-6">Blogs</h1>
+              <p className="text-xl text-muted max-w-3xl mx-auto">
+                The blog section is currently disabled. Please check back later for updates.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+      </main>
+    )
+  }
+
   const blogPosts = [
     {
       id: 1,
@@ -226,7 +258,7 @@ export default function BlogPage() {
                 <span>Back to Home</span>
               </Link>
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6">Blog</h1>
+            <h1 className="text-4xl sm:text-5xl font-bold mb-6">Blogs</h1>
             <p className="text-xl text-muted max-w-3xl">
               Thoughts, insights, and experiences from my journey in software development, 
               cloud architecture, and technology innovation.

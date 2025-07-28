@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react'
 import { useState } from 'react'
 import Link from 'next/link'
+import { isFeatureEnabled } from './config/features'
 
 export default function Home() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
@@ -276,93 +277,95 @@ export default function Home() {
       </section>
 
       {/* Blog Section */}
-      <section className="py-20 section-padding bg-sky-light/10">
-        <div className="container-max">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex justify-between items-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold">Blog</h2>
-              <Link 
-                href="/blog" 
-                className="text-accent hover:text-accent/80 transition-colors duration-200 font-medium"
-              >
-                View all posts →
-              </Link>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "Building Scalable Microservices with Spring Boot",
-                  excerpt: "A deep dive into designing and implementing microservices architecture using Spring Boot, covering best practices for scalability and maintainability.",
-                  date: "Dec 15, 2024",
-                  readTime: "8 min read",
-                  tags: ["Microservices", "Spring Boot", "Architecture"],
-                  featured: true
-                },
-                {
-                  title: "Optimizing AWS Infrastructure for Cost and Performance",
-                  excerpt: "Practical strategies for reducing AWS costs while maintaining high performance, including auto-scaling, caching, and resource optimization techniques.",
-                  date: "Nov 28, 2024",
-                  readTime: "6 min read",
-                  tags: ["AWS", "DevOps", "Cost Optimization"],
-                  featured: false
-                },
-                {
-                  title: "The Future of Cloud-Native Development",
-                  excerpt: "Exploring emerging trends in cloud-native development, from serverless architectures to container orchestration and beyond.",
-                  date: "Nov 10, 2024",
-                  readTime: "10 min read",
-                  tags: ["Cloud Native", "Trends", "Technology"],
-                  featured: false
-                }
-              ].map((post, index) => (
-                <motion.article
-                  key={index}
-                  className="group card-bg rounded-lg overflow-hidden hover:border-accent/50 transition-all duration-300"
-                  whileHover={{ y: -5 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
+      {isFeatureEnabled('BLOG_ENABLED') && (
+        <section className="py-20 section-padding bg-sky-light/10">
+          <div className="container-max">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex justify-between items-center mb-12">
+                <h2 className="text-3xl sm:text-4xl font-bold">Blogs</h2>
+                <Link 
+                  href="/blog" 
+                  className="text-accent hover:text-accent/80 transition-colors duration-200 font-medium"
                 >
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-sm text-muted">{post.date}</span>
-                      <span className="text-sm text-muted">{post.readTime}</span>
+                  View all posts →
+                </Link>
+              </div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {[
+                  {
+                    title: "Building Scalable Microservices with Spring Boot",
+                    excerpt: "A deep dive into designing and implementing microservices architecture using Spring Boot, covering best practices for scalability and maintainability.",
+                    date: "Dec 15, 2024",
+                    readTime: "8 min read",
+                    tags: ["Microservices", "Spring Boot", "Architecture"],
+                    featured: true
+                  },
+                  {
+                    title: "Optimizing AWS Infrastructure for Cost and Performance",
+                    excerpt: "Practical strategies for reducing AWS costs while maintaining high performance, including auto-scaling, caching, and resource optimization techniques.",
+                    date: "Nov 28, 2024",
+                    readTime: "6 min read",
+                    tags: ["AWS", "DevOps", "Cost Optimization"],
+                    featured: false
+                  },
+                  {
+                    title: "The Future of Cloud-Native Development",
+                    excerpt: "Exploring emerging trends in cloud-native development, from serverless architectures to container orchestration and beyond.",
+                    date: "Nov 10, 2024",
+                    readTime: "10 min read",
+                    tags: ["Cloud Native", "Trends", "Technology"],
+                    featured: false
+                  }
+                ].map((post, index) => (
+                  <motion.article
+                    key={index}
+                    className="group card-bg rounded-lg overflow-hidden hover:border-accent/50 transition-all duration-300"
+                    whileHover={{ y: -5 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="p-6">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-sm text-muted">{post.date}</span>
+                        <span className="text-sm text-muted">{post.readTime}</span>
+                      </div>
+                      <h3 className="text-xl font-semibold mb-3 group-hover:text-accent transition-colors duration-200">
+                        {post.title}
+                      </h3>
+                      <p className="text-muted mb-4 line-clamp-3">
+                        {post.excerpt}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {post.tags.map((tag, tagIndex) => (
+                          <span
+                            key={tagIndex}
+                            className="text-xs bg-accent/10 text-accent px-2 py-1 rounded"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <Link 
+                        href="/blog" 
+                        className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200"
+                      >
+                        Read more →
+                      </Link>
                     </div>
-                    <h3 className="text-xl font-semibold mb-3 group-hover:text-accent transition-colors duration-200">
-                      {post.title}
-                    </h3>
-                    <p className="text-muted mb-4 line-clamp-3">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {post.tags.map((tag, tagIndex) => (
-                        <span
-                          key={tagIndex}
-                          className="text-xs bg-accent/10 text-accent px-2 py-1 rounded"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <Link 
-                      href="/blog" 
-                      className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200"
-                    >
-                      Read more →
-                    </Link>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
+                  </motion.article>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       {/* Education Section */}
       <section className="py-20 section-padding bg-sky-light/20">
