@@ -461,10 +461,10 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 section-padding border-t border-sky-medium/30">
+      <footer className="py-8 section-padding border-t border-sky-medium/20">
         <div className="container-max text-center">
-          <p className="text-muted">
-            © 2024 Navneetha Rajan. Built with Next.js and Tailwind CSS.
+          <p className="text-muted text-sm">
+            © 2024 Navneetha Rajan
           </p>
         </div>
       </footer>
