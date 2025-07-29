@@ -11,25 +11,28 @@ export default function Home() {
 
   const projects = [
     {
-      title: "Asset Management System",
-      description: "Led the development of an asset management system, overseeing the full SDLC from requirements to deployment. Designed and implemented features like asset registration, tracking, and reporting.",
-      tech: ["Java", "Spring Boot", "Microservices", "AWS"],
-      link: "#",
-      github: "#"
+      title: "Bookify",
+      subtitle: "Personalized Book Recommendations",
+      description: "Built a smart recommendation system that helps users discover books they'll love, leveraging data from over 270,000 readers to deliver tailored suggestions and boost user engagement.",
+      tech: ["Python", "Machine Learning", "Data Mining", "Recommender Systems"],
+      link: "https://github.com/navneetha-rajan/Bookify",
+      github: "https://github.com/navneetha-rajan/Bookify"
     },
     {
-      title: "Boolean Oracle", 
-      description: "Built a tool using program synthesis in Python to evaluate the truth values of propositional word problems in natural language with 96% accuracy, leading to an IEEE publication.",
-      tech: ["Python", "TensorFlow", "NLP", "Machine Learning"],
-      link: "#",
-      github: "#"
+      title: "Ride Share", 
+      subtitle: "High-Performance Cloud Platform",
+      description: "Created a robust, scalable cloud-based ride-sharing platform designed to handle millions of requests seamlessly, ensuring high availability and reliability for users.",
+      tech: ["AWS", "Microservices", "Docker", "Load Balancing"],
+      link: "https://github.com/navneetha-rajan/Ride-Share-Application",
+      github: "https://github.com/navneetha-rajan/Ride-Share-Application"
     },
     {
-      title: "Ride Share Platform",
-      description: "Developed and deployed a platform application like Uber for ride-sharing on a scaled AWS EC2 instance. Designed master-slave architecture using RabbitMQ and ZooKeeper.",
-      tech: ["AWS", "RabbitMQ", "ZooKeeper", "Microservices"],
-      link: "#",
-      github: "#"
+      title: "Boolean Oracle",
+      subtitle: "Intelligent Word Problem Solver",
+      description: "Developed an innovative Python tool that automatically solves logic-based word problems, featured in an IEEE publication and presented at the ASIANCON conference.",
+      tech: ["Python", "NLP", "Machine Learning", "Logic Programming"],
+      link: "https://github.com/navneetha-rajan/Boolean-Oracle",
+      github: "https://github.com/navneetha-rajan/Boolean-Oracle"
     }
   ]
 
@@ -236,7 +239,15 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-12">Projects</h2>
+            <div className="flex justify-between items-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold">Projects</h2>
+              <Link 
+                href="/projects" 
+                className="text-accent hover:text-accent/80 transition-colors duration-200 font-medium"
+              >
+                View more projects →
+              </Link>
+            </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project, index) => (
                 <motion.div
@@ -251,7 +262,10 @@ export default function Home() {
                   viewport={{ once: true }}
                 >
                   <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-semibold">{project.title}</h3>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-semibold mb-1">{project.title}</h3>
+                      <p className="text-sm text-accent font-medium mb-2">{project.subtitle}</p>
+                    </div>
                     <div className="flex space-x-2">
                       <a href={project.github} className="text-muted hover:text-accent transition-colors duration-200">
                         <Github size={16} />
