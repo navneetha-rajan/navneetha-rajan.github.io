@@ -39,7 +39,7 @@ export default function Home() {
   const socialLinks = [
     { icon: Github, href: "https://github.com/navneetha08", label: "GitHub" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/navneetha-rajan", label: "LinkedIn" },
-    { icon: Mail, href: "mailto:nrajan7@asu.edu", label: "Email" }
+    { icon: Mail, href: "mailto:connectwithnavneetha08@gmail.com", label: "Email" }
   ]
 
   return (
@@ -447,7 +447,7 @@ export default function Home() {
             </p>
             <div className="flex justify-center">
               <motion.a
-                href="mailto:nrajan7@asu.edu"
+                href="mailto:connectwithnavneetha08@gmail.com"
                 className="inline-flex items-center space-x-2 bg-accent hover:bg-accent-dark text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200 shadow-md"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
