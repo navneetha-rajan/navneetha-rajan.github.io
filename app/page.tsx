@@ -1,13 +1,14 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Github, Linkedin, Mail, ExternalLink, ChevronLeft, ChevronRight, Code } from 'lucide-react'
 import { useState } from 'react'
 import Link from 'next/link'
 import { isFeatureEnabled } from './config/features'
 
 export default function Home() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
+  const [currentTestimonial, setCurrentTestimonial] = useState(0)
 
   const projects = [
     {
@@ -39,7 +40,39 @@ export default function Home() {
   const socialLinks = [
     { icon: Github, href: "https://github.com/navneetha08", label: "GitHub" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/navneetha-rajan", label: "LinkedIn" },
-    { icon: Mail, href: "mailto:connectwithnavneetha08@gmail.com", label: "Email" }
+    { icon: Mail, href: "mailto:connectwithnavneetha08@gmail.com", label: "Email" },
+    { icon: Code, href: "https://leetcode.com/u/navneetha_rajan/", label: "LeetCode" }
+  ]
+
+  const testimonials = [
+    {
+      name: "Amey Gadgil",
+      role: "Senior Engineering Manager",
+      company: "SIXT",
+      text: "Navneetha consistently delivers scalable technical solutions with outstanding ownership and passion. Her exceptional communication skills and collaborative approach have significantly enhanced project execution and team dynamics.",
+      linkedin: "https://www.linkedin.com/in/amey-gadgil"
+    },
+    {
+      name: "Rajasekar Venkatesan",
+      role: "Senior Software Engineer",
+      company: "SIXT",
+      text: "Navneetha stands out for her genuine curiosity, exceptional skill in designing scalable solutions, and professional collaboration. She rapidly evolved from a new graduate into a confident and independent contributor, consistently leveraging innovative technologies like GenAI to solve complex problems efficiently.",
+      linkedin: "https://www.linkedin.com/in/rajasekar-venkatesan"
+    },
+    {
+      name: "Bhushan Kakulte",
+      role: "Staff Software Engineer",
+      company: "SIXT",
+      text: "Navneetha combines impressive technical expertise in Java and Spring Boot with outstanding dedication and teamwork. She consistently delivers high-quality results and strongly supports colleagues, making her an invaluable team member.",
+      linkedin: "https://www.linkedin.com/in/bhushan-kakulte"
+    },
+    {
+      name: "Mithun Shivaramaiah",
+      role: "Software Engineer",
+      company: "Copart",
+      text: "Navneetha demonstrates exceptional skills in backend development, particularly Java Spring Boot. Her ability to write clean, efficient code and contribute positively to team projects significantly elevates organizational success.",
+      linkedin: "https://www.linkedin.com/in/mithun-shivaramaiah"
+    }
   ]
 
   return (
@@ -86,12 +119,16 @@ export default function Home() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted hover:text-foreground transition-colors duration-200"
+                  className="text-muted hover:text-foreground transition-colors duration-75"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: 0.4 + index * 0.1,
+                    hover: { duration: 0.1 }
+                  }}
                 >
                   <social.icon size={24} />
                 </motion.a>
@@ -426,6 +463,55 @@ export default function Home() {
                 <p className="text-muted text-sm mb-3">Aug 2017 - May 2021</p>
                 <p className="text-muted text-sm">Coursework: Operating Systems, Data Structures and Algorithms, Object-Oriented Design</p>
               </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 section-padding bg-sky-light/10">
+        <div className="container-max">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-center">Testimonials</h2>
+            <div className="max-w-7xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {testimonials.map((testimonial, index) => (
+                  <motion.div
+                    key={index}
+                    className="card-bg rounded-lg p-6 shadow-lg"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="mb-4">
+                      <p className="text-muted italic text-base leading-relaxed text-center">"{testimonial.text}"</p>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="text-center flex-1">
+                        <h4 className="font-semibold text-elegant text-xl">{testimonial.name}</h4>
+                        <p className="text-sm text-accent">{testimonial.role}</p>
+                        <p className="text-sm text-muted">{testimonial.company}</p>
+                      </div>
+                      <motion.a
+                        href={testimonial.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted hover:text-accent transition-colors duration-200 ml-2"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <Linkedin size={16} />
+                      </motion.a>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>
