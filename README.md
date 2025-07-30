@@ -118,7 +118,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## Contact
 
-- Email: nrajan7@asu.edu
+- Email: connectwithnavneetha08@gmail.com
 - Phone: +1 (602) 751-4983
-- GitHub: [@navneetha08](https://github.com/navneetha08)
+- GitHub: [@navneetha-rajan](https://github.com/navneetha-rajan)
 - LinkedIn: [Navneetha Rajan](https://www.linkedin.com/in/navneetha-rajan)
