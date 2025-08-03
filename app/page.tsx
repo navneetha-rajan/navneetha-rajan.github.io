@@ -107,7 +107,7 @@ export default function Home() {
               Hi, I'm <span className="gradient-text">Navneetha Rajan</span>
             </h1>
             <p className="text-lg text-muted mb-8 max-w-2xl mx-auto text-elegant leading-relaxed">
-            I love building technology solutions that work smoothly, scale easily, and genuinely help people—always looking for ways to make things faster and better. Beyond work, I thrive on adventure, travel, and genuine connections - sharing stories, exploring new places, and learning from diverse experiences.
+            I love building technology solutions that work smoothly, scale easily, and genuinely help people, always looking for ways to make things faster and better. Beyond work, I thrive on adventure, travel, and genuine connections - sharing stories, exploring new places, and learning from diverse experiences.
             </p>
             <p className="text-lg text-muted mb-8 max-w-2xl mx-auto text-elegant leading-relaxed">
               Let's connect and chat about technology, travel, or your next big idea!
