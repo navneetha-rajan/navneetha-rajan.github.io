@@ -38,10 +38,10 @@ export default function Home() {
   ]
 
   const socialLinks = [
-    { icon: Github, href: "https://github.com/navneetha08", label: "GitHub" },
+    { icon: Github, href: "https://github.com/navneetha-rajan", label: "GitHub" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/navneetha-rajan", label: "LinkedIn" },
     { icon: Mail, href: "mailto:connectwithnavneetha08@gmail.com", label: "Email" },
-    { icon: Code, href: "https://leetcode.com/u/navneetha_rajan/", label: "LeetCode" }
+    { icon: Code, href: "https://leetcode.com/u/navneetha_rajan", label: "LeetCode" }
   ]
 
   const testimonials = [
