@@ -38,6 +38,16 @@ export default function ProjectsPage() {
     },
     {
       id: 4,
+      title: "Boolean Oracle",
+      subtitle: "Intelligent Word Problem Solver",
+      description: "Developed an innovative Python tool that automatically solves logic-based word problems, featured in an IEEE publication and presented at the ASIANCON conference.",
+      tech: ["Python", "NLP", "Machine Learning", "Logic Programming"],
+      github: "https://github.com/navneetha-rajan/Boolean-Oracle",
+      demo: "https://github.com/navneetha-rajan/Boolean-Oracle",
+      featured: false
+    },
+    {
+      id: 5,
       title: "Event Management System",
       subtitle: "Streamlined Event Platform",
       description: "Developed a streamlined event management platform using Flask and Angular, simplifying event registrations and including personalized recommendations to boost student engagement.",
@@ -47,7 +57,7 @@ export default function ProjectsPage() {
       featured: false
     },
     {
-      id: 5,
+      id: 6,
       title: "Grocery Delivery Mobile App",
       subtitle: "Flutter-based Delivery Platform",
       description: "Created a responsive Flutter app inspired by Instacart, featuring personalized recommendations to enhance user experience and increase order efficiency.",
