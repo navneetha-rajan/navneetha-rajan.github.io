@@ -445,7 +445,7 @@ export default function Home() {
                   </div>
                   <span className="text-accent font-bold text-lg">4.22 / 4.0 GPA</span>
                 </div>
-                <p className="text-accent font-medium mb-2 text-elegant">Arizona State University, Tempe</p>
+                <p className="text-accent font-medium mb-2 text-elegant">Arizona State University, Tempe, AZ</p>
                 <p className="text-muted text-sm mb-3">Aug 2024 - May 2026</p>
                 <p className="text-muted text-sm">Coursework: Information Systems Management, Analyzing Big Data and AI, Data in the Cloud</p>
               </motion.div>
@@ -461,7 +461,7 @@ export default function Home() {
                   <h3 className="text-xl font-semibold text-elegant">Bachelor of Technology</h3>
                   <h4 className="text-lg font-medium text-elegant">Computer Science and Engineering</h4>
                 </div>
-                <p className="text-accent font-medium mb-2 text-elegant">PES University, Bengaluru</p>
+                <p className="text-accent font-medium mb-2 text-elegant">PES University, Bengaluru, India</p>
                 <p className="text-muted text-sm mb-3">Aug 2017 - May 2021</p>
                 <p className="text-muted text-sm">Coursework: Operating Systems, Data Structures and Algorithms, Object-Oriented Design</p>
               </motion.div>
@@ -533,7 +533,7 @@ export default function Home() {
               I'm always interested in hearing about new opportunities and exciting projects. 
               Feel free to reach out if you'd like to collaborate or discuss potential roles!
             </p>
-            <div className="flex justify-center">
+            <div className="flex justify-center space-x-4">
               <motion.a
                 href="mailto:connectwithnavneetha08@gmail.com"
                 className="inline-flex items-center space-x-2 bg-accent hover:bg-accent-dark text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200 shadow-md"
@@ -542,6 +542,17 @@ export default function Home() {
               >
                 <Mail size={20} />
                 <span>Email Me</span>
+              </motion.a>
+              <motion.a
+                href="https://www.linkedin.com/in/navneetha-rajan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 bg-sky-medium hover:bg-sky-dark text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200 shadow-md"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Linkedin size={20} />
+                <span>Connect on LinkedIn</span>
               </motion.a>
             </div>
           </motion.div>
@@ -552,7 +563,7 @@ export default function Home() {
       <footer className="py-8 section-padding border-t border-sky-medium/20">
         <div className="container-max text-center">
           <p className="text-muted text-sm">
-            © 2024 Navneetha Rajan
+            © 2025 Navneetha Rajan
           </p>
         </div>
       </footer>
