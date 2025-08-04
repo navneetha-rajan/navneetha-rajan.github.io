@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { Github, Linkedin, Mail, ExternalLink, ChevronLeft, ChevronRight, Code } from 'lucide-react'
+import { Github, Linkedin, Mail, ExternalLink, ChevronLeft, ChevronRight, Code, Twitter } from 'lucide-react'
 import { useState } from 'react'
 import Link from 'next/link'
 import { isFeatureEnabled } from './config/features'
@@ -41,6 +41,7 @@ export default function Home() {
   const socialLinks = [
     { icon: Github, href: "https://github.com/navneetha-rajan", label: "GitHub" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/navneetha-rajan", label: "LinkedIn" },
+    { icon: Twitter, href: "https://x.com/navneetha_rajan", label: "Twitter" },
     { icon: Mail, href: "mailto:connectwithnavneetha08@gmail.com", label: "Email" },
     { icon: Code, href: "https://leetcode.com/u/navneetha_rajan", label: "LeetCode" }
   ]
