@@ -12,12 +12,12 @@ export default function Home() {
 
   const projects = [
     {
-      title: "Bookify",
-      subtitle: "Personalized Book Recommendations",
-      description: "Built a smart recommendation system that helps users discover books they'll love, leveraging data from over 270,000 readers to deliver tailored suggestions and boost user engagement.",
-      tech: ["Python", "Machine Learning", "Data Mining", "Recommender Systems"],
-      link: "https://github.com/navneetha-rajan/Bookify",
-      github: "https://github.com/navneetha-rajan/Bookify"
+      title: "MindMate",
+      subtitle: "Autonomous Mental Wellness Companion",
+      description: "Developed a privacy-first AI agent that guides users through reflective journaling, mood analysis, and weekly planning via Socratic dialogue and emotion tracking, enhancing self-awareness over time.",
+      tech: ["Python", "LLMs", "LangChain", "React", "NLP", "Data Visualization"],
+      link: "https://github.com/navneetha-rajan/MindMate",
+      github: "https://github.com/navneetha-rajan/MindMate"
     },
     {
       title: "Ride Share", 
@@ -28,13 +28,14 @@ export default function Home() {
       github: "https://github.com/navneetha-rajan/Ride-Share-Application"
     },
     {
-      title: "MindMate",
-      subtitle: "Autonomous Mental Wellness Companion",
-      description: "Developed a privacy-first AI agent that guides users through reflective journaling, mood analysis, and weekly planning via Socratic dialogue and emotion tracking, enhancing self-awareness over time.",
-      tech: ["Python", "LLMs", "LangChain", "React", "NLP", "Data Visualization"],
-      link: "https://github.com/navneetha-rajan/MindMate",
-      github: "https://github.com/navneetha-rajan/MindMate"
+      title: "Bookify",
+      subtitle: "Personalized Book Recommendations",
+      description: "Built a smart recommendation system that helps users discover books they'll love, leveraging data from over 270,000 readers to deliver tailored suggestions and boost user engagement.",
+      tech: ["Python", "Machine Learning", "Data Mining", "Recommender Systems"],
+      link: "https://github.com/navneetha-rajan/Bookify",
+      github: "https://github.com/navneetha-rajan/Bookify"
     }
+
   ]
 
   const socialLinks = [
