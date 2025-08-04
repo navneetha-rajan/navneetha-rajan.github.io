@@ -28,12 +28,12 @@ export default function ProjectsPage() {
     },
     {
       id: 3,
-      title: "Boolean Oracle",
-      subtitle: "Intelligent Word Problem Solver",
-      description: "Developed an innovative Python tool that automatically solves logic-based word problems, featured in an IEEE publication and presented at the ASIANCON conference.",
-      tech: ["Python", "NLP", "Machine Learning", "Logic Programming"],
-      github: "https://github.com/navneetha-rajan/Boolean-Oracle",
-      demo: "https://github.com/navneetha-rajan/Boolean-Oracle",
+      title: "MindMate",
+      subtitle: "Autonomous Mental Wellness Companion",
+      description: "Developed a privacy-first AI agent that guides users through reflective journaling, mood analysis, and weekly planning via Socratic dialogue and emotion tracking, enhancing self-awareness over time.",
+      tech: ["Python", "LLMs", "LangGraph", "FastAPI", "NLP", "Data Visualization"],
+      github: "https://github.com/navneetha-rajan/MindMate",
+      demo: "https://github.com/navneetha-rajan/MindMate",
       featured: true
     },
     {
