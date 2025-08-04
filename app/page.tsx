@@ -31,7 +31,7 @@ export default function Home() {
       title: "MindMate",
       subtitle: "Autonomous Mental Wellness Companion",
       description: "Developed a privacy-first AI agent that guides users through reflective journaling, mood analysis, and weekly planning via Socratic dialogue and emotion tracking, enhancing self-awareness over time.",
-      tech: ["Python", "LLMs", "LangGraph", "FastAPI", "NLP", "Data Visualization"],
+      tech: ["Python", "LLMs", "LangChain", "React", "NLP", "Data Visualization"],
       link: "https://github.com/navneetha-rajan/MindMate",
       github: "https://github.com/navneetha-rajan/MindMate"
     }
