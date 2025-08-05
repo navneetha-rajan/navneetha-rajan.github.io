@@ -41,7 +41,7 @@ export default function Home() {
   const socialLinks = [
     { icon: Github, href: "https://github.com/navneetha-rajan", label: "GitHub" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/navneetha-rajan", label: "LinkedIn" },
-    { icon: Twitter, href: "https://x.com/navneetha_rajan", label: "Twitter" },
+    { icon: Twitter, href: "https://x.com/navneetha_rajan", label: "X (Twitter)" },
     { icon: Mail, href: "mailto:connectwithnavneetha08@gmail.com", label: "Email" },
     { icon: Code, href: "https://leetcode.com/u/navneetha_rajan", label: "LeetCode" }
   ]
@@ -109,7 +109,7 @@ export default function Home() {
               Hi, I'm <span className="gradient-text">Navneetha Rajan</span>
             </h1>
             <p className="text-lg text-muted mb-8 max-w-2xl mx-auto text-elegant leading-relaxed">
-            I love building technology solutions that work smoothly, scale easily, and genuinely help people, always looking for ways to make things faster and better. Beyond work, I thrive on adventure, travel, and genuine connections - sharing stories, exploring new places, and learning from diverse experiences.
+            I love building technology solutions that work smoothly, scale easily, and genuinely help people, always looking for ways to make things faster and better. Beyond work, I thrive on adventure, travel, and genuine connections. I like sharing stories, exploring new places, and learning from diverse experiences.
             </p>
             <p className="text-lg text-muted mb-8 max-w-2xl mx-auto text-elegant leading-relaxed">
               Let's connect and chat about technology, travel, or your next big idea!
@@ -547,7 +547,7 @@ export default function Home() {
                 href="https://www.linkedin.com/in/navneetha-rajan"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 bg-sky-medium hover:bg-sky-dark text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200 shadow-md"
+                className="inline-flex items-center space-x-2 bg-accent hover:bg-accent-dark text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200 shadow-md"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
