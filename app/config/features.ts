@@ -1,7 +1,7 @@
 // Feature flags configuration
 export const FEATURES = {
-  // Blog feature flag - set to false to hide blog section
-  BLOG_ENABLED: false,
+  // Blog feature flag - set to true to show blog section
+  BLOG_ENABLED: true,
   
   // Newsletter signup feature flag
   NEWSLETTER_ENABLED: true,
