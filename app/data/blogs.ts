@@ -37,7 +37,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>And honestly? It felt great. The adrenaline rush was real. I started simple, just a journaling interface, but then the feature creep hit <em style="color: #3b82f6;">(in the healthiest way possible)</em>. Then I threw in emotional insights <em style="color: #3b82f6;">(because apparently, I'm into feelings now)</em>. Next came an AI chat agent that let you talk through your emotions, pick your preferred style whether that's CBT style structure, stochastic self-discovery mode, or just a chatty best friend and it actually remembered what you said. Or maybe it remembered too much.</p>
 
-      <p><strong style="color: #3b82f6;">Think: therapy, if it came with toggle switches, data logs, and an interface that didn't judge your coping mechanisms.</strong></p>
+      <p><strong style="color: #3b82f6;">Think: Therapy, if it came with toggle switches, data logs, and an interface that didn't judge your coping mechanisms.</strong></p>
 
       <p>I wrapped everything up with a minimalist dashboard because, let's face it, everything looks cooler on a dashboard. And of course, you get numbers, because let's be honest, my engineer brain understands <em style="color: #3b82f6;">"3.2 average mood score with a 67% spike in existential dread"</em> way better than some vague <em style="color: #3b82f6;">"I'm feeling kinda off today." </em> It's like having an observant co-founder who not only reads between the lines, but graphs them too.</p>
 
