@@ -343,7 +343,7 @@ export default function Home() {
               <div className="flex justify-between items-center mb-12">
                 <h2 className="text-3xl sm:text-4xl font-bold">Blogs</h2>
                 <Link 
-                  href="/blog" 
+                  href="/blogs" 
                   className="text-accent hover:text-accent/80 transition-colors duration-200 font-medium"
                 >
                   View all posts →
@@ -351,44 +351,46 @@ export default function Home() {
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {getFeaturedBlogs().map((post, index) => (
-                  <motion.article
+                  <Link 
                     key={index}
-                    className="group card-bg rounded-lg overflow-hidden hover:border-accent/50 transition-all duration-300"
-                    whileHover={{ y: -5 }}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
+                    href={`/blogs/${post.id}`}
+                    className="group"
                   >
-                    <div className="p-6">
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="text-sm text-muted">{post.date}</span>
-                        <span className="text-sm text-muted">{post.readTime}</span>
+                    <motion.article
+                      className="card-bg rounded-lg overflow-hidden hover:border-accent/50 transition-all duration-300 cursor-pointer h-full flex flex-col"
+                      whileHover={{ y: -5 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <div className="p-6 flex flex-col h-full">
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="text-sm text-muted">{post.date}</span>
+                          <span className="text-sm text-muted">{post.readTime}</span>
+                        </div>
+                        <h3 className="text-xl font-semibold mb-3 group-hover:text-accent transition-colors duration-200">
+                          {post.title}
+                        </h3>
+                        <p className="text-muted mb-4 line-clamp-3 flex-grow">
+                          {post.excerpt}
+                        </p>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {post.tags.map((tag, tagIndex) => (
+                            <span
+                              key={tagIndex}
+                              className="text-xs bg-accent/10 text-accent px-2 py-1 rounded"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200 mt-auto">
+                          Read more →
+                        </div>
                       </div>
-                      <h3 className="text-xl font-semibold mb-3 group-hover:text-accent transition-colors duration-200">
-                        {post.title}
-                      </h3>
-                      <p className="text-muted mb-4 line-clamp-3">
-                        {post.excerpt}
-                      </p>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {post.tags.map((tag, tagIndex) => (
-                          <span
-                            key={tagIndex}
-                            className="text-xs bg-accent/10 text-accent px-2 py-1 rounded"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <Link 
-                        href={`/blog/${post.id}`}
-                        className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200"
-                      >
-                        Read more →
-                      </Link>
-                    </div>
-                  </motion.article>
+                    </motion.article>
+                  </Link>
                 ))}
               </div>
             </motion.div>
