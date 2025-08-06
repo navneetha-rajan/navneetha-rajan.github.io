@@ -304,13 +304,8 @@ export default function Home() {
                 >
                   <div className="flex justify-between items-start mb-4">
                     <div className="flex-1">
-                      <h3 className="text-xl font-semibold mb-1">{project.title}</h3>
-                      <p className="text-sm text-accent font-medium mb-2">{project.subtitle}</p>
-                    </div>
-                    <div className="flex space-x-2">
-                      <a href={project.github} className="text-muted hover:text-accent transition-colors duration-200">
-                        <Github size={16} />
-                      </a>
+                      <h3 className="text-xl font-semibold mb-1 group-hover:text-accent transition-colors duration-200">{project.title}</h3>
+                      <p className="text-base text-accent font-medium mb-2 group-hover:text-white transition-colors duration-200">{project.subtitle}</p>
                     </div>
                   </div>
                   <p className="text-muted mb-4">{project.description}</p>
@@ -318,22 +313,44 @@ export default function Home() {
                     {project.tech.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="text-xs bg-accent/10 text-accent px-2 py-1 rounded"
+                        className="text-xs bg-accent/10 text-accent px-2 py-1 rounded group-hover:bg-accent group-hover:text-white transition-all duration-200"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
-                  {project.blogLink && (
-                    <div className="mt-auto">
-                      <Link 
-                        href={project.blogLink}
+                  <div className="mt-auto space-y-2">
+                    <div className="flex flex-wrap gap-2">
+                      <a 
+                        href={project.github} 
                         className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        Read more about building {project.title} in my blog →
-                      </Link>
+                        View Github →
+                      </a>
+                      {project.link && project.link !== project.github && (
+                        <a 
+                          href={project.link} 
+                          className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Live Demo →
+                        </a>
+                      )}
                     </div>
-                  )}
+                    {project.blogLink && (
+                      <div>
+                        <Link 
+                          href={project.blogLink}
+                          className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200"
+                        >
+                          Read more →
+                        </Link>
+                      </div>
+                    )}
+                  </div>
                 </motion.div>
               ))}
             </div>
