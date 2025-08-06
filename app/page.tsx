@@ -18,7 +18,8 @@ export default function Home() {
       description: "Developed a privacy-first AI agent that guides users through reflective journaling, mood analysis, and weekly planning via Socratic dialogue and emotion tracking, enhancing self-awareness over time.",
       tech: ["Python", "LLMs", "LangChain", "React", "NLP", "Data Visualization"],
       link: "https://github.com/navneetha-rajan/MindMate",
-      github: "https://github.com/navneetha-rajan/MindMate"
+      github: "https://github.com/navneetha-rajan/MindMate",
+      blogLink: "/blogs/mindmate"
     },
     {
       title: "Ride Share", 
@@ -313,7 +314,7 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-muted mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {project.tech.map((tech, techIndex) => (
                       <span
                         key={techIndex}
@@ -323,6 +324,16 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
+                  {project.blogLink && (
+                    <div className="mt-auto">
+                      <Link 
+                        href={project.blogLink}
+                        className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200"
+                      >
+                        Read more about building {project.title} in my blog →
+                      </Link>
+                    </div>
+                  )}
                 </motion.div>
               ))}
             </div>
