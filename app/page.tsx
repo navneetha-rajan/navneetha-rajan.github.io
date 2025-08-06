@@ -5,6 +5,7 @@ import { Github, Linkedin, Mail, ExternalLink, ChevronLeft, ChevronRight, Code, 
 import { useState } from 'react'
 import Link from 'next/link'
 import { isFeatureEnabled } from './config/features'
+import { getFeaturedBlogs } from './data/blogs'
 
 export default function Home() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
@@ -349,32 +350,7 @@ export default function Home() {
                 </Link>
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {[
-                  {
-                    title: "Building Scalable Microservices with Spring Boot",
-                    excerpt: "A deep dive into designing and implementing microservices architecture using Spring Boot, covering best practices for scalability and maintainability.",
-                    date: "Dec 15, 2024",
-                    readTime: "8 min read",
-                    tags: ["Microservices", "Spring Boot", "Architecture"],
-                    featured: true
-                  },
-                  {
-                    title: "Optimizing AWS Infrastructure for Cost and Performance",
-                    excerpt: "Practical strategies for reducing AWS costs while maintaining high performance, including auto-scaling, caching, and resource optimization techniques.",
-                    date: "Nov 28, 2024",
-                    readTime: "6 min read",
-                    tags: ["AWS", "DevOps", "Cost Optimization"],
-                    featured: false
-                  },
-                  {
-                    title: "The Future of Cloud-Native Development",
-                    excerpt: "Exploring emerging trends in cloud-native development, from serverless architectures to container orchestration and beyond.",
-                    date: "Nov 10, 2024",
-                    readTime: "10 min read",
-                    tags: ["Cloud Native", "Trends", "Technology"],
-                    featured: false
-                  }
-                ].map((post, index) => (
+                {getFeaturedBlogs().map((post, index) => (
                   <motion.article
                     key={index}
                     className="group card-bg rounded-lg overflow-hidden hover:border-accent/50 transition-all duration-300"
@@ -406,7 +382,7 @@ export default function Home() {
                         ))}
                       </div>
                       <Link 
-                        href="/blog" 
+                        href={`/blog/${post.id}`}
                         className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200"
                       >
                         Read more →
