@@ -46,13 +46,13 @@ export default function BlogContent({ blog, otherBlogs }: BlogContentProps) {
             {/* Blog Header */}
             <div className="mb-12">
               <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center space-x-4 text-sm text-muted">
+                <div className="flex items-center space-x-4 text-base text-muted">
                   <div className="flex items-center space-x-1">
-                    <Calendar size={16} />
+                    <Calendar size={18} />
                     <span>{blog.date}</span>
                   </div>
                   <div className="flex items-center space-x-1">
-                    <Clock size={16} />
+                    <Clock size={18} />
                     <span>{blog.readTime}</span>
                   </div>
                 </div>
@@ -65,7 +65,7 @@ export default function BlogContent({ blog, otherBlogs }: BlogContentProps) {
               <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-elegant">
                 {blog.title}
               </h1>
-              <p className="text-xl text-muted mb-6">
+              <p className="text-2xl text-muted mb-6">
                 {blog.excerpt}
               </p>
               <div className="flex flex-wrap gap-2 mb-6">
@@ -84,7 +84,7 @@ export default function BlogContent({ blog, otherBlogs }: BlogContentProps) {
 
             {/* Blog Content */}
             <div 
-              className="prose prose-invert max-w-none prose-lg"
+              className="prose prose-invert max-w-none prose-xl"
               dangerouslySetInnerHTML={{ __html: blog.content }}
             />
           </motion.article>
