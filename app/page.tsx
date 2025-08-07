@@ -163,20 +163,16 @@ export default function Home() {
               </div>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span className="text-muted">Microservices & Cloud Architecture</span>
+                  <span className="text-lg font-semibold text-accent">⚡ Scalable Backend & Microservices Architecture</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span className="text-muted">Java & Spring Boot</span>
+                  <span className="text-lg font-semibold text-accent">☕ Java, Spring Boot & Distributed Systems</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span className="text-muted">AWS & DevOps</span>
+                  <span className="text-lg font-semibold text-accent">🚀 Cloud Engineering (AWS, Docker, Kubernetes)</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span className="text-muted">Machine Learning & Data Science</span>
+                  <span className="text-lg font-semibold text-accent">🤖 Machine Learning & AI Automation</span>
                 </div>
               </div>
             </div>
