@@ -399,16 +399,6 @@ export default function Home() {
                         <p className="text-muted mb-4 line-clamp-3 flex-grow">
                           {post.excerpt}
                         </p>
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {post.tags.map((tag, tagIndex) => (
-                            <span
-                              key={tagIndex}
-                              className="text-xs bg-accent/10 text-accent px-2 py-1 rounded"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
                         <div className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200 mt-auto">
                           Read more →
                         </div>

@@ -56,11 +56,7 @@ export default function BlogContent({ blog, otherBlogs }: BlogContentProps) {
                     <span>{blog.readTime}</span>
                   </div>
                 </div>
-                {blog.featured && (
-                  <span className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">
-                    Featured
-                  </span>
-                )}
+
               </div>
               <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-elegant">
                 {blog.title}
@@ -68,17 +64,7 @@ export default function BlogContent({ blog, otherBlogs }: BlogContentProps) {
               <p className="text-2xl text-muted mb-6">
                 {blog.excerpt}
               </p>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {blog.tags.map((tag, tagIndex) => (
-                  <span
-                    key={tagIndex}
-                    className="flex items-center space-x-1 bg-muted/20 text-muted px-3 py-1 rounded-full text-sm"
-                  >
-                    <Tag size={14} />
-                    <span>{tag}</span>
-                  </span>
-                ))}
-              </div>
+
 
             </div>
 
@@ -128,16 +114,7 @@ export default function BlogContent({ blog, otherBlogs }: BlogContentProps) {
                         <p className="text-muted mb-4 line-clamp-3 flex-grow">
                           {post.excerpt}
                         </p>
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {post.tags.map((tag, tagIndex) => (
-                            <span
-                              key={tagIndex}
-                              className="text-xs bg-accent/10 text-accent px-2 py-1 rounded"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
+
                         <div className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200 mt-auto">
                           Read more →
                         </div>
