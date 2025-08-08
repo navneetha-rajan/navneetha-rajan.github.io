@@ -6,6 +6,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { isFeatureEnabled } from './config/features'
 import { getFeaturedBlogs } from './data/blogs'
+import Chatbot from './components/Chatbot'
 
 export default function Home() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
@@ -569,6 +570,9 @@ export default function Home() {
           </p>
         </div>
       </footer>
+
+      {/* Chatbot */}
+      <Chatbot />
     </main>
   )
 } 
