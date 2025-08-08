@@ -462,7 +462,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* From My Colleagues Section */}
       <section className="py-20 section-padding bg-sky-light/10">
         <div className="container-max">
           <motion.div
@@ -471,7 +471,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-center">Testimonials</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-center">From My Colleagues</h2>
             <div className="max-w-7xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {testimonials.map((testimonial, index) => (
