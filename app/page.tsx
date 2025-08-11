@@ -125,7 +125,7 @@ export default function Home() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted hover:text-foreground transition-colors duration-75"
+                  className="group flex flex-col items-center space-y-2 text-muted hover:text-foreground transition-colors duration-200"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, y: 20 }}
@@ -137,6 +137,9 @@ export default function Home() {
                   }}
                 >
                   <social.icon size={24} />
+                  <span className="text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-medium">
+                    {social.label}
+                  </span>
                 </motion.a>
               ))}
             </div>
