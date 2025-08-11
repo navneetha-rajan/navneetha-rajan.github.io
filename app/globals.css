@@ -8,40 +8,110 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
   }
   
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
     line-height: 1.6;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Typography Scale - Consistent across all sections */
+  h1 {
+    @apply text-4xl sm:text-6xl lg:text-7xl font-bold leading-tight;
+  }
+
+  h2 {
+    @apply text-3xl sm:text-4xl font-bold leading-tight mb-8;
+  }
+
+  h3 {
+    @apply text-xl font-semibold leading-tight mb-2;
+  }
+
+  h4 {
+    @apply text-lg font-medium leading-tight mb-2;
+  }
+
+  p {
+    @apply text-base leading-relaxed;
+  }
+
+  .text-large {
+    @apply text-lg leading-relaxed;
+  }
+
+  .text-small {
+    @apply text-sm leading-relaxed;
   }
 }
 
 @layer components {
+  /* Color Palette - 3 complementary colors */
   .gradient-text {
     @apply bg-gradient-to-r from-accent to-accent-light bg-clip-text text-transparent;
   }
   
+  /* Consistent Spacing System */
   .section-padding {
     @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-spacing {
+    @apply py-20;
   }
   
   .container-max {
     @apply max-w-5xl mx-auto;
   }
   
+  /* Card System - Consistent styling */
   .card-bg {
-    @apply bg-card-bg border border-sky-medium/50 shadow-lg;
+    @apply bg-card-bg border border-sky-medium/50 shadow-lg rounded-lg;
   }
   
+  .card-padding {
+    @apply p-6;
+  }
+  
+  /* Button System - Consistent styling */
+  .btn-primary {
+    @apply bg-accent hover:bg-accent-dark text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-md hover:shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border border-accent text-accent hover:bg-accent hover:text-white px-6 py-3 rounded-lg font-medium transition-all duration-200;
+  }
+  
+  /* Link System - Consistent styling */
+  .link-primary {
+    @apply text-accent hover:text-accent-dark font-medium transition-colors duration-200;
+  }
+  
+  .link-secondary {
+    @apply text-muted hover:text-accent font-medium transition-colors duration-200;
+  }
+  
+  /* Typography Utilities */
   .text-elegant {
     @apply font-medium tracking-wide;
   }
+  
+  .text-accent-bold {
+    @apply text-accent font-semibold;
+  }
+  
+  .text-accent-medium {
+    @apply text-accent font-medium;
+  }
 }
 
-/* Prose styles for blog content */
+/* Prose styles for blog content - Consistent with main typography */
 .prose {
   color: #e5e7eb;
+  font-family: 'Inter', sans-serif;
 }
 
 .prose h3 {
@@ -50,6 +120,7 @@
   font-weight: 600;
   margin-top: 2rem;
   margin-bottom: 1rem;
+  font-family: 'Inter', sans-serif;
 }
 
 .prose h4 {
@@ -58,11 +129,13 @@
   font-weight: 600;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
+  font-family: 'Inter', sans-serif;
 }
 
 .prose p {
   margin-bottom: 1rem;
   line-height: 1.7;
+  font-family: 'Inter', sans-serif;
 }
 
 .prose ul {
@@ -73,9 +146,11 @@
 .prose li {
   margin-bottom: 0.5rem;
   line-height: 1.6;
+  font-family: 'Inter', sans-serif;
 }
 
 .prose strong {
   color: #3b82f6;
   font-weight: 600;
+  font-family: 'Inter', sans-serif;
 } 
