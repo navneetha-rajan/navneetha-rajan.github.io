@@ -6,6 +6,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { isFeatureEnabled } from './config/features'
 import { getFeaturedBlogs } from './data/blogs'
+import Navigation from './components/Navigation'
 
 export default function Home() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
@@ -81,8 +82,9 @@ export default function Home() {
 
   return (
     <main className="min-h-screen">
+      <Navigation />
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center section-padding">
+      <section id="hero" className="min-h-screen flex items-center justify-center section-padding pt-16">
         <div className="container-max text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -143,7 +145,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="py-20 section-padding">
+      <section id="about" className="py-20 section-padding">
         <div className="container-max">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -181,7 +183,7 @@ export default function Home() {
       </section>
 
       {/* Experience Section */}
-      <section className="py-20 section-padding">
+      <section id="experience" className="py-20 section-padding">
         <div className="container-max">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -268,7 +270,7 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-20 section-padding">
+      <section id="projects" className="py-20 section-padding">
         <div className="container-max">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -356,7 +358,7 @@ export default function Home() {
 
       {/* Blog Section */}
       {isFeatureEnabled('BLOG_ENABLED') && (
-        <section className="py-20 section-padding bg-sky-light/10">
+        <section id="blogs" className="py-20 section-padding bg-sky-light/10">
           <div className="container-max">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -413,7 +415,7 @@ export default function Home() {
       )}
 
       {/* Education Section */}
-      <section className="py-20 section-padding bg-sky-light/20">
+      <section id="education" className="py-20 section-padding bg-sky-light/20">
         <div className="container-max">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -463,7 +465,7 @@ export default function Home() {
       </section>
 
       {/* From My Colleagues Section */}
-      <section className="py-20 section-padding bg-sky-light/10">
+      <section id="testimonials" className="py-20 section-padding bg-sky-light/10">
         <div className="container-max">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -512,7 +514,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 section-padding">
+      <section id="contact" className="py-20 section-padding">
         <div className="container-max text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
