@@ -109,13 +109,13 @@ export default function Home() {
               </div>
             </motion.div>
             
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 text-elegant">
+            <h1 className="mb-8">
               Hi, I'm <span className="gradient-text">Navneetha Rajan</span>
             </h1>
-            <p className="text-lg text-muted mb-8 max-w-2xl mx-auto text-elegant leading-relaxed">
+            <p className="text-large text-muted mb-8 max-w-2xl mx-auto leading-relaxed">
             I love building technology solutions that work smoothly, scale easily, and genuinely help people, always looking for ways to make things faster and better. Beyond work, I thrive on adventure, travel, and genuine connections. I like sharing stories, exploring new places, and learning from diverse experiences.
             </p>
-            <p className="text-lg text-muted mb-8 max-w-2xl mx-auto text-elegant leading-relaxed">
+            <p className="text-large text-muted mb-8 max-w-2xl mx-auto leading-relaxed">
               Let's connect and chat about technology, travel, or your next big idea!
             </p>
             <div className="flex justify-center space-x-6">
@@ -153,28 +153,28 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-8">About</h2>
+            <h2>About</h2>
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <p className="text-lg text-muted leading-relaxed mb-6">
+                <p className="text-large text-muted mb-6">
                   I have a strong background in computer science and software engineering, specializing in distributed systems, cloud computing, and microservices. At SIXT, I optimized reservation processes serving millions globally, significantly reducing latency and boosting conversions.
                 </p>
-                <p className="text-lg text-muted leading-relaxed">
+                <p className="text-large text-muted">
                   I'm driven by the excitement of building robust systems that leverage big data and efficient information management. I enjoy solving complex real-world problems, creating scalable solutions, and delivering meaningful impact through innovative technology.
                 </p>
               </div>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <span className="text-lg font-semibold text-accent">⚡ Scalable Backend & Microservices Architecture</span>
+                  <span className="text-xl text-accent-bold">⚡ Scalable Backend & Microservices Architecture</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <span className="text-lg font-semibold text-accent">☕ Java, Spring Boot & Distributed Systems</span>
+                  <span className="text-xl text-accent-bold">☕ Java, Spring Boot & Distributed Systems</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <span className="text-lg font-semibold text-accent">🚀 Cloud Engineering (AWS, Docker, Kubernetes)</span>
+                  <span className="text-xl text-accent-bold">🚀 Cloud Engineering (AWS, Docker, Kubernetes)</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <span className="text-lg font-semibold text-accent">🤖 Machine Learning & AI Automation</span>
+                  <span className="text-xl text-accent-bold">🤖 Machine Learning & AI Automation</span>
                 </div>
               </div>
             </div>
@@ -191,7 +191,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-12">Experience</h2>
+            <h2>Experience</h2>
             <div className="space-y-8">
               <motion.div
                 className="border-l-2 border-accent pl-6"
@@ -203,10 +203,10 @@ export default function Home() {
                 <div className="flex justify-between items-start mb-2">
                   <div className="flex-1">
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                      <h3 className="text-xl font-semibold">Machine Learning Engineer</h3>
+                      <h3>Machine Learning Engineer</h3>
                       <span className="text-muted text-sm">April 2025 - Present</span>
                     </div>
-                    <p className="text-accent font-medium mb-2">Arizona State University</p>
+                    <p className="text-accent-medium mb-2">Arizona State University</p>
                   </div>
                   <div className="ml-6 flex-shrink-0">
                     <img src="/asu-logo.png" alt="Arizona State University" className="w-16 h-16 object-contain" />
@@ -227,10 +227,10 @@ export default function Home() {
                 <div className="flex justify-between items-start mb-2">
                   <div className="flex-1">
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                      <h3 className="text-xl font-semibold">Software Development Engineer II</h3>
+                      <h3>Software Development Engineer II</h3>
                       <span className="text-muted text-sm">Aug 2021 - Jul 2024</span>
                     </div>
-                    <p className="text-accent font-medium mb-2">SIXT Research and Development</p>
+                    <p className="text-accent-medium mb-2">SIXT Research and Development</p>
                   </div>
                   <div className="ml-6 flex-shrink-0">
                     <img src="/sixt-logo.png" alt="SIXT" className="w-16 h-16 object-contain" />
@@ -251,10 +251,10 @@ export default function Home() {
                 <div className="flex justify-between items-start mb-2">
                   <div className="flex-1">
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                      <h3 className="text-xl font-semibold">Software Engineering Intern</h3>
+                      <h3>Software Engineering Intern</h3>
                       <span className="text-muted text-sm">Feb 2021 - Jul 2021</span>
                     </div>
-                    <p className="text-accent font-medium mb-2">Hewlett Packard Enterprise</p>
+                    <p className="text-accent-medium mb-2">Hewlett Packard Enterprise</p>
                   </div>
                   <div className="ml-6 flex-shrink-0">
                     <img src="/hpe-logo.png" alt="Hewlett Packard Enterprise" className="w-16 h-16 object-contain" />
@@ -279,7 +279,7 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <div className="flex justify-between items-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold">Projects</h2>
+              <h2>Projects</h2>
               <Link 
                 href="/projects" 
                 className="text-accent hover:text-accent/80 transition-colors duration-200 font-medium"
@@ -302,8 +302,8 @@ export default function Home() {
                 >
                   <div className="flex justify-between items-start mb-4">
                     <div className="flex-1">
-                      <h3 className="text-xl font-semibold mb-1 group-hover:text-accent transition-colors duration-200">{project.title}</h3>
-                      <p className="text-base text-accent font-medium mb-2 group-hover:text-white transition-colors duration-200">{project.subtitle}</p>
+                                              <h3 className="mb-1 group-hover:text-accent transition-colors duration-200">{project.title}</h3>
+                        <p className="text-accent-medium mb-2 group-hover:text-white transition-colors duration-200">{project.subtitle}</p>
                     </div>
                   </div>
                   <p className="text-muted mb-4">{project.description}</p>
@@ -367,7 +367,7 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <div className="flex justify-between items-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold">Blogs</h2>
+                <h2>Blogs</h2>
                 <Link 
                   href="/blogs" 
                   className="text-accent hover:text-accent/80 transition-colors duration-200 font-medium"
@@ -395,7 +395,7 @@ export default function Home() {
                           <span className="text-sm text-muted">{post.date}</span>
                           <span className="text-sm text-muted">{post.readTime}</span>
                         </div>
-                        <h3 className="text-xl font-semibold mb-3 group-hover:text-accent transition-colors duration-200">
+                        <h3 className="mb-3 group-hover:text-accent transition-colors duration-200">
                           {post.title}
                         </h3>
                         <p className="text-muted mb-4 line-clamp-3 flex-grow">
@@ -423,19 +423,20 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-12">Education</h2>
+            <h2>Education</h2>
             <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
               <motion.div
-                className="card-bg rounded-lg p-6"
+                className="card-bg rounded-lg p-6 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-accent/50"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
+                whileHover={{ y: -5 }}
               >
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <h3 className="text-xl font-semibold text-elegant">Master of Science</h3>
-                    <h4 className="text-lg font-medium text-elegant">Information Technology</h4>
+                    <h3>Master of Science</h3>
+                    <h4>Information Technology</h4>
                   </div>
                   <span className="text-accent font-bold text-lg">4.22 / 4.0 GPA</span>
                 </div>
@@ -445,15 +446,16 @@ export default function Home() {
               </motion.div>
 
               <motion.div
-                className="card-bg rounded-lg p-6"
+                className="card-bg rounded-lg p-6 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-accent/50"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
+                whileHover={{ y: -5 }}
               >
                 <div className="mb-4">
-                  <h3 className="text-xl font-semibold text-elegant">Bachelor of Technology</h3>
-                  <h4 className="text-lg font-medium text-elegant">Computer Science and Engineering</h4>
+                                      <h3>Bachelor of Technology</h3>
+                    <h4>Computer Science and Engineering</h4>
                 </div>
                 <p className="text-accent font-medium mb-2 text-elegant">PES University, Bengaluru, India</p>
                 <p className="text-muted text-sm mb-3">Aug 2017 - May 2021</p>
@@ -473,24 +475,25 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-center">From My Colleagues</h2>
+            <h2 className="text-center">From My Colleagues</h2>
             <div className="max-w-7xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {testimonials.map((testimonial, index) => (
                   <motion.div
                     key={index}
-                    className="card-bg rounded-lg p-6 shadow-lg"
+                    className="card-bg rounded-lg p-6 shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-accent/50"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
+                    whileHover={{ y: -5 }}
                   >
                     <div className="mb-4">
                       <p className="text-muted italic text-base leading-relaxed text-center">"{testimonial.text}"</p>
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="text-center flex-1">
-                        <h4 className="font-semibold text-elegant text-xl">{testimonial.name}</h4>
+                        <h4>{testimonial.name}</h4>
                         <p className="text-sm text-accent">{testimonial.role}</p>
                         <p className="text-sm text-muted">{testimonial.company}</p>
                       </div>
@@ -522,7 +525,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-8">Let's Connect</h2>
+            <h2>Let's Connect</h2>
             <p className="text-lg text-muted mb-8 max-w-2xl mx-auto">
               I'm always interested in hearing about new opportunities and exciting projects. 
               Feel free to reach out if you'd like to collaborate or discuss potential roles!
@@ -530,7 +533,7 @@ export default function Home() {
             <div className="flex justify-center space-x-4">
               <motion.a
                 href="mailto:connectwithnavneetha08@gmail.com"
-                className="inline-flex items-center space-x-2 bg-accent hover:bg-accent-dark text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200 shadow-md"
+                className="btn-primary inline-flex items-center space-x-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -541,7 +544,7 @@ export default function Home() {
                 href="https://www.linkedin.com/in/navneetha-rajan"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 bg-accent hover:bg-accent-dark text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200 shadow-md"
+                className="btn-primary inline-flex items-center space-x-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
