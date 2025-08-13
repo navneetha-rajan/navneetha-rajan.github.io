@@ -54,28 +54,28 @@ export default function Home() {
       name: "Amey Gadgil",
       role: "Senior Engineering Manager",
       company: "SIXT",
-      text: "Navneetha consistently delivers scalable technical solutions with outstanding ownership and passion. Her exceptional communication skills and collaborative approach have significantly enhanced project execution and team dynamics.",
+      text: "Consistently demonstrated technical expertise in delivering scalable solutions and building critical integrations. Passionate about problem solving, takes ownership in driving key projects to completion while collaborating effectively across teams. An outstanding engineer with exceptional work ethic, professionalism, and technical abilities, making a valuable asset to any high-performing engineering team.",
       linkedin: "https://www.linkedin.com/in/amey-gadgil"
-    },
-    {
-      name: "Rajasekar Venkatesan",
-      role: "Senior Software Engineer",
-      company: "SIXT",
-      text: "Navneetha stands out for her genuine curiosity, exceptional skill in designing scalable solutions, and professional collaboration. She rapidly evolved from a new graduate into a confident and independent contributor, consistently leveraging innovative technologies like GenAI to solve complex problems efficiently.",
-      linkedin: "https://www.linkedin.com/in/rajasekar-venkatesan"
     },
     {
       name: "Bhushan Kakulte",
       role: "Staff Software Engineer",
       company: "SIXT",
-      text: "Navneetha combines impressive technical expertise in Java and Spring Boot with outstanding dedication and teamwork. She consistently delivers high-quality results and strongly supports colleagues, making her an invaluable team member.",
+      text: "Combines impressive technical expertise in Java and Spring Boot with dedication and teamwork. Consistently delivers high-quality, scalable systems while supporting colleagues and contributing to a positive team culture. Balances technical excellence with collaboration, making a dependable and impactful team member.",
       linkedin: "https://www.linkedin.com/in/bhushan-kakulte"
     },
     {
-      name: "Mithun Shivaramaiah",
+      name: "Rajasekar Venkatesan",
+      role: "Senior Software Engineer",
+      company: "SIXT",
+      text: "Stands out for genuine curiosity and the ability to quickly grasp complex systems. Breaks down business requirements into scalable, reliable solutions and has evolved into a strong, independent contributor. Actively leverages GenAI tools to solve challenges efficiently while maintaining high code quality and fostering collaboration within the team.",
+      linkedin: "https://www.linkedin.com/in/rajasekar-venkatesan"
+    },
+    {
+      name: "Mithun Shivaramiah",
       role: "Software Engineer",
-      company: "Copart",
-      text: "Navneetha demonstrates exceptional skills in backend development, particularly Java Spring Boot. Her ability to write clean, efficient code and contribute positively to team projects significantly elevates organizational success.",
+      company: "SIXT",
+      text: "Demonstrates exceptional backend development skills, particularly in Java Spring Boot, building robust and efficient systems that meet high scalability demands. Writes clean, maintainable code and contributes positively to team projects, significantly boosting productivity and ensuring consistent delivery of organizational goals.",
       linkedin: "https://www.linkedin.com/in/mithun-shivaramaiah"
     }
   ]
@@ -479,41 +479,39 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 className="text-center">From My Colleagues</h2>
-            <div className="max-w-7xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {testimonials.map((testimonial, index) => (
-                  <motion.div
-                    key={index}
-                    className="card-bg rounded-lg p-6 shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-accent/50"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    whileHover={{ y: -5 }}
-                  >
-                    <div className="mb-4">
-                      <p className="text-muted italic text-base leading-relaxed text-center">"{testimonial.text}"</p>
+            <div className="max-w-4xl mx-auto space-y-6">
+              {testimonials.map((testimonial, index) => (
+                <motion.div
+                  key={index}
+                  className="card-bg rounded-lg p-8 shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-accent/50"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="mb-6">
+                    <p className="text-muted italic text-lg leading-relaxed text-center">"{testimonial.text}"</p>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="text-center flex-1">
+                      <h4 className="text-xl">{testimonial.name}</h4>
+                      <p className="text-accent font-medium">{testimonial.role}</p>
+                      <p className="text-muted">{testimonial.company}</p>
                     </div>
-                    <div className="flex items-center justify-between">
-                      <div className="text-center flex-1">
-                        <h4>{testimonial.name}</h4>
-                        <p className="text-sm text-accent">{testimonial.role}</p>
-                        <p className="text-sm text-muted">{testimonial.company}</p>
-                      </div>
-                      <motion.a
-                        href={testimonial.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-muted hover:text-accent transition-colors duration-200 ml-2"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <Linkedin size={16} />
-                      </motion.a>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+                    <motion.a
+                      href={testimonial.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted hover:text-accent transition-colors duration-200 ml-4"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Linkedin size={20} />
+                    </motion.a>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>
