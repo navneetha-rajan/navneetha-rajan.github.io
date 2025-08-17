@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { ArrowLeft, Github, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
+import Navigation from '../components/Navigation'
 
 export default function ProjectsPage() {
   const allProjects = [
@@ -70,8 +71,9 @@ export default function ProjectsPage() {
 
   return (
     <main className="min-h-screen">
+      <Navigation />
       {/* Header */}
-      <section className="py-20 section-padding">
+      <section className="py-20 section-padding pt-24">
         <div className="container-max">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

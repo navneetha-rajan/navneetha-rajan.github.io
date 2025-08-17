@@ -1,6 +1,5 @@
 export const cloudNativeFutureBlog = {
   id: "cloud-native-future",
-  slug: "cloud-native-future",
   title: "The Future of Cloud-Native Development",
   excerpt: "Where we're headed next",
   date: "Jan 3, 2024",

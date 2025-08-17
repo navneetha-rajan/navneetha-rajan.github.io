@@ -1,9 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowLeft, Calendar, Clock, Tag } from 'lucide-react'
+import { ArrowLeft, Calendar, Clock } from 'lucide-react'
 import Link from 'next/link'
 import { BlogPost } from '../../data/blogs'
+import Navigation from '../../components/Navigation'
 
 interface BlogContentProps {
   blog: BlogPost
@@ -13,8 +14,9 @@ interface BlogContentProps {
 export default function BlogContent({ blog, otherBlogs }: BlogContentProps) {
   return (
     <main className="min-h-screen">
+      <Navigation />
       {/* Header */}
-      <section className="py-20 section-padding">
+      <section className="py-20 section-padding pt-24">
         <div className="container-max">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

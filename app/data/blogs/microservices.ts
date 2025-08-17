@@ -1,6 +1,5 @@
 export const microservicesBlog = {
   id: "microservices",
-  slug: "microservices",
   title: "Building Scalable Microservices with Spring Boot",
   excerpt: "Breaking down the monolith",
   date: "Jun 8, 2024",
