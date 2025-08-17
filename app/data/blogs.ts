@@ -16,8 +16,8 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   mindmateBlog,
   microservicesBlog,
-  awsOptimizationBlog,
-  cloudNativeFutureBlog
+  cloudNativeFutureBlog,
+  awsOptimizationBlog
 ];
 
 export function getFeaturedBlogs(): BlogPost[] {

@@ -194,78 +194,185 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2>Experience</h2>
-            <div className="space-y-8">
-              <motion.div
-                className="border-l-2 border-accent pl-6"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-              >
-                <div className="flex justify-between items-start mb-2">
-                  <div className="flex-1">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                      <h3>Machine Learning Engineer</h3>
-                      <span className="text-muted text-sm">April 2025 - Present</span>
+            <div className="relative">
+              {/* Central Timeline Line */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-accent/10"></div>
+              
+              {/* Timeline Items */}
+              <div className="space-y-12">
+                {/* Item 1 - Left Side */}
+                <motion.div
+                  className="relative flex items-center"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="w-1/2 pr-8">
+                    <div className="bg-card-bg rounded-lg p-6 border border-accent/20 hover:border-accent/50 transition-all duration-300">
+                      <div className="flex justify-between items-start mb-2">
+                        <div className="flex-1">
+                          <h3 className="mb-2">Machine Learning Engineer</h3>
+                          <p className="text-accent-medium mb-2">Arizona State University</p>
+                          <p className="text-muted mb-2">Tempe, AZ</p>
+                        </div>
+                        <div className="ml-4 flex-shrink-0 text-right">
+                          <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-sm rounded-full border border-accent/30 mb-2">
+                            April 2025 - Present
+                          </span>
+                          <div className="flex justify-end">
+                            <img src="/asu-logo.png" alt="Arizona State University" className="w-12 h-12 object-contain" />
+                          </div>
+                        </div>
+                      </div>
+                      <ul className="text-muted leading-relaxed space-y-2">
+                        <li>• Designed an AI pipeline that identifies parking lot layouts from satellite imagery across 200+ campus lots.</li>
+                        <li>• Automated slot detection and SVG mapping, cutting manual work by 100+ hours per project.</li>
+                      </ul>
                     </div>
-                    <p className="text-accent-medium mb-2">Arizona State University</p>
                   </div>
-                  <div className="ml-6 flex-shrink-0">
-                    <img src="/asu-logo.png" alt="Arizona State University" className="w-16 h-16 object-contain" />
+                  
+                  {/* Timeline Node */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2">
+                    {/* Outer glow ring with bright star */}
+                    <motion.div
+                      className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center"
+                      animate={{
+                        scale: [1, 1.1, 0.9, 1.2, 1],
+                        opacity: [0.3, 0.8, 0.2, 0.9, 0.3]
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      {/* Bright star icon */}
+                      <span className="text-accent text-lg font-bold">★</span>
+                    </motion.div>
                   </div>
-                </div>
-                <p className="text-muted text-sm leading-relaxed">
-                  Building an automated AI-driven pipeline leveraging Google Maps APIs and visual LLM models to digitally transform and optimize the design layouts of 200+ campus parking lots, enhancing operational efficiency and accuracy.
-                </p>
-              </motion.div>
+                  
+                  <div className="w-1/2 pl-8"></div>
+                </motion.div>
 
-              <motion.div
-                className="border-l-2 border-accent pl-6"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="flex justify-between items-start mb-2">
-                  <div className="flex-1">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                      <h3>Software Development Engineer II</h3>
-                      <span className="text-muted text-sm">Aug 2021 - Jul 2024</span>
+                {/* Item 2 - Right Side */}
+                <motion.div
+                  className="relative flex items-center"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="w-1/2 pr-8"></div>
+                  
+                  {/* Timeline Node */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2">
+                    {/* Outer glow ring with bright star */}
+                    <motion.div
+                      className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center"
+                      animate={{
+                        scale: [1, 1.1, 0.9, 1.2, 1],
+                        opacity: [0.3, 0.8, 0.2, 0.9, 0.3]
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 0.3
+                      }}
+                    >
+                      {/* Bright star icon */}
+                      <span className="text-accent text-lg font-bold">★</span>
+                    </motion.div>
+                  </div>
+                  
+                  <div className="w-1/2 pl-8">
+                    <div className="bg-card-bg rounded-lg p-6 border border-accent/20 hover:border-accent/50 transition-all duration-300">
+                      <div className="flex justify-between items-start mb-2">
+                        <div className="flex-1">
+                          <h3 className="mb-2">Software Development Engineer II</h3>
+                          <p className="text-accent-medium mb-2">SIXT Research and Development</p>
+                          <p className="text-muted mb-2">Bengaluru, India</p>
+                        </div>
+                        <div className="ml-4 flex-shrink-0 text-right">
+                          <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-sm rounded-full border border-accent/30 mb-2">
+                            Aug 2021 - Jul 2024
+                          </span>
+                          <div className="flex justify-end">
+                            <img src="/sixt-logo.png" alt="SIXT" className="w-12 h-12 object-contain" />
+                          </div>
+                        </div>
+                      </div>
+                      <ul className="text-muted leading-relaxed space-y-2">
+                        <li>• Developed a microservice for tailored offer recommendations and personalized pricing, driving a 20% uplift in booking completion rates and 18% revenue growth.</li>
+                        <li>• Led the migration from a PHP/Golang monolith to Java microservices, improving response times by 65%.</li>
+                        <li>• Rolled out critical features to the ZEN platform, enhancing UX for 8M+ monthly users in 110+ countries.</li>
+                        <li>• Developed a fault-tolerant booking pipeline processing 1M+ reservations/month with 90% less downtime.</li>
+                        <li>• Built a microservice for auditing the rental lifecycle, delivering standardized activity history for 10M+ records.</li>
+                        <li>• Integrated a pickup/drop-off recommendation model, increasing conversion rate by 22%.</li>
+                        <li>• <strong>Awarded Most Valuable Player</strong> for game-changing contributions, teamwork, and spirit towards the flagship product's successful re-launch, increasing revenue by 22%.</li>
+                      </ul>
                     </div>
-                    <p className="text-accent-medium mb-2">SIXT Research and Development</p>
                   </div>
-                  <div className="ml-6 flex-shrink-0">
-                    <img src="/sixt-logo.png" alt="SIXT" className="w-16 h-16 object-contain" />
-                  </div>
-                </div>
-                <p className="text-muted text-sm leading-relaxed">
-                  Designed and delivered scalable microservices, modernized legacy architectures, enhanced platform reliability, and created personalized customer experiences, significantly impacting overall product success.
-                </p>
-              </motion.div>
+                </motion.div>
 
-              <motion.div
-                className="border-l-2 border-accent pl-6"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <div className="flex justify-between items-start mb-2">
-                  <div className="flex-1">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                      <h3>Software Engineering Intern</h3>
-                      <span className="text-muted text-sm">Feb 2021 - Jul 2021</span>
+                {/* Item 3 - Left Side */}
+                <motion.div
+                  className="relative flex items-center"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="w-1/2 pr-8">
+                    <div className="bg-card-bg rounded-lg p-6 border border-accent/20 hover:border-accent/50 transition-all duration-300">
+                      <div className="flex justify-between items-start mb-2">
+                        <div className="flex-1">
+                          <h3 className="mb-2">Software Engineering Intern</h3>
+                          <p className="text-accent-medium mb-2">Hewlett Packard Enterprise</p>
+                          <p className="text-muted mb-2">Bengaluru, India</p>
+                        </div>
+                        <div className="ml-4 flex-shrink-0 text-right">
+                          <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-sm rounded-full border border-accent/30 mb-2">
+                            Feb 2021 - Jul 2021
+                          </span>
+                          <div className="flex justify-end">
+                            <img src="/hpe-logo.png" alt="Hewlett Packard Enterprise" className="w-12 h-12 object-contain" />
+                          </div>
+                        </div>
+                      </div>
+                      <ul className="text-muted leading-relaxed space-y-2">
+                        <li>• Created a pipeline to convert 40K+ unstructured records into clean datasets, saving 100+ hours in reporting work.</li>
+                        <li>• Built a Selenium-based crawler scanning 10K+ pages/day for broken links and faulty images.</li>
+                        <li>• Automated content translation & QA, reducing manual checks by 82%.</li>
+                      </ul>
                     </div>
-                    <p className="text-accent-medium mb-2">Hewlett Packard Enterprise</p>
                   </div>
-                  <div className="ml-6 flex-shrink-0">
-                    <img src="/hpe-logo.png" alt="Hewlett Packard Enterprise" className="w-16 h-16 object-contain" />
+                  
+                  {/* Timeline Node */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2">
+                    {/* Outer glow ring with bright star */}
+                    <motion.div
+                      className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center"
+                      animate={{
+                        scale: [1, 1.1, 0.9, 1.2, 1],
+                        opacity: [0.3, 0.8, 0.2, 0.9, 0.3]
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 0.6
+                      }}
+                    >
+                      {/* Bright star icon */}
+                      <span className="text-accent text-lg font-bold">★</span>
+                    </motion.div>
                   </div>
-                </div>
-                <p className="text-muted text-sm leading-relaxed">
-                  Developed automated web crawlers and testing frameworks to enhance software quality and efficiency, collaborating closely with cross-functional teams to deliver robust solutions.
-                </p>
-              </motion.div>
+                  
+                  <div className="w-1/2 pl-8"></div>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -426,43 +533,118 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2>Education</h2>
-            <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
-              <motion.div
-                className="card-bg rounded-lg p-6 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-accent/50"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h3>Master of Science</h3>
-                    <h4>Information Technology</h4>
-                  </div>
-                  <span className="text-accent font-bold text-lg">4.22 / 4.0 GPA</span>
-                </div>
-                <p className="text-accent font-medium mb-2 text-elegant">Arizona State University, Tempe, AZ</p>
-                <p className="text-muted text-sm mb-3">Aug 2024 - May 2026</p>
-                <p className="text-muted text-sm">Coursework: Information Systems Management, Analyzing Big Data and AI, Data in the Cloud</p>
-              </motion.div>
+            <div className="relative">
+              {/* Central Timeline Line */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-accent/10"></div>
 
-              <motion.div
-                className="card-bg rounded-lg p-6 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-accent/50"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="mb-4">
-                                      <h3>Bachelor of Technology</h3>
-                    <h4>Computer Science and Engineering</h4>
-                </div>
-                <p className="text-accent font-medium mb-2 text-elegant">PES University, Bengaluru, India</p>
-                <p className="text-muted text-sm mb-3">Aug 2017 - May 2021</p>
-                <p className="text-muted text-sm">Coursework: Operating Systems, Data Structures and Algorithms, Object-Oriented Design</p>
-              </motion.div>
+              {/* Timeline Items */}
+              <div className="space-y-12">
+                {/* Item 1 - Left Side */}
+                <motion.div
+                  className="relative flex items-center"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="w-1/2 pr-8">
+                    <div className="bg-card-bg rounded-lg p-6 border border-accent/20 hover:border-accent/50 transition-all duration-300">
+                      <div className="flex justify-between items-start mb-2">
+                        <div className="flex-1">
+                          <h3 className="text-accent-medium mb-2">Arizona State University</h3>
+                          <p className="mb-2">Master of Science in Information Technology</p>
+                        </div>
+                        <div className="ml-4 flex-shrink-0 text-right">
+                          <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-sm rounded-full border border-accent/30 mb-2">
+                            Aug 2024 - May 2026
+                          </span>
+                          <div className="text-accent font-bold text-sm">4.22/4.0 GPA</div>
+                        </div>
+                      </div>
+                      <ul className="text-muted leading-relaxed space-y-2">
+                        <li>• Information Systems Management</li>
+                        <li>• Analyzing Big Data and AI</li>
+                        <li>• Data in the Cloud</li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  {/* Timeline Node */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2">
+                    {/* Outer glow ring with bright star */}
+                    <motion.div
+                      className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center"
+                      animate={{
+                        scale: [1, 1.1, 0.9, 1.2, 1],
+                        opacity: [0.3, 0.8, 0.2, 0.9, 0.3]
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      {/* Bright star icon */}
+                      <span className="text-accent text-lg font-bold">★</span>
+                    </motion.div>
+                  </div>
+                  
+                  <div className="w-1/2 pl-8"></div>
+                </motion.div>
+
+                {/* Item 2 - Right Side */}
+                <motion.div
+                  className="relative flex items-center"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="w-1/2 pr-8"></div>
+                  
+                  {/* Timeline Node */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2">
+                    {/* Outer glow ring with bright star */}
+                    <motion.div
+                      className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center"
+                      animate={{
+                        scale: [1, 1.1, 0.9, 1.2, 1],
+                        opacity: [0.3, 0.8, 0.2, 0.9, 0.3]
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 1
+                      }}
+                    >
+                      {/* Bright star icon */}
+                      <span className="text-accent text-lg font-bold">★</span>
+                    </motion.div>
+                  </div>
+                  
+                  <div className="w-1/2 pl-8">
+                    <div className="bg-card-bg rounded-lg p-6 border border-accent/20 hover:border-accent/50 transition-all duration-300">
+                      <div className="flex justify-between items-start mb-2">
+                        <div className="flex-1">
+                          <h3 className="text-accent-medium mb-2">PES University</h3>
+                          <p className="mb-2">Bachelor of Technology in Computer Science and Engineering</p>
+                        </div>
+                        <div className="ml-4 flex-shrink-0 text-right">
+                          <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-sm rounded-full border border-accent/30 mb-2">
+                            Aug 2017 - May 2021
+                          </span>
+                        </div>
+                      </div>
+                      <ul className="text-muted leading-relaxed space-y-2">
+                        <li>• Operating Systems</li>
+                        <li>• Data Structures and Algorithms</li>
+                        <li>• Object-Oriented Design</li>
+                      </ul>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         </div>
