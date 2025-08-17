@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowLeft, Calendar, Clock, Tag } from 'lucide-react'
+import { ArrowLeft, Calendar, Clock } from 'lucide-react'
 import Link from 'next/link'
 import { BlogPost } from '../data/blogs'
 

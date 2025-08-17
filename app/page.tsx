@@ -1,7 +1,7 @@
 'use client'
 
-import { motion, AnimatePresence } from 'framer-motion'
-import { Github, Linkedin, Mail, ExternalLink, ChevronLeft, ChevronRight, Code, Twitter } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Github, Linkedin, Mail, ExternalLink, Code, Twitter } from 'lucide-react'
 import { useState } from 'react'
 import Link from 'next/link'
 import { isFeatureEnabled } from './config/features'
@@ -10,7 +10,6 @@ import Navigation from './components/Navigation'
 
 export default function Home() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
-  const [currentTestimonial, setCurrentTestimonial] = useState(0)
 
   const projects = [
     {

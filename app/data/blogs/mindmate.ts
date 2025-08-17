@@ -1,6 +1,5 @@
 export const mindmateBlog = {
   id: "mindmate",
-  slug: "mindmate",
   title: "Building MindMate: A 3-Hour Sprint",
   excerpt: "What Happens When You Give Your Feelings an Interface",
   date: "Jul 15, 2025",

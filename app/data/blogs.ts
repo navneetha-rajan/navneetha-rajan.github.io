@@ -5,7 +5,6 @@ import { cloudNativeFutureBlog } from './blogs/cloud-native-future';
 
 export interface BlogPost {
   id: string;
-  slug: string;
   title: string;
   excerpt: string;
   date: string;
@@ -31,8 +30,4 @@ export function getAllBlogs(): BlogPost[] {
 
 export function getBlogById(id: string): BlogPost | undefined {
   return blogPosts.find(post => post.id === id);
-}
-
-export function getBlogBySlug(slug: string): BlogPost | undefined {
-  return blogPosts.find(post => post.slug === slug);
 } 
