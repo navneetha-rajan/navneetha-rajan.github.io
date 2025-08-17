@@ -13,7 +13,7 @@ export default function BlogList({ blogPosts }: BlogListProps) {
   return (
     <main className="min-h-screen">
       {/* Header */}
-      <section className="py-20 section-padding">
+      <section className="py-20 section-padding pt-24">
         <div className="container-max">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { isFeatureEnabled } from '../config/features'
 import { getAllBlogs } from '../data/blogs'
 import BlogList from './BlogList'
+import Navigation from '../components/Navigation'
 
 export const metadata: Metadata = {
   title: 'Blogs | Navneetha Rajan',
@@ -32,7 +33,8 @@ export default function BlogPage() {
   if (!isFeatureEnabled('BLOG_ENABLED')) {
     return (
       <main className="min-h-screen">
-        <section className="py-20 section-padding">
+        <Navigation />
+        <section className="py-20 section-padding pt-24">
           <div className="container-max text-center">
             <div className="mb-8">
               <h1 className="text-4xl sm:text-5xl font-bold mb-6">Blogs</h1>
@@ -48,5 +50,10 @@ export default function BlogPage() {
 
   const blogPosts = getAllBlogs()
 
-  return <BlogList blogPosts={blogPosts} />
+  return (
+    <main className="min-h-screen">
+      <Navigation />
+      <BlogList blogPosts={blogPosts} />
+    </main>
+  )
 } 
