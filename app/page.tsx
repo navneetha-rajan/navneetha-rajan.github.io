@@ -200,15 +200,15 @@ export default function Home() {
               
               {/* Timeline Items */}
               <div className="space-y-12">
-                {/* Item 1 - Left Side */}
+                {/* Item 1 - Mobile: Full width, Desktop: Left Side */}
                 <motion.div
-                  className="relative flex items-center"
+                  className="relative flex flex-col lg:flex-row lg:items-center"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  <div className="w-1/2 pr-8">
+                  <div className="w-full lg:w-1/2 lg:pr-8 mb-8 lg:mb-0">
                     <div className="bg-card-bg rounded-lg p-6 border border-accent/20 hover:border-accent/50 transition-all duration-300">
                       <div className="flex justify-between items-start mb-2">
                         <div className="flex-1">
@@ -233,7 +233,7 @@ export default function Home() {
                   </div>
                   
                   {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2">
+                  <div className="absolute left-1/2 transform -translate-x-1/2 lg:block hidden">
                     {/* Outer glow ring with bright star */}
                     <motion.div
                       className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center"
@@ -252,21 +252,21 @@ export default function Home() {
                     </motion.div>
                   </div>
                   
-                  <div className="w-1/2 pl-8"></div>
+                  <div className="w-full lg:w-1/2 lg:pl-8"></div>
                 </motion.div>
 
-                {/* Item 2 - Right Side */}
+                {/* Item 2 - Mobile: Full width, Desktop: Right Side */}
                 <motion.div
-                  className="relative flex items-center"
+                  className="relative flex flex-col lg:flex-row lg:items-center"
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <div className="w-1/2 pr-8"></div>
+                  <div className="w-full lg:w-1/2 lg:pr-8 mb-8 lg:mb-0"></div>
                   
                   {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2">
+                  <div className="absolute left-1/2 transform -translate-x-1/2 lg:block hidden">
                     {/* Outer glow ring with bright star */}
                     <motion.div
                       className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center"
@@ -286,7 +286,7 @@ export default function Home() {
                     </motion.div>
                   </div>
                   
-                  <div className="w-1/2 pl-8">
+                  <div className="w-full lg:w-1/2 lg:pl-8">
                     <div className="bg-card-bg rounded-lg p-6 border border-accent/20 hover:border-accent/50 transition-all duration-300">
                       <div className="flex justify-between items-start mb-2">
                         <div className="flex-1">
@@ -316,15 +316,15 @@ export default function Home() {
                   </div>
                 </motion.div>
 
-                {/* Item 3 - Left Side */}
+                {/* Item 3 - Mobile: Full width, Desktop: Left Side */}
                 <motion.div
-                  className="relative flex items-center"
+                  className="relative flex flex-col lg:flex-row lg:items-center"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                   viewport={{ once: true }}
                 >
-                  <div className="w-1/2 pr-8">
+                  <div className="w-full lg:w-1/2 lg:pr-8 mb-8 lg:mb-0">
                     <div className="bg-card-bg rounded-lg p-6 border border-accent/20 hover:border-accent/50 transition-all duration-300">
                       <div className="flex justify-between items-start mb-2">
                         <div className="flex-1">
@@ -350,7 +350,7 @@ export default function Home() {
                   </div>
                   
                   {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2">
+                  <div className="absolute left-1/2 transform -translate-x-1/2 lg:block hidden">
                     {/* Outer glow ring with bright star */}
                     <motion.div
                       className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center"
@@ -370,7 +370,7 @@ export default function Home() {
                     </motion.div>
                   </div>
                   
-                  <div className="w-1/2 pl-8"></div>
+                  <div className="w-full lg:w-1/2 lg:pl-8"></div>
                 </motion.div>
               </div>
             </div>
@@ -539,15 +539,15 @@ export default function Home() {
 
               {/* Timeline Items */}
               <div className="space-y-12">
-                {/* Item 1 - Left Side */}
+                {/* Item 1 - Mobile: Full width, Desktop: Left Side */}
                 <motion.div
-                  className="relative flex items-center"
+                  className="relative flex flex-col lg:flex-row lg:items-center"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  <div className="w-1/2 pr-8">
+                  <div className="w-full lg:w-1/2 lg:pr-8 mb-8 lg:mb-0">
                     <div className="bg-card-bg rounded-lg p-6 border border-accent/20 hover:border-accent/50 transition-all duration-300">
                       <div className="flex justify-between items-start mb-2">
                         <div className="flex-1">
@@ -570,7 +570,7 @@ export default function Home() {
                   </div>
                   
                   {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2">
+                  <div className="absolute left-1/2 transform -translate-x-1/2 lg:block hidden">
                     {/* Outer glow ring with bright star */}
                     <motion.div
                       className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center"
@@ -589,21 +589,21 @@ export default function Home() {
                     </motion.div>
                   </div>
                   
-                  <div className="w-1/2 pl-8"></div>
+                  <div className="w-full lg:w-1/2 lg:pl-8"></div>
                 </motion.div>
 
-                {/* Item 2 - Right Side */}
+                {/* Item 2 - Mobile: Full width, Desktop: Right Side */}
                 <motion.div
-                  className="relative flex items-center"
+                  className="relative flex flex-col lg:flex-row lg:items-center"
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <div className="w-1/2 pr-8"></div>
+                  <div className="w-full lg:w-1/2 lg:pr-8 mb-8 lg:mb-0"></div>
                   
                   {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2">
+                  <div className="absolute left-1/2 transform -translate-x-1/2 lg:block hidden">
                     {/* Outer glow ring with bright star */}
                     <motion.div
                       className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center"
@@ -623,7 +623,7 @@ export default function Home() {
                     </motion.div>
                   </div>
                   
-                  <div className="w-1/2 pl-8">
+                  <div className="w-full lg:w-1/2 lg:pl-8">
                     <div className="bg-card-bg rounded-lg p-6 border border-accent/20 hover:border-accent/50 transition-all duration-300">
                       <div className="flex justify-between items-start mb-2">
                         <div className="flex-1">
