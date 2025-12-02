@@ -1,751 +1,356 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, ExternalLink, Code, Twitter } from 'lucide-react'
-import { useState } from 'react'
+import { Github, Linkedin, Mail, Brain, Cloud, Star, Coffee, MapPin, BookOpen } from 'lucide-react'
 import Link from 'next/link'
-import { isFeatureEnabled } from './config/features'
-import { getFeaturedBlogs } from './data/blogs'
+import Image from 'next/image'
 import Navigation from './components/Navigation'
 
 export default function Home() {
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null)
-
-  const projects = [
-    {
-      title: "MindMate",
-      subtitle: "Autonomous Mental Wellness Companion",
-      description: "Developed a privacy-first AI agent that guides users through reflective journaling, mood analysis, and weekly planning via Socratic dialogue and emotion tracking, enhancing self-awareness over time.",
-      tech: ["Python", "LLMs", "LangChain", "React", "NLP", "Data Visualization"],
-      link: "https://github.com/navneetha-rajan/MindMate",
-      github: "https://github.com/navneetha-rajan/MindMate",
-      blogLink: "/blogs/mindmate"
-    },
-    {
-      title: "Ride Share", 
-      subtitle: "High-Performance Cloud Platform",
-      description: "Created a robust, scalable cloud-based ride-sharing platform designed to handle millions of requests seamlessly, ensuring high availability and reliability for users.",
-      tech: ["AWS", "Microservices", "Docker", "Load Balancing"],
-      link: "https://github.com/navneetha-rajan/Ride-Share-Application",
-      github: "https://github.com/navneetha-rajan/Ride-Share-Application"
-    },
-    {
-      title: "Bookify",
-      subtitle: "Personalized Book Recommendations",
-      description: "Built a smart recommendation system that helps users discover books they'll love, leveraging data from over 270,000 readers to deliver tailored suggestions and boost user engagement.",
-      tech: ["Python", "Machine Learning", "Data Mining", "Recommender Systems"],
-      link: "https://github.com/navneetha-rajan/Bookify",
-      github: "https://github.com/navneetha-rajan/Bookify"
-    }
-
-  ]
-
-  const socialLinks = [
-    { icon: Github, href: "https://github.com/navneetha-rajan", label: "GitHub" },
-    { icon: Linkedin, href: "https://www.linkedin.com/in/navneetha-rajan", label: "LinkedIn" },
-    { icon: Twitter, href: "https://x.com/navneetha_rajan", label: "X (Twitter)" },
-    { icon: Mail, href: "mailto:connectwithnavneetha08@gmail.com", label: "Email" },
-    { icon: Code, href: "https://leetcode.com/u/navneetha_rajan", label: "LeetCode" }
-  ]
-
-  const testimonials = [
-    {
-      name: "Amey Gadgil",
-      role: "Senior Engineering Manager",
-      company: "SIXT",
-      text: "Consistently demonstrated technical expertise in delivering scalable solutions and building critical integrations. Passionate about problem solving, takes ownership in driving key projects to completion while collaborating effectively across teams. An outstanding engineer with exceptional work ethic, professionalism, and technical abilities, making a valuable asset to any high-performing engineering team.",
-      linkedin: "https://www.linkedin.com/in/amey-gadgil"
-    },
-    {
-      name: "Bhushan Kakulte",
-      role: "Staff Software Engineer",
-      company: "SIXT",
-      text: "Combines impressive technical expertise in Java and Spring Boot with dedication and teamwork. Consistently delivers high-quality, scalable systems while supporting colleagues and contributing to a positive team culture. Balances technical excellence with collaboration, making a dependable and impactful team member.",
-      linkedin: "https://www.linkedin.com/in/bhushan-kakulte"
-    },
-    {
-      name: "Rajasekar Venkatesan",
-      role: "Senior Software Engineer",
-      company: "SIXT",
-      text: "Stands out for genuine curiosity and the ability to quickly grasp complex systems. Breaks down business requirements into scalable, reliable solutions and has evolved into a strong, independent contributor. Actively leverages GenAI tools to solve challenges efficiently while maintaining high code quality and fostering collaboration within the team.",
-      linkedin: "https://www.linkedin.com/in/rajasekar-venkatesan"
-    },
-    {
-      name: "Mithun Shivaramiah",
-      role: "Software Engineer",
-      company: "SIXT",
-      text: "Demonstrates exceptional backend development skills, particularly in Java Spring Boot, building robust and efficient systems that meet high scalability demands. Writes clean, maintainable code and contributes positively to team projects, significantly boosting productivity and ensuring consistent delivery of organizational goals.",
-      linkedin: "https://www.linkedin.com/in/mithun-shivaramaiah"
-    }
-  ]
-
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-8">
       <Navigation />
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-auto">
+        
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center section-padding pt-16">
-        <div className="container-max text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            {/* Profile Photo */}
-            <motion.div
-              className="mb-8 flex justify-center"
-              initial={{ opacity: 0, scale: 0.8 }}
+          id="home"
+          initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <div className="relative">
-                <div className="w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-full bg-gradient-to-br from-accent to-accent-light flex items-center justify-center shadow-lg p-1">
-                  <img 
+          transition={{ duration: 0.5 }}
+          className="col-span-1 md:col-span-2 bg-white rounded-[2rem] p-8 border-2 border-pink-100 shadow-sticker relative overflow-hidden group hover:shadow-sticker-hover transition-all duration-300"
+        >
+          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-100 to-purple-100 rounded-bl-[4rem] -mr-4 -mt-4 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"></div>
+          
+          <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+            <div className="w-40 h-40 md:w-48 md:h-48 flex-shrink-0 relative">
+              <div className="absolute inset-0 bg-[#ffd1dc] rounded-full animate-blob opacity-70"></div>
+              <div className="absolute inset-0 bg-[#b5d8cc] rounded-full animate-blob animation-delay-2000 opacity-70"></div>
+              <div className="relative w-full h-full rounded-full border-4 border-white shadow-lg overflow-hidden">
+                <Image
                     src="/neetz-profile.png" 
                     alt="Navneetha Rajan" 
-                    className="w-full h-full rounded-full object-cover"
+                  fill
+                  className="object-cover"
+                  priority
                   />
                 </div>
+              <div className="absolute -bottom-2 -right-2 bg-white p-2 rounded-full shadow-md text-2xl animate-bounce">
+                ✨
               </div>
-            </motion.div>
-            
-            <h1 className="mb-8">
-              Hi, I'm <span className="gradient-text">Navneetha Rajan</span>
+            </div>
+
+            <div className="flex-1 text-center md:text-left">
+              <div className="inline-block px-4 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-bold mb-4 transform -rotate-2 hover:rotate-0 transition-transform font-heading">
+                Software Engineer & Creator 🌷
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-text-charcoal font-heading">
+                Hi, I'm <span className="text-primary-sage relative inline-block">
+                  Navneetha
+                  <svg className="absolute w-full h-3 -bottom-1 left-0 text-pink-200 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
+                    <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
+                  </svg>
+                </span>
             </h1>
-            <p className="text-large text-muted mb-8 max-w-2xl mx-auto leading-relaxed">
-            I love building technology solutions that work smoothly, scale easily, and genuinely help people, always looking for ways to make things faster and better. Beyond work, I thrive on adventure, travel, and genuine connections. I like sharing stories, exploring new places, and learning from diverse experiences.
-            </p>
-            <p className="text-large text-muted mb-8 max-w-2xl mx-auto leading-relaxed">
-              Let's connect and chat about technology, travel, or your next big idea!
-            </p>
-            <div className="flex justify-center space-x-6">
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
+              <p className="text-lg text-text-charcoal/70 mb-6 font-sans leading-relaxed max-w-lg">
+                Crafting digital experiences with code and creativity. I love building things that are both functional and adorable! 
+                Currently exploring the world of Cloud Native and Microservices.
+              </p>
+              <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+                <a
+                  href="https://github.com/navneetha-rajan"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex flex-col items-center space-y-2 text-muted hover:text-foreground transition-colors duration-200"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ 
-                    duration: 0.5, 
-                    delay: 0.4 + index * 0.1,
-                    hover: { duration: 0.1 }
-                  }}
+                  className="bg-pastel-blue text-text-charcoal p-3 rounded-2xl hover:scale-110 hover:-rotate-3 transition-all duration-300 shadow-md hover:shadow-xl flex items-center gap-2 font-bold border border-white/60"
                 >
-                  <social.icon size={24} />
-                  <span className="text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-medium">
-                    {social.label}
-                  </span>
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-20 section-padding">
-        <div className="container-max">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2>About</h2>
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <p className="text-large text-muted mb-6">
-                  I have a strong background in computer science and software engineering, specializing in distributed systems, cloud computing, and microservices. At SIXT, I optimized reservation processes serving millions globally, significantly reducing latency and boosting conversions.
-                </p>
-                <p className="text-large text-muted">
-                  I'm driven by the excitement of building robust systems that leverage big data and efficient information management. I enjoy solving complex real-world problems, creating scalable solutions, and delivering meaningful impact through innovative technology.
-                </p>
-              </div>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <span className="text-xl text-accent-bold">⚡ Scalable Backend & Microservices Architecture</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <span className="text-xl text-accent-bold">☕ Java, Spring Boot & Distributed Systems</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <span className="text-xl text-accent-bold">🚀 Cloud Engineering (AWS, Docker, Kubernetes)</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <span className="text-xl text-accent-bold">🤖 Machine Learning & AI Automation</span>
-                </div>
+                  <Github size={20} />
+                  <span className="hidden sm:inline">GitHub</span>
+                </a>
+                <a
+                  href="https://linkedin.com/in/navneetha-rajan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-pastel-purple text-text-charcoal p-3 rounded-2xl hover:scale-110 hover:rotate-3 transition-all duration-300 shadow-md hover:shadow-xl flex items-center gap-2 font-bold border border-white/60"
+                >
+                  <Linkedin size={20} />
+                  <span className="hidden sm:inline">LinkedIn</span>
+                </a>
+                <a
+                  href="mailto:connectwithnavneetha08@gmail.com"
+                  className="bg-accent-pink text-text-charcoal p-3 rounded-2xl hover:scale-110 hover:-rotate-2 transition-all duration-300 shadow-md hover:shadow-xl flex items-center gap-2 font-bold border border-white/60"
+                >
+                  <Mail size={20} />
+                  <span className="hidden sm:inline">Email</span>
+                </a>
               </div>
             </div>
+            </div>
           </motion.div>
-        </div>
-      </section>
 
-      {/* Experience Section */}
-      <section id="experience" className="py-20 section-padding">
-        <div className="container-max">
+        {/* Work Journal */}
           <motion.div
+          id="experience"
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2>Experience</h2>
-            <div className="relative">
-              {/* Central Timeline Line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-accent/10"></div>
-              
-              {/* Timeline Items */}
-              <div className="space-y-12">
-                {/* Item 1 - Mobile: Full width, Desktop: Left Side */}
-                <motion.div
-                  className="relative flex flex-col lg:flex-row lg:items-center"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="w-full lg:w-1/2 lg:pr-8 mb-8 lg:mb-0">
-                    <div className="bg-card-bg rounded-lg p-6 border border-accent/20 hover:border-accent/50 transition-all duration-300">
-                      <div className="flex justify-between items-start mb-2">
-                        <div className="flex-1">
-                          <h3 className="mb-2">Machine Learning Engineer</h3>
-                          <p className="text-accent-medium mb-2">Arizona State University</p>
-                          <p className="text-muted mb-2">Tempe, AZ</p>
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="col-span-1 row-span-2 bg-[#e3f0e6] rounded-[2rem] p-6 border-2 border-green-100 shadow-sticker flex flex-col hover:shadow-sticker-hover transition-all duration-300"
+        >
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-text-charcoal font-heading flex items-center gap-2">
+              <span className="bg-white p-2 rounded-full shadow-sm">💼</span> Work Journal
+            </h2>
+            <Link href="/resume.pdf" target="_blank" className="text-xs font-bold bg-white px-3 py-1 rounded-full text-green-600 shadow-sm hover:scale-105 transition-transform">
+              RESUME ↗
+            </Link>
+              </div>
+
+          <div className="space-y-6 overflow-y-auto custom-scrollbar pr-2 flex-1">
+            {/* Item 1 */}
+            <div className="bg-white/60 backdrop-blur-sm p-3 rounded-2xl border border-white/50 shadow-sm hover:scale-[1.02] transition-transform group relative">
+               <div className="absolute -right-2 -top-2 opacity-0 group-hover:opacity-100 transition-opacity transform rotate-12">
+                  <span className="bg-yellow-200 text-yellow-800 text-[10px] font-bold px-2 py-1 rounded-lg shadow-sm">Latest!</span>
+                </div>
+              <div className="flex items-start gap-3 mb-2">
+                <div className="p-2 bg-white rounded-xl shadow-sm">
+                  <Image src="/asu-logo.png" alt="ASU" width={32} height={32} className="object-contain" />
+                </div>
+                <div className="leading-none">
+                  <h3 className="font-bold text-text-charcoal leading-tight text-sm mb-0">Software Engineer</h3>
+                  <p className="text-[10px] font-bold text-green-600 mt-0">Arizona State University</p>
+                </div>
+              </div>
+              <p className="text-[10px] text-pastel-purple font-mono mb-2">Aug 2023 - Present</p>
+              <ul className="text-xs text-text-charcoal space-y-0 list-disc list-inside marker:text-green-400 leading-tight">
+                <li>Reduced build times by 40% via CI/CD pipelines</li>
+                <li>Optimized AWS cloud infrastructure costs</li>
+                <li>Developed accessible React components</li>
+              </ul>
+            </div>
+
+            {/* Item 2 */}
+            <div className="bg-white/60 backdrop-blur-sm p-3 rounded-2xl border border-white/50 shadow-sm hover:scale-[1.02] transition-transform">
+              <div className="flex items-start gap-3 mb-2">
+                <div className="p-2 bg-white rounded-xl shadow-sm">
+                  <Image src="/sixt-logo.png" alt="Sixt" width={32} height={32} className="object-contain" />
                         </div>
-                        <div className="ml-4 flex-shrink-0 text-right">
-                          <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-sm rounded-full border border-accent/30 mb-2">
-                            April 2025 - Present
-                          </span>
-                          <div className="flex justify-end">
-                            <img src="/asu-logo.png" alt="Arizona State University" className="w-12 h-12 object-contain" />
+                <div className="leading-none">
+                  <h3 className="font-bold text-text-charcoal leading-tight text-sm mb-0">Software Engineer II</h3>
+                  <p className="text-[10px] font-bold text-orange-500 mt-0">Sixt R & D</p>
                           </div>
                         </div>
-                      </div>
-                      <ul className="text-muted leading-relaxed space-y-2">
-                        <li>• Designed an AI pipeline that identifies parking lot layouts from satellite imagery across 200+ campus lots.</li>
-                        <li>• Automated slot detection and SVG mapping, cutting manual work by 100+ hours per project.</li>
+              <p className="text-[10px] text-pastel-purple font-mono mb-2">July 2021 - July 2023</p>
+              <ul className="text-xs text-text-charcoal space-y-0 list-disc list-inside marker:text-orange-300 leading-tight">
+                <li>Built microservices handling 1M+ requests/day</li>
+                <li>Led migration to Go based architecture</li>
+                <li>Improved API latency by 60%</li>
                       </ul>
-                    </div>
                   </div>
                   
-                  {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 lg:block hidden">
-                    {/* Outer glow ring with bright star */}
-                    <motion.div
-                      className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center"
-                      animate={{
-                        scale: [1, 1.1, 0.9, 1.2, 1],
-                        opacity: [0.3, 0.8, 0.2, 0.9, 0.3]
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    >
-                      {/* Bright star icon */}
-                      <span className="text-accent text-lg font-bold">★</span>
-                    </motion.div>
+            {/* Item 3 */}
+            <div className="bg-white/60 backdrop-blur-sm p-3 rounded-2xl border border-white/50 shadow-sm hover:scale-[1.02] transition-transform">
+              <div className="flex items-start gap-3 mb-2">
+                <div className="p-2 bg-white rounded-xl shadow-sm">
+                  <Image src="/hpe-logo.png" alt="HPE" width={32} height={32} className="object-contain" />
                   </div>
-                  
-                  <div className="w-full lg:w-1/2 lg:pl-8"></div>
-                </motion.div>
-
-                {/* Item 2 - Mobile: Full width, Desktop: Right Side */}
-                <motion.div
-                  className="relative flex flex-col lg:flex-row lg:items-center"
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="w-full lg:w-1/2 lg:pr-8 mb-8 lg:mb-0"></div>
-                  
-                  {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 lg:block hidden">
-                    {/* Outer glow ring with bright star */}
-                    <motion.div
-                      className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center"
-                      animate={{
-                        scale: [1, 1.1, 0.9, 1.2, 1],
-                        opacity: [0.3, 0.8, 0.2, 0.9, 0.3]
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: 0.3
-                      }}
-                    >
-                      {/* Bright star icon */}
-                      <span className="text-accent text-lg font-bold">★</span>
-                    </motion.div>
-                  </div>
-                  
-                  <div className="w-full lg:w-1/2 lg:pl-8">
-                    <div className="bg-card-bg rounded-lg p-6 border border-accent/20 hover:border-accent/50 transition-all duration-300">
-                      <div className="flex justify-between items-start mb-2">
-                        <div className="flex-1">
-                          <h3 className="mb-2">Software Development Engineer II</h3>
-                          <p className="text-accent-medium mb-2">SIXT Research and Development</p>
-                          <p className="text-muted mb-2">Bengaluru, India</p>
-                        </div>
-                        <div className="ml-4 flex-shrink-0 text-right">
-                          <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-sm rounded-full border border-accent/30 mb-2">
-                            Aug 2021 - Jul 2024
-                          </span>
-                          <div className="flex justify-end">
-                            <img src="/sixt-logo.png" alt="SIXT" className="w-12 h-12 object-contain" />
+                <div className="leading-none">
+                  <h3 className="font-bold text-text-charcoal leading-tight text-sm mb-0">R&D Intern</h3>
+                  <p className="text-[10px] font-bold text-teal-600 mt-0">Hewlett Packard Enterprise</p>
                           </div>
                         </div>
-                      </div>
-                      <ul className="text-muted leading-relaxed space-y-2">
-                        <li>• Developed a microservice for tailored offer recommendations and personalized pricing, driving a 20% uplift in booking completion rates and 18% revenue growth.</li>
-                        <li>• Led the migration from a PHP/Golang monolith to Java microservices, improving response times by 65%.</li>
-                        <li>• Rolled out critical features to the ZEN platform, enhancing UX for 8M+ monthly users in 110+ countries.</li>
-                        <li>• Developed a fault-tolerant booking pipeline processing 1M+ reservations/month with 90% less downtime.</li>
-                        <li>• Built a microservice for auditing the rental lifecycle, delivering standardized activity history for 10M+ records.</li>
-                        <li>• Integrated a pickup/drop-off recommendation model, increasing conversion rate by 22%.</li>
-                        <li>• <strong>Awarded Most Valuable Player</strong> for game-changing contributions, teamwork, and spirit towards the flagship product's successful re-launch, increasing revenue by 22%.</li>
+              <p className="text-[10px] text-pastel-purple font-mono mb-2">Jan 2021 - June 2021</p>
+               <ul className="text-xs text-text-charcoal space-y-0 list-disc list-inside marker:text-teal-300 leading-tight">
+                <li>Developed automated testing framework</li>
+                <li>Contributed to Kubernetes dashboard UI</li>
                       </ul>
                     </div>
                   </div>
                 </motion.div>
 
-                {/* Item 3 - Mobile: Full width, Desktop: Left Side */}
+        {/* Project 1: MindMate */}
                 <motion.div
-                  className="relative flex flex-col lg:flex-row lg:items-center"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="w-full lg:w-1/2 lg:pr-8 mb-8 lg:mb-0">
-                    <div className="bg-card-bg rounded-lg p-6 border border-accent/20 hover:border-accent/50 transition-all duration-300">
-                      <div className="flex justify-between items-start mb-2">
-                        <div className="flex-1">
-                          <h3 className="mb-2">Software Engineering Intern</h3>
-                          <p className="text-accent-medium mb-2">Hewlett Packard Enterprise</p>
-                          <p className="text-muted mb-2">Bengaluru, India</p>
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3 }}
+          className="bg-white rounded-[2rem] p-6 border-2 border-pink-50 shadow-sticker flex flex-col items-center text-center hover:shadow-sticker-hover transition-all duration-300 group relative overflow-hidden"
+        >
+           <div className="absolute top-0 left-0 w-full h-2 bg-pink-200/50"></div>
+          <div className="w-full aspect-video bg-pink-50 rounded-2xl mb-4 overflow-hidden relative flex items-center justify-center">
+            <Image
+              src="/mindmate-logo.png"
+              alt="MindMate pastel AI companion logo"
+              fill
+              className="object-contain p-6 group-hover:scale-105 transition-transform duration-500"
+              sizes="(min-width: 1024px) 30vw, 80vw"
+            />
                         </div>
-                        <div className="ml-4 flex-shrink-0 text-right">
-                          <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-sm rounded-full border border-accent/30 mb-2">
-                            Feb 2021 - Jul 2021
-                          </span>
-                          <div className="flex justify-end">
-                            <img src="/hpe-logo.png" alt="Hewlett Packard Enterprise" className="w-12 h-12 object-contain" />
-                          </div>
-                        </div>
-                      </div>
-                      <ul className="text-muted leading-relaxed space-y-2">
-                        <li>• Created a pipeline to convert 40K+ unstructured records into clean datasets, saving 100+ hours in reporting work.</li>
-                        <li>• Built a Selenium-based crawler scanning 10K+ pages/day for broken links and faulty images.</li>
-                        <li>• Automated content translation & QA, reducing manual checks by 82%.</li>
-                      </ul>
-                    </div>
-                  </div>
-                  
-                  {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 lg:block hidden">
-                    {/* Outer glow ring with bright star */}
-                    <motion.div
-                      className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center"
-                      animate={{
-                        scale: [1, 1.1, 0.9, 1.2, 1],
-                        opacity: [0.3, 0.8, 0.2, 0.9, 0.3]
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: 0.6
-                      }}
-                    >
-                      {/* Bright star icon */}
-                      <span className="text-accent text-lg font-bold">★</span>
-                    </motion.div>
-                  </div>
-                  
-                  <div className="w-full lg:w-1/2 lg:pl-8"></div>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
+          <h3 className="font-bold text-xl text-text-charcoal font-heading mb-1">MindMate</h3>
+          <p className="text-sm text-text-charcoal/70 mb-3 line-clamp-2">An AI-powered mental health companion.</p>
+          <div className="flex gap-2 mt-auto">
+             <span className="text-xs bg-pink-100 text-pink-600 px-2 py-1 rounded-lg font-bold">React</span>
+             <span className="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded-lg font-bold">AI</span>
         </div>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" className="py-20 section-padding">
-        <div className="container-max">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex justify-between items-center mb-12">
-              <h2>Projects</h2>
-              <Link 
-                href="/projects" 
-                className="text-accent hover:text-accent/80 transition-colors duration-200 font-medium"
-              >
-                View more projects →
-              </Link>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project, index) => (
-                <motion.div
-                  key={index}
-                  className="group relative card-bg rounded-lg p-6 hover:border-accent/50 transition-all duration-300"
-                  onHoverStart={() => setHoveredProject(index)}
-                  onHoverEnd={() => setHoveredProject(null)}
-                  whileHover={{ y: -5 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="flex justify-between items-start mb-4">
-                    <div className="flex-1">
-                                              <h3 className="mb-1 group-hover:text-accent transition-colors duration-200">{project.title}</h3>
-                        <p className="text-accent-medium mb-2 group-hover:text-white transition-colors duration-200">{project.subtitle}</p>
-                    </div>
-                  </div>
-                  <p className="text-muted mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="text-xs bg-accent/10 text-accent px-2 py-1 rounded group-hover:bg-accent group-hover:text-white transition-all duration-200"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="mt-auto space-y-2">
-                    <div className="flex flex-wrap gap-2">
-                      <a 
-                        href={project.github} 
-                        className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        View Github →
-                      </a>
-                      {project.link && project.link !== project.github && (
-                        <a 
-                          href={project.link} 
-                          className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Live Demo →
-                        </a>
-                      )}
-                    </div>
-                    {project.blogLink && (
-                      <div>
-                        <Link 
-                          href={project.blogLink}
-                          className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200"
-                        >
-                          Read more →
-                        </Link>
-                      </div>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+          <Link href="/projects" className="absolute inset-0" aria-label="View Project"></Link>
           </motion.div>
-        </div>
-      </section>
 
-      {/* Blog Section */}
-      {isFeatureEnabled('BLOG_ENABLED') && (
-        <section id="blogs" className="py-20 section-padding bg-sky-light/10">
-          <div className="container-max">
+        {/* Project 2: Ride Share */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex justify-between items-center mb-12">
-                <h2>Blogs</h2>
-                <Link 
-                  href="/blogs" 
-                  className="text-accent hover:text-accent/80 transition-colors duration-200 font-medium"
-                >
-                  View all posts →
-                </Link>
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.4 }}
+          className="bg-white rounded-[2rem] p-6 border-2 border-blue-50 shadow-sticker flex flex-col items-center text-center hover:shadow-sticker-hover transition-all duration-300 group relative overflow-hidden"
+        >
+          <div className="absolute top-0 left-0 w-full h-2 bg-blue-200/50"></div>
+          <div className="w-full aspect-video bg-blue-50 rounded-2xl mb-4 overflow-hidden relative flex items-center justify-center">
+            <Image
+              src="/ride-share-logo.png"
+              alt="Ride Share pastel friendly car logo"
+              fill
+              className="object-contain p-6 group-hover:scale-105 transition-transform duration-500"
+              sizes="(min-width: 1024px) 30vw, 80vw"
+            />
               </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {getFeaturedBlogs().map((post, index) => (
-                  <Link 
-                    key={index}
-                    href={`/blogs/${post.id}`}
-                    className="group"
-                  >
-                    <motion.article
-                      className="card-bg rounded-lg overflow-hidden hover:border-accent/50 transition-all duration-300 cursor-pointer h-full flex flex-col"
-                      whileHover={{ y: -5 }}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <div className="p-6 flex flex-col h-full">
-                        <div className="flex items-center justify-between mb-3">
-                          <span className="text-sm text-muted">{post.date}</span>
-                          <span className="text-sm text-muted">{post.readTime}</span>
-                        </div>
-                        <h3 className="mb-3 group-hover:text-accent transition-colors duration-200">
-                          {post.title}
-                        </h3>
-                        <p className="text-muted mb-4 line-clamp-3 flex-grow">
-                          {post.excerpt}
-                        </p>
-                        <div className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200 mt-auto">
-                          Read more →
-                        </div>
-                      </div>
-                    </motion.article>
-                  </Link>
-                ))}
-              </div>
-            </motion.div>
+          <h3 className="font-bold text-xl text-text-charcoal font-heading mb-1">Ride Share</h3>
+          <p className="text-sm text-text-charcoal/70 mb-3 line-clamp-2">Carpooling app for sustainable travel.</p>
+          <div className="flex gap-2 mt-auto">
+             <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-lg font-bold">Go</span>
+             <span className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-lg font-bold">Docker</span>
           </div>
-        </section>
-      )}
+           <Link href="/projects" className="absolute inset-0" aria-label="View Project"></Link>
+        </motion.div>
 
-      {/* Education Section */}
-      <section id="education" className="py-20 section-padding bg-sky-light/20">
-        <div className="container-max">
+        {/* Nightstand Card */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2>Education</h2>
-            <div className="relative">
-              {/* Central Timeline Line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-accent/10"></div>
-
-              {/* Timeline Items */}
-              <div className="space-y-12">
-                {/* Item 1 - Mobile: Full width, Desktop: Left Side */}
-                <motion.div
-                  className="relative flex flex-col lg:flex-row lg:items-center"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="w-full lg:w-1/2 lg:pr-8 mb-8 lg:mb-0">
-                    <div className="bg-card-bg rounded-lg p-6 border border-accent/20 hover:border-accent/50 transition-all duration-300">
-                      <div className="flex justify-between items-start mb-2">
-                        <div className="flex-1">
-                          <h3 className="text-accent-medium mb-2">Arizona State University</h3>
-                          <p className="mb-2">Master of Science in Information Technology</p>
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5 }}
+          className="bg-white rounded-[2rem] p-6 border-2 border-yellow-50 shadow-sticker flex flex-col items-center text-center hover:shadow-sticker-hover transition-all duration-300 group"
+        >
+          <h3 className="font-bold text-lg text-text-charcoal font-heading mb-3 flex items-center gap-2">
+             Currently Reading <span className="text-xl">📚</span>
+          </h3>
+          <div className="relative w-24 h-36 bg-amber-100 rounded-r-md rounded-l-sm shadow-md border-l-4 border-amber-800 mb-3 group-hover:scale-105 transition-transform flex items-center justify-center text-center p-2">
+              <span className="font-serif text-amber-900 font-bold text-xs leading-tight">Atomic Habits</span>
                         </div>
-                        <div className="ml-4 flex-shrink-0 text-right">
-                          <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-sm rounded-full border border-accent/30 mb-2">
-                            Aug 2024 - May 2026
-                          </span>
-                          <div className="text-accent font-bold text-sm">4.22/4.0 GPA</div>
+           <div className="flex gap-1 justify-center mb-2 text-yellow-400 text-sm">
+            <Star fill="currentColor" size={14} />
+            <Star fill="currentColor" size={14} />
+            <Star fill="currentColor" size={14} />
+            <Star fill="currentColor" size={14} />
+            <Star fill="currentColor" size={14} />
                         </div>
-                      </div>
-                      <ul className="text-muted leading-relaxed space-y-2">
-                        <li>• Information Systems Management</li>
-                        <li>• Analyzing Big Data and AI</li>
-                        <li>• Data in the Cloud</li>
-                      </ul>
-                    </div>
-                  </div>
-                  
-                  {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 lg:block hidden">
-                    {/* Outer glow ring with bright star */}
-                    <motion.div
-                      className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center"
-                      animate={{
-                        scale: [1, 1.1, 0.9, 1.2, 1],
-                        opacity: [0.3, 0.8, 0.2, 0.9, 0.3]
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    >
-                      {/* Bright star icon */}
-                      <span className="text-accent text-lg font-bold">★</span>
-                    </motion.div>
-                  </div>
-                  
-                  <div className="w-full lg:w-1/2 lg:pl-8"></div>
+          <p className="text-xs text-text-charcoal/70 italic">"Tiny changes, remarkable results."</p>
                 </motion.div>
 
-                {/* Item 2 - Mobile: Full width, Desktop: Right Side */}
+        {/* Love Notes */}
                 <motion.div
-                  className="relative flex flex-col lg:flex-row lg:items-center"
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="w-full lg:w-1/2 lg:pr-8 mb-8 lg:mb-0"></div>
-                  
-                  {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 lg:block hidden">
-                    {/* Outer glow ring with bright star */}
-                    <motion.div
-                      className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center"
-                      animate={{
-                        scale: [1, 1.1, 0.9, 1.2, 1],
-                        opacity: [0.3, 0.8, 0.2, 0.9, 0.3]
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: 1
-                      }}
-                    >
-                      {/* Bright star icon */}
-                      <span className="text-accent text-lg font-bold">★</span>
-                    </motion.div>
-                  </div>
-                  
-                  <div className="w-full lg:w-1/2 lg:pl-8">
-                    <div className="bg-card-bg rounded-lg p-6 border border-accent/20 hover:border-accent/50 transition-all duration-300">
-                      <div className="flex justify-between items-start mb-2">
-                        <div className="flex-1">
-                          <h3 className="text-accent-medium mb-2">PES University</h3>
-                          <p className="mb-2">Bachelor of Technology in Computer Science and Engineering</p>
-                        </div>
-                        <div className="ml-4 flex-shrink-0 text-right">
-                          <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-sm rounded-full border border-accent/30 mb-2">
-                            Aug 2017 - May 2021
-                          </span>
-                        </div>
-                      </div>
-                      <ul className="text-muted leading-relaxed space-y-2">
-                        <li>• Operating Systems</li>
-                        <li>• Data Structures and Algorithms</li>
-                        <li>• Object-Oriented Design</li>
-                      </ul>
-                    </div>
-                  </div>
-                </motion.div>
+          id="testimonials"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="col-span-1 md:col-span-2 bg-[url('/floral-pattern.svg')] bg-pink-50/30 backdrop-blur-md rounded-[2rem] p-8 border-2 border-pink-100 shadow-sticker relative hover:shadow-sticker-hover transition-all duration-300 group cursor-pointer"
+        >
+           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-8 bg-gray-100/50 rounded-b-xl flex items-center justify-center">
+              <div className="w-16 h-1.5 bg-gray-300 rounded-full"></div>
+           </div>
+          <h2 className="text-2xl font-bold text-text-charcoal font-heading mb-6 flex items-center gap-2">
+            <span className="bg-red-100 p-2 rounded-full text-red-500">💌</span> Love Notes
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Amey */}
+            <div className="bg-[#fff7d1] p-6 rounded-sm shadow-sm transform -rotate-1 hover:rotate-0 transition-transform relative border border-yellow-100/50">
+               <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 bg-yellow-200/60 rotate-1 shadow-sm"></div>
+              <p className="text-gray-700 font-handwriting text-lg mb-4 leading-relaxed">
+                "This is someone I trust with everything and they're amazing at what they do!"
+              </p>
+              <div className="flex items-center gap-3 mt-auto">
+                <div className="w-8 h-8 bg-yellow-200 rounded-full flex items-center justify-center font-bold text-yellow-700 text-xs">A</div>
+                <div>
+                  <p className="font-bold text-sm text-text-charcoal font-heading">Amey</p>
+                  <p className="text-[10px] text-text-charcoal/70 font-sans">Colleague</p>
+                </div>
               </div>
             </div>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* From My Colleagues Section */}
-      <section id="testimonials" className="py-20 section-padding bg-sky-light/10">
-        <div className="container-max">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-center">From My Colleagues</h2>
-            <div className="max-w-4xl mx-auto space-y-6">
-              {testimonials.map((testimonial, index) => (
-                <motion.div
-                  key={index}
-                  className="card-bg rounded-lg p-8 shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-accent/50"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -5 }}
-                >
-                  <div className="mb-6">
-                    <p className="text-muted italic text-lg leading-relaxed text-center">"{testimonial.text}"</p>
+            {/* Bhushan */}
+            <div className="bg-[#e0f2fe] p-6 rounded-sm shadow-sm transform rotate-1 hover:rotate-0 transition-transform relative border border-blue-100/50">
+               <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 bg-blue-200/60 -rotate-1 shadow-sm"></div>
+              <p className="text-gray-700 font-handwriting text-lg mb-4 leading-relaxed">
+                "An innovative person that I can count on for quality and positions."
+              </p>
+              <div className="flex items-center gap-3 mt-auto">
+                 <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center font-bold text-blue-700 text-xs">B</div>
+                <div>
+                  <p className="font-bold text-sm text-text-charcoal font-heading">Bhushan</p>
+                   <p className="text-[10px] text-text-charcoal/70 font-sans">Colleague</p>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <div className="text-center flex-1">
-                      <h4 className="text-xl">{testimonial.name}</h4>
-                      <p className="text-accent font-medium">{testimonial.role}</p>
-                      <p className="text-muted">{testimonial.company}</p>
-                    </div>
-                    <motion.a
-                      href={testimonial.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted hover:text-accent transition-colors duration-200 ml-4"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Linkedin size={20} />
-                    </motion.a>
+                        </div>
+                      </div>
+
+            {/* Rajasekar */}
+            <div className="bg-[#fce7f3] p-6 rounded-sm shadow-sm transform -rotate-1 hover:rotate-0 transition-transform relative border border-pink-100/50 sm:col-span-2 lg:col-span-1">
+               <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 bg-pink-200/60 rotate-1 shadow-sm"></div>
+              <p className="text-gray-700 font-handwriting text-lg mb-4 leading-relaxed">
+                "Reunites teams and discussing ideas and staps together always."
+              </p>
+              <div className="flex items-center gap-3 mt-auto">
+                 <div className="w-8 h-8 bg-pink-200 rounded-full flex items-center justify-center font-bold text-pink-700 text-xs">R</div>
+                <div>
+                  <p className="font-bold text-sm text-text-charcoal font-heading">Rajasekar</p>
+                   <p className="text-[10px] text-text-charcoal/70 font-sans">Colleague</p>
                   </div>
-                </motion.div>
-              ))}
+              </div>
             </div>
+          </div>
+          <a href="https://www.linkedin.com/in/navneetha-rajan/details/recommendations/" target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-20" aria-label="View Recommendations"></a>
           </motion.div>
-        </div>
-      </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 section-padding">
-        <div className="container-max text-center">
+        {/* Travel Log - Map Card */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2>Let's Connect</h2>
-            <p className="text-lg text-muted mb-8 max-w-2xl mx-auto">
-              I'm always interested in hearing about new opportunities and exciting projects. 
-              Feel free to reach out if you'd like to collaborate or discuss potential roles!
-            </p>
-            <div className="flex justify-center space-x-4">
-              <motion.a
-                href="mailto:connectwithnavneetha08@gmail.com"
-                className="btn-primary inline-flex items-center space-x-2"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Mail size={20} />
-                <span>Email Me</span>
-              </motion.a>
-              <motion.a
-                href="https://www.linkedin.com/in/navneetha-rajan"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary inline-flex items-center space-x-2"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Linkedin size={20} />
-                <span>Connect on LinkedIn</span>
-              </motion.a>
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.7 }}
+          className="bg-white rounded-[2rem] p-0 border-2 border-blue-50 shadow-sticker flex flex-col items-center justify-center text-center relative overflow-hidden group hover:shadow-sticker-hover transition-all duration-300"
+        >
+          <div className="absolute inset-0 bg-[url('/map-pattern.svg')] opacity-20 group-hover:scale-110 transition-transform duration-700"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
+          
+          <div className="relative z-10 p-6 w-full h-full flex flex-col items-center justify-center">
+            <div className="w-16 h-16 bg-blue-100 text-blue-500 rounded-full flex items-center justify-center text-3xl mb-3 shadow-sm animate-float">
+              <MapPin size={32} />
             </div>
+            <h3 className="font-bold text-xl text-text-charcoal font-heading mb-1">Travel Log</h3>
+            <p className="text-sm text-text-charcoal/70 mb-2">Collecting memories & magnets.</p>
+             <div className="flex items-center gap-1 text-xs font-bold text-blue-400">
+                <span>📍 12 Countries</span>
+             </div>
+          </div>
+          <Link href="/travel" className="absolute inset-0" aria-label="View Travel Log"></Link>
+          </motion.div>
+
+        {/* Blog Section */}
+          <motion.div
+          id="blogs"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.8 }}
+          className="bg-white rounded-[2rem] p-6 border-2 border-purple-100 shadow-sticker flex flex-col items-center text-center relative overflow-hidden group hover:shadow-sticker-hover transition-all duration-300"
+        >
+          <div className="absolute top-0 left-0 w-full h-2 bg-purple-200/50"></div>
+          <div className="w-full aspect-video bg-purple-50 rounded-2xl mb-4 overflow-hidden relative flex items-center justify-center">
+            <div className="absolute inset-0 flex items-center justify-center text-4xl group-hover:scale-110 transition-transform duration-500">
+              <BookOpen size={48} className="text-purple-400" />
+            </div>
+          </div>
+          <h3 className="font-bold text-xl text-text-charcoal font-heading mb-1">Journal</h3>
+          <p className="text-sm text-text-charcoal/70 mb-3 line-clamp-2">Thoughts, stories, and tech ramblings.</p>
+          <div className="flex gap-2 mt-auto">
+             <span className="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded-lg font-bold">Tech</span>
+             <span className="text-xs bg-pink-100 text-pink-600 px-2 py-1 rounded-lg font-bold">Life</span>
+          </div>
+          <Link href="/blogs" className="absolute inset-0" aria-label="View Blogs"></Link>
           </motion.div>
         </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-8 section-padding border-t border-sky-medium/20">
-        <div className="container-max text-center">
-          <p className="text-muted text-sm">
-            © 2025 Navneetha Rajan
-          </p>
-        </div>
-      </footer>
     </main>
   )
 } 

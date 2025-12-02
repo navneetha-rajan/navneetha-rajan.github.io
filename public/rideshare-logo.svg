@@ -1,0 +1,42 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="carBody" x1="120" y1="120" x2="420" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFC4D6"/>
+      <stop offset="0.5" stop-color="#B5D8CC"/>
+      <stop offset="1" stop-color="#E0C3FC"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="170" y1="150" x2="360" y2="230" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8F9FF"/>
+      <stop offset="1" stop-color="#D0F3EE"/>
+    </linearGradient>
+    <filter id="carShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#D1B7FF" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <ellipse cx="256" cy="392" rx="150" ry="32" fill="#D7C1FF" opacity="0.35"/>
+  <g filter="url(#carShadow)">
+    <path
+      d="M120 284C120 224 176 168 240 168H308C356 168 398 200 410 246L432 328H120V284Z"
+      fill="url(#carBody)"
+      stroke="#F4E7FF"
+      stroke-width="10"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M188 192H302C332 192 360 214 368 244L378 280H164L174 210C176 200 181 192 188 192Z"
+      fill="url(#glass)"
+      stroke="#F4E7FF"
+      stroke-width="8"
+      stroke-linejoin="round"
+    />
+    <rect x="140" y="292" width="260" height="48" rx="24" fill="#FDE7EF" stroke="#F4E7FF" stroke-width="6"/>
+    <circle cx="188" cy="344" r="42" fill="#5D4E7A" stroke="#F4E7FF" stroke-width="10"/>
+    <circle cx="188" cy="344" r="22" fill="#E5D5FF"/>
+    <circle cx="340" cy="344" r="42" fill="#5D4E7A" stroke="#F4E7FF" stroke-width="10"/>
+    <circle cx="340" cy="344" r="22" fill="#E5D5FF"/>
+    <circle cx="210" cy="264" r="8" fill="#5D4E7A"/>
+    <circle cx="294" cy="264" r="8" fill="#5D4E7A"/>
+    <path d="M226 296C236 308 250 316 266 316C282 316 296 308 306 296" stroke="#5D4E7A" stroke-width="10" stroke-linecap="round"/>
+  </g>
+</svg>
+
