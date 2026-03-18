@@ -1,751 +1,647 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, ExternalLink, Code, Twitter } from 'lucide-react'
-import { useState } from 'react'
+import { Github, Linkedin, Mail } from 'lucide-react'
+import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
-import { isFeatureEnabled } from './config/features'
+import Image from 'next/image'
 import { getFeaturedBlogs } from './data/blogs'
 import Navigation from './components/Navigation'
 
+/* ── Data ── */
+
+const socialLinks = [
+  { icon: Github, href: 'https://github.com/navneetha-rajan', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/navneetha-rajan', label: 'LinkedIn' },
+  { icon: Mail, href: 'mailto:navneetharajan08@gmail.com', label: 'Email' },
+]
+
+const experiences = [
+  {
+    title: 'Software Engineer',
+    company: 'Arizona State University',
+    date: 'Apr 2025 — Present',
+    location: 'Tempe, AZ',
+    impact: 'AI pipeline for parking lot SVG generation · 200+ campus lots · 100+ hours saved',
+    mvp: false,
+  },
+  {
+    title: 'Software Development Engineer II',
+    company: 'SIXT Research & Development',
+    date: 'Aug 2021 — Jul 2024',
+    location: 'Bengaluru, India',
+    impact: '20% booking uplift · 65% latency reduction · 8M+ users · 1M+ reservations/month',
+    mvp: true,
+  },
+  {
+    title: 'Software Engineering Intern',
+    company: 'Hewlett Packard Enterprise',
+    date: 'Feb 2021 — Jul 2021',
+    location: 'Bengaluru, India',
+    impact: '40K+ records automated · 82% reduction in manual QA',
+    mvp: false,
+  },
+]
+
+const education = [
+  {
+    degree: 'MS Information Technology — AI Concentration',
+    institution: 'Arizona State University',
+    date: 'Aug 2024 — May 2026',
+    detail: 'GPA 4.0',
+  },
+  {
+    degree: 'BTech Computer Science & Engineering',
+    institution: 'PES University',
+    date: 'Aug 2017 — May 2021',
+    detail: '',
+  },
+]
+
+const projects = [
+  {
+    title: 'MindMate',
+    description: 'Privacy-first AI agent for reflective journaling and mood tracking. Socratic dialogue meets emotion intelligence.',
+    tech: ['Python', 'LLMs', 'LangChain', 'React', 'NLP'],
+    github: 'https://github.com/navneetha-rajan/MindMate',
+    blogLink: '/blogs/mindmate',
+  },
+  {
+    title: 'Ride Share',
+    description: 'Cloud-native ride-sharing platform engineered for millions of concurrent requests with fault-tolerant microservices.',
+    tech: ['AWS', 'Microservices', 'Docker', 'Load Balancing'],
+    github: 'https://github.com/navneetha-rajan/Ride-Share-Application',
+  },
+  {
+    title: 'Bookify',
+    description: 'Recommendation engine trained on 270K+ readers. Collaborative filtering meets content-based analysis.',
+    tech: ['Python', 'ML', 'Data Mining', 'Recommender Systems'],
+    github: 'https://github.com/navneetha-rajan/Bookify',
+  },
+]
+
+const testimonials = [
+  {
+    name: 'Amey Gadgil',
+    role: 'Senior Engineering Manager · SIXT',
+    text: 'Consistently demonstrated technical expertise in delivering scalable solutions and building critical integrations. An outstanding engineer with exceptional work ethic, professionalism, and technical abilities.',
+  },
+  {
+    name: 'Bhushan Kakulte',
+    role: 'Staff Software Engineer · SIXT',
+    text: 'Combines impressive technical expertise in Java and Spring Boot with dedication and teamwork. Balances technical excellence with collaboration, making a dependable and impactful team member.',
+  },
+  {
+    name: 'Rajasekar Venkatesan',
+    role: 'Senior Software Engineer · SIXT',
+    text: 'Stands out for genuine curiosity and the ability to quickly grasp complex systems. Actively leverages GenAI tools to solve challenges efficiently while maintaining high code quality.',
+  },
+  {
+    name: 'Mithun Shivaramiah',
+    role: 'Software Engineer · SIXT',
+    text: 'Demonstrates exceptional backend development skills in Java Spring Boot, building robust and efficient systems that meet high scalability demands.',
+  },
+]
+
+const aboutTags = ['Java', 'Spring Boot', 'Kafka', 'AWS', 'Python', 'Kubernetes', 'FastAPI', 'Docker']
+
+/* ── Component ── */
+
 export default function Home() {
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null)
+  const [slide, setSlide] = useState(0)
+  const blogs = getFeaturedBlogs()
 
-  const projects = [
-    {
-      title: "MindMate",
-      subtitle: "Autonomous Mental Wellness Companion",
-      description: "Developed a privacy-first AI agent that guides users through reflective journaling, mood analysis, and weekly planning via Socratic dialogue and emotion tracking, enhancing self-awareness over time.",
-      tech: ["Python", "LLMs", "LangChain", "React", "NLP", "Data Visualization"],
-      link: "https://github.com/navneetha-rajan/MindMate",
-      github: "https://github.com/navneetha-rajan/MindMate",
-      blogLink: "/blogs/mindmate"
-    },
-    {
-      title: "Ride Share", 
-      subtitle: "High-Performance Cloud Platform",
-      description: "Created a robust, scalable cloud-based ride-sharing platform designed to handle millions of requests seamlessly, ensuring high availability and reliability for users.",
-      tech: ["AWS", "Microservices", "Docker", "Load Balancing"],
-      link: "https://github.com/navneetha-rajan/Ride-Share-Application",
-      github: "https://github.com/navneetha-rajan/Ride-Share-Application"
-    },
-    {
-      title: "Bookify",
-      subtitle: "Personalized Book Recommendations",
-      description: "Built a smart recommendation system that helps users discover books they'll love, leveraging data from over 270,000 readers to deliver tailored suggestions and boost user engagement.",
-      tech: ["Python", "Machine Learning", "Data Mining", "Recommender Systems"],
-      link: "https://github.com/navneetha-rajan/Bookify",
-      github: "https://github.com/navneetha-rajan/Bookify"
+  /* Intersection Observer for scroll animations */
+  useEffect(() => {
+    const els = document.querySelectorAll('.animate')
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible')
+            obs.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+    els.forEach((el) => obs.observe(el))
+    return () => obs.disconnect()
+  }, [])
+
+  /* Testimonial carousel with seamless loop */
+  const [slideTransition, setSlideTransition] = useState(true)
+
+  const goToSlide = useCallback((i: number) => {
+    setSlideTransition(true)
+    setSlide(i)
+  }, [])
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setSlideTransition(true)
+      setSlide((p) => p + 1)
+    }, 3000)
+    return () => clearInterval(t)
+  }, [slide])
+
+  useEffect(() => {
+    if (slide === testimonials.length) {
+      const timeout = setTimeout(() => {
+        setSlideTransition(false)
+        setSlide(0)
+      }, 620)
+      return () => clearTimeout(timeout)
     }
+  }, [slide])
 
-  ]
+  /* Shared inline-style helpers */
+  const mono = (size: number, color: string, ls = 0) => ({
+    fontFamily: '"JetBrains Mono", monospace', fontSize: `${size}px`, color, letterSpacing: ls ? `${ls}px` : undefined,
+  } as React.CSSProperties)
 
-  const socialLinks = [
-    { icon: Github, href: "https://github.com/navneetha-rajan", label: "GitHub" },
-    { icon: Linkedin, href: "https://www.linkedin.com/in/navneetha-rajan", label: "LinkedIn" },
-    { icon: Twitter, href: "https://x.com/navneetha_rajan", label: "X (Twitter)" },
-    { icon: Mail, href: "mailto:connectwithnavneetha08@gmail.com", label: "Email" },
-    { icon: Code, href: "https://leetcode.com/u/navneetha_rajan", label: "LeetCode" }
-  ]
+  const dm = (size: number, weight: number, color: string) => ({
+    fontFamily: '"DM Sans", sans-serif', fontSize: `${size}px`, fontWeight: weight, color,
+  } as React.CSSProperties)
 
-  const testimonials = [
-    {
-      name: "Amey Gadgil",
-      role: "Senior Engineering Manager",
-      company: "SIXT",
-      text: "Consistently demonstrated technical expertise in delivering scalable solutions and building critical integrations. Passionate about problem solving, takes ownership in driving key projects to completion while collaborating effectively across teams. An outstanding engineer with exceptional work ethic, professionalism, and technical abilities, making a valuable asset to any high-performing engineering team.",
-      linkedin: "https://www.linkedin.com/in/amey-gadgil"
-    },
-    {
-      name: "Bhushan Kakulte",
-      role: "Staff Software Engineer",
-      company: "SIXT",
-      text: "Combines impressive technical expertise in Java and Spring Boot with dedication and teamwork. Consistently delivers high-quality, scalable systems while supporting colleagues and contributing to a positive team culture. Balances technical excellence with collaboration, making a dependable and impactful team member.",
-      linkedin: "https://www.linkedin.com/in/bhushan-kakulte"
-    },
-    {
-      name: "Rajasekar Venkatesan",
-      role: "Senior Software Engineer",
-      company: "SIXT",
-      text: "Stands out for genuine curiosity and the ability to quickly grasp complex systems. Breaks down business requirements into scalable, reliable solutions and has evolved into a strong, independent contributor. Actively leverages GenAI tools to solve challenges efficiently while maintaining high code quality and fostering collaboration within the team.",
-      linkedin: "https://www.linkedin.com/in/rajasekar-venkatesan"
-    },
-    {
-      name: "Mithun Shivaramiah",
-      role: "Software Engineer",
-      company: "SIXT",
-      text: "Demonstrates exceptional backend development skills, particularly in Java Spring Boot, building robust and efficient systems that meet high scalability demands. Writes clean, maintainable code and contributes positively to team projects, significantly boosting productivity and ensuring consistent delivery of organizational goals.",
-      linkedin: "https://www.linkedin.com/in/mithun-shivaramaiah"
-    }
-  ]
+  const pf = (size: number, weight: number, color: string, italic = false) => ({
+    fontFamily: '"Playfair Display", serif', fontSize: `${size}px`, fontWeight: weight, color, fontStyle: italic ? 'italic' : undefined,
+  } as React.CSSProperties)
+
+  /* Card style for experience / education */
+  const cardStyle: React.CSSProperties = {
+    background: '#120F15',
+    border: '0.5px solid #1E1B22',
+    borderLeft: '2px solid #B08090',
+    borderRadius: '0 8px 8px 0',
+    padding: '20px 24px',
+    marginBottom: '16px',
+    transition: 'border-left-color 0.2s ease, background 0.2s ease, opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1)',
+  }
+
+  const onCardEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.style.borderLeftColor = '#C9A0AC'
+    e.currentTarget.style.background = '#150F18'
+  }
+  const onCardLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.style.borderLeftColor = '#B08090'
+    e.currentTarget.style.background = '#120F15'
+  }
 
   return (
-    <main className="min-h-screen">
+    <>
       <Navigation />
-      {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center section-padding pt-16">
-        <div className="container-max text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            {/* Profile Photo */}
-            <motion.div
-              className="mb-8 flex justify-center"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+
+      {/* Content column */}
+      <div
+        style={{
+          maxWidth: '1100px',
+          margin: '0 auto',
+          background: 'var(--color-bg-content)',
+          borderLeft: '0.5px solid var(--color-border-subtle)',
+          borderRight: '0.5px solid var(--color-border-subtle)',
+          minHeight: '100vh',
+        }}
+      >
+        {/* ─── HERO ─── */}
+        <section
+          id="hero"
+          style={{
+            padding: '64px 56px 48px',
+            display: 'grid',
+            gridTemplateColumns: '1fr auto',
+            gap: '48px',
+            alignItems: 'center',
+          }}
+        >
+          {/* Left — text */}
+          <div>
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              style={{ ...mono(14, '#6B8CAE', 2), marginBottom: '20px' }}
             >
-              <div className="relative">
-                <div className="w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-full bg-gradient-to-br from-accent to-accent-light flex items-center justify-center shadow-lg p-1">
-                  <img 
-                    src="/neetz-profile.png" 
-                    alt="Navneetha Rajan" 
-                    className="w-full h-full rounded-full object-cover"
-                  />
-                </div>
-              </div>
-            </motion.div>
-            
-            <h1 className="mb-8">
-              Hi, I'm <span className="gradient-text">Navneetha Rajan</span>
-            </h1>
-            <p className="text-large text-muted mb-8 max-w-2xl mx-auto leading-relaxed">
-            I love building technology solutions that work smoothly, scale easily, and genuinely help people, always looking for ways to make things faster and better. Beyond work, I thrive on adventure, travel, and genuine connections. I like sharing stories, exploring new places, and learning from diverse experiences.
-            </p>
-            <p className="text-large text-muted mb-8 max-w-2xl mx-auto leading-relaxed">
-              Let's connect and chat about technology, travel, or your next big idea!
-            </p>
-            <div className="flex justify-center space-x-6">
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex flex-col items-center space-y-2 text-muted hover:text-foreground transition-colors duration-200"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ 
-                    duration: 0.5, 
-                    delay: 0.4 + index * 0.1,
-                    hover: { duration: 0.1 }
+              Software Engineer
+            </motion.p>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+              style={{ ...pf(52, 700, '#F2EEF5'), lineHeight: 1.1, margin: 0 }}
+            >
+              Navneetha Rajan
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              style={{ ...pf(28, 400, '#F2EEF5'), marginTop: '8px', lineHeight: 1.3 }}
+            >
+              Building systems that <span style={{ color: '#C9A0AC' }}>scale.</span>
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.65 }}
+              style={{ ...pf(15, 400, '#C9A0AC', true), marginTop: '16px', lineHeight: 1.8 }}
+            >
+              Curious about the why.<br />
+              Energised by hard things.
+            </motion.p>
+
+            <motion.div
+              className="flex flex-wrap gap-2"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.95 }}
+              style={{ marginTop: '28px' }}
+            >
+              {socialLinks.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target={s.href.startsWith('mailto') ? undefined : '_blank'}
+                  rel={s.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+                  className="inline-flex items-center gap-1.5"
+                  style={{
+                    ...mono(12, '#6B8CAE'),
+                    border: '0.5px solid #1E1B22',
+                    borderRadius: '20px',
+                    padding: '5px 12px',
+                    transition: 'border-color 0.2s',
                   }}
+                  onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#B08090')}
+                  onMouseLeave={(e) => (e.currentTarget.style.borderColor = '#1E1B22')}
                 >
-                  <social.icon size={24} />
-                  <span className="text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-medium">
-                    {social.label}
-                  </span>
-                </motion.a>
+                  <s.icon size={13} />
+                  {s.label}
+                </a>
               ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-20 section-padding">
-        <div className="container-max">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2>About</h2>
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <p className="text-large text-muted mb-6">
-                  I have a strong background in computer science and software engineering, specializing in distributed systems, cloud computing, and microservices. At SIXT, I optimized reservation processes serving millions globally, significantly reducing latency and boosting conversions.
-                </p>
-                <p className="text-large text-muted">
-                  I'm driven by the excitement of building robust systems that leverage big data and efficient information management. I enjoy solving complex real-world problems, creating scalable solutions, and delivering meaningful impact through innovative technology.
-                </p>
-              </div>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <span className="text-xl text-accent-bold">⚡ Scalable Backend & Microservices Architecture</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <span className="text-xl text-accent-bold">☕ Java, Spring Boot & Distributed Systems</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <span className="text-xl text-accent-bold">🚀 Cloud Engineering (AWS, Docker, Kubernetes)</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <span className="text-xl text-accent-bold">🤖 Machine Learning & AI Automation</span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Experience Section */}
-      <section id="experience" className="py-20 section-padding">
-        <div className="container-max">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2>Experience</h2>
-            <div className="relative">
-              {/* Central Timeline Line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-accent/10"></div>
-              
-              {/* Timeline Items */}
-              <div className="space-y-12">
-                {/* Item 1 - Mobile: Full width, Desktop: Left Side */}
-                <motion.div
-                  className="relative flex flex-col lg:flex-row lg:items-center"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="w-full lg:w-1/2 lg:pr-8 mb-8 lg:mb-0">
-                    <div className="bg-card-bg rounded-lg p-6 border border-accent/20 hover:border-accent/50 transition-all duration-300">
-                      <div className="flex justify-between items-start mb-2">
-                        <div className="flex-1">
-                          <h3 className="mb-2">Machine Learning Engineer</h3>
-                          <p className="text-accent-medium mb-2">Arizona State University</p>
-                          <p className="text-muted mb-2">Tempe, AZ</p>
-                        </div>
-                        <div className="ml-4 flex-shrink-0 text-right">
-                          <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-sm rounded-full border border-accent/30 mb-2">
-                            April 2025 - Present
-                          </span>
-                          <div className="flex justify-end">
-                            <img src="/asu-logo.png" alt="Arizona State University" className="w-12 h-12 object-contain" />
-                          </div>
-                        </div>
-                      </div>
-                      <ul className="text-muted leading-relaxed space-y-2">
-                        <li>• Designed an AI pipeline that identifies parking lot layouts from satellite imagery across 200+ campus lots.</li>
-                        <li>• Automated slot detection and SVG mapping, cutting manual work by 100+ hours per project.</li>
-                      </ul>
-                    </div>
-                  </div>
-                  
-                  {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 lg:block hidden">
-                    {/* Outer glow ring with bright star */}
-                    <motion.div
-                      className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center"
-                      animate={{
-                        scale: [1, 1.1, 0.9, 1.2, 1],
-                        opacity: [0.3, 0.8, 0.2, 0.9, 0.3]
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    >
-                      {/* Bright star icon */}
-                      <span className="text-accent text-lg font-bold">★</span>
-                    </motion.div>
-                  </div>
-                  
-                  <div className="w-full lg:w-1/2 lg:pl-8"></div>
-                </motion.div>
-
-                {/* Item 2 - Mobile: Full width, Desktop: Right Side */}
-                <motion.div
-                  className="relative flex flex-col lg:flex-row lg:items-center"
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="w-full lg:w-1/2 lg:pr-8 mb-8 lg:mb-0"></div>
-                  
-                  {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 lg:block hidden">
-                    {/* Outer glow ring with bright star */}
-                    <motion.div
-                      className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center"
-                      animate={{
-                        scale: [1, 1.1, 0.9, 1.2, 1],
-                        opacity: [0.3, 0.8, 0.2, 0.9, 0.3]
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: 0.3
-                      }}
-                    >
-                      {/* Bright star icon */}
-                      <span className="text-accent text-lg font-bold">★</span>
-                    </motion.div>
-                  </div>
-                  
-                  <div className="w-full lg:w-1/2 lg:pl-8">
-                    <div className="bg-card-bg rounded-lg p-6 border border-accent/20 hover:border-accent/50 transition-all duration-300">
-                      <div className="flex justify-between items-start mb-2">
-                        <div className="flex-1">
-                          <h3 className="mb-2">Software Development Engineer II</h3>
-                          <p className="text-accent-medium mb-2">SIXT Research and Development</p>
-                          <p className="text-muted mb-2">Bengaluru, India</p>
-                        </div>
-                        <div className="ml-4 flex-shrink-0 text-right">
-                          <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-sm rounded-full border border-accent/30 mb-2">
-                            Aug 2021 - Jul 2024
-                          </span>
-                          <div className="flex justify-end">
-                            <img src="/sixt-logo.png" alt="SIXT" className="w-12 h-12 object-contain" />
-                          </div>
-                        </div>
-                      </div>
-                      <ul className="text-muted leading-relaxed space-y-2">
-                        <li>• Developed a microservice for tailored offer recommendations and personalized pricing, driving a 20% uplift in booking completion rates and 18% revenue growth.</li>
-                        <li>• Led the migration from a PHP/Golang monolith to Java microservices, improving response times by 65%.</li>
-                        <li>• Rolled out critical features to the ZEN platform, enhancing UX for 8M+ monthly users in 110+ countries.</li>
-                        <li>• Developed a fault-tolerant booking pipeline processing 1M+ reservations/month with 90% less downtime.</li>
-                        <li>• Built a microservice for auditing the rental lifecycle, delivering standardized activity history for 10M+ records.</li>
-                        <li>• Integrated a pickup/drop-off recommendation model, increasing conversion rate by 22%.</li>
-                        <li>• <strong>Awarded Most Valuable Player</strong> for game-changing contributions, teamwork, and spirit towards the flagship product's successful re-launch, increasing revenue by 22%.</li>
-                      </ul>
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* Item 3 - Mobile: Full width, Desktop: Left Side */}
-                <motion.div
-                  className="relative flex flex-col lg:flex-row lg:items-center"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="w-full lg:w-1/2 lg:pr-8 mb-8 lg:mb-0">
-                    <div className="bg-card-bg rounded-lg p-6 border border-accent/20 hover:border-accent/50 transition-all duration-300">
-                      <div className="flex justify-between items-start mb-2">
-                        <div className="flex-1">
-                          <h3 className="mb-2">Software Engineering Intern</h3>
-                          <p className="text-accent-medium mb-2">Hewlett Packard Enterprise</p>
-                          <p className="text-muted mb-2">Bengaluru, India</p>
-                        </div>
-                        <div className="ml-4 flex-shrink-0 text-right">
-                          <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-sm rounded-full border border-accent/30 mb-2">
-                            Feb 2021 - Jul 2021
-                          </span>
-                          <div className="flex justify-end">
-                            <img src="/hpe-logo.png" alt="Hewlett Packard Enterprise" className="w-12 h-12 object-contain" />
-                          </div>
-                        </div>
-                      </div>
-                      <ul className="text-muted leading-relaxed space-y-2">
-                        <li>• Created a pipeline to convert 40K+ unstructured records into clean datasets, saving 100+ hours in reporting work.</li>
-                        <li>• Built a Selenium-based crawler scanning 10K+ pages/day for broken links and faulty images.</li>
-                        <li>• Automated content translation & QA, reducing manual checks by 82%.</li>
-                      </ul>
-                    </div>
-                  </div>
-                  
-                  {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 lg:block hidden">
-                    {/* Outer glow ring with bright star */}
-                    <motion.div
-                      className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center"
-                      animate={{
-                        scale: [1, 1.1, 0.9, 1.2, 1],
-                        opacity: [0.3, 0.8, 0.2, 0.9, 0.3]
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: 0.6
-                      }}
-                    >
-                      {/* Bright star icon */}
-                      <span className="text-accent text-lg font-bold">★</span>
-                    </motion.div>
-                  </div>
-                  
-                  <div className="w-full lg:w-1/2 lg:pl-8"></div>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" className="py-20 section-padding">
-        <div className="container-max">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex justify-between items-center mb-12">
-              <h2>Projects</h2>
-              <Link 
-                href="/projects" 
-                className="text-accent hover:text-accent/80 transition-colors duration-200 font-medium"
-              >
-                View more projects →
-              </Link>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project, index) => (
-                <motion.div
-                  key={index}
-                  className="group relative card-bg rounded-lg p-6 hover:border-accent/50 transition-all duration-300"
-                  onHoverStart={() => setHoveredProject(index)}
-                  onHoverEnd={() => setHoveredProject(null)}
-                  whileHover={{ y: -5 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="flex justify-between items-start mb-4">
-                    <div className="flex-1">
-                                              <h3 className="mb-1 group-hover:text-accent transition-colors duration-200">{project.title}</h3>
-                        <p className="text-accent-medium mb-2 group-hover:text-white transition-colors duration-200">{project.subtitle}</p>
-                    </div>
-                  </div>
-                  <p className="text-muted mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="text-xs bg-accent/10 text-accent px-2 py-1 rounded group-hover:bg-accent group-hover:text-white transition-all duration-200"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="mt-auto space-y-2">
-                    <div className="flex flex-wrap gap-2">
-                      <a 
-                        href={project.github} 
-                        className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        View Github →
-                      </a>
-                      {project.link && project.link !== project.github && (
-                        <a 
-                          href={project.link} 
-                          className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Live Demo →
-                        </a>
-                      )}
-                    </div>
-                    {project.blogLink && (
-                      <div>
-                        <Link 
-                          href={project.blogLink}
-                          className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200"
-                        >
-                          Read more →
-                        </Link>
-                      </div>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Blog Section */}
-      {isFeatureEnabled('BLOG_ENABLED') && (
-        <section id="blogs" className="py-20 section-padding bg-sky-light/10">
-          <div className="container-max">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex justify-between items-center mb-12">
-                <h2>Blogs</h2>
-                <Link 
-                  href="/blogs" 
-                  className="text-accent hover:text-accent/80 transition-colors duration-200 font-medium"
-                >
-                  View all posts →
-                </Link>
-              </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {getFeaturedBlogs().map((post, index) => (
-                  <Link 
-                    key={index}
-                    href={`/blogs/${post.id}`}
-                    className="group"
-                  >
-                    <motion.article
-                      className="card-bg rounded-lg overflow-hidden hover:border-accent/50 transition-all duration-300 cursor-pointer h-full flex flex-col"
-                      whileHover={{ y: -5 }}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <div className="p-6 flex flex-col h-full">
-                        <div className="flex items-center justify-between mb-3">
-                          <span className="text-sm text-muted">{post.date}</span>
-                          <span className="text-sm text-muted">{post.readTime}</span>
-                        </div>
-                        <h3 className="mb-3 group-hover:text-accent transition-colors duration-200">
-                          {post.title}
-                        </h3>
-                        <p className="text-muted mb-4 line-clamp-3 flex-grow">
-                          {post.excerpt}
-                        </p>
-                        <div className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200 mt-auto">
-                          Read more →
-                        </div>
-                      </div>
-                    </motion.article>
-                  </Link>
-                ))}
-              </div>
             </motion.div>
           </div>
-        </section>
-      )}
 
-      {/* Education Section */}
-      <section id="education" className="py-20 section-padding bg-sky-light/20">
-        <div className="container-max">
+          {/* Right — headshot */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="hidden md:block"
+            style={{ alignSelf: 'center' }}
           >
-            <h2>Education</h2>
-            <div className="relative">
-              {/* Central Timeline Line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-accent/10"></div>
+            <Image
+              src="/neetz-profile.png"
+              alt="Navneetha Rajan"
+              width={320}
+              height={380}
+              priority
+              style={{
+                width: '320px',
+                height: '380px',
+                objectFit: 'cover',
+                objectPosition: 'center top',
+                borderRadius: '24px',
+                border: '1.5px solid #B08090',
+                boxShadow: '0 0 40px rgba(176, 128, 144, 0.15)',
+              }}
+            />
+          </motion.div>
+        </section>
 
-              {/* Timeline Items */}
-              <div className="space-y-12">
-                {/* Item 1 - Mobile: Full width, Desktop: Left Side */}
-                <motion.div
-                  className="relative flex flex-col lg:flex-row lg:items-center"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="w-full lg:w-1/2 lg:pr-8 mb-8 lg:mb-0">
-                    <div className="bg-card-bg rounded-lg p-6 border border-accent/20 hover:border-accent/50 transition-all duration-300">
-                      <div className="flex justify-between items-start mb-2">
-                        <div className="flex-1">
-                          <h3 className="text-accent-medium mb-2">Arizona State University</h3>
-                          <p className="mb-2">Master of Science in Information Technology</p>
-                        </div>
-                        <div className="ml-4 flex-shrink-0 text-right">
-                          <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-sm rounded-full border border-accent/30 mb-2">
-                            Aug 2024 - May 2026
-                          </span>
-                          <div className="text-accent font-bold text-sm">4.22/4.0 GPA</div>
-                        </div>
-                      </div>
-                      <ul className="text-muted leading-relaxed space-y-2">
-                        <li>• Information Systems Management</li>
-                        <li>• Analyzing Big Data and AI</li>
-                        <li>• Data in the Cloud</li>
-                      </ul>
-                    </div>
-                  </div>
-                  
-                  {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 lg:block hidden">
-                    {/* Outer glow ring with bright star */}
-                    <motion.div
-                      className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center"
-                      animate={{
-                        scale: [1, 1.1, 0.9, 1.2, 1],
-                        opacity: [0.3, 0.8, 0.2, 0.9, 0.3]
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    >
-                      {/* Bright star icon */}
-                      <span className="text-accent text-lg font-bold">★</span>
-                    </motion.div>
-                  </div>
-                  
-                  <div className="w-full lg:w-1/2 lg:pl-8"></div>
-                </motion.div>
-
-                {/* Item 2 - Mobile: Full width, Desktop: Right Side */}
-                <motion.div
-                  className="relative flex flex-col lg:flex-row lg:items-center"
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="w-full lg:w-1/2 lg:pr-8 mb-8 lg:mb-0"></div>
-                  
-                  {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 lg:block hidden">
-                    {/* Outer glow ring with bright star */}
-                    <motion.div
-                      className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center"
-                      animate={{
-                        scale: [1, 1.1, 0.9, 1.2, 1],
-                        opacity: [0.3, 0.8, 0.2, 0.9, 0.3]
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: 1
-                      }}
-                    >
-                      {/* Bright star icon */}
-                      <span className="text-accent text-lg font-bold">★</span>
-                    </motion.div>
-                  </div>
-                  
-                  <div className="w-full lg:w-1/2 lg:pl-8">
-                    <div className="bg-card-bg rounded-lg p-6 border border-accent/20 hover:border-accent/50 transition-all duration-300">
-                      <div className="flex justify-between items-start mb-2">
-                        <div className="flex-1">
-                          <h3 className="text-accent-medium mb-2">PES University</h3>
-                          <p className="mb-2">Bachelor of Technology in Computer Science and Engineering</p>
-                        </div>
-                        <div className="ml-4 flex-shrink-0 text-right">
-                          <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-sm rounded-full border border-accent/30 mb-2">
-                            Aug 2017 - May 2021
-                          </span>
-                        </div>
-                      </div>
-                      <ul className="text-muted leading-relaxed space-y-2">
-                        <li>• Operating Systems</li>
-                        <li>• Data Structures and Algorithms</li>
-                        <li>• Object-Oriented Design</li>
-                      </ul>
-                    </div>
-                  </div>
-                </motion.div>
+        {/* ─── ABOUT ─── */}
+        <section id="about" style={{ padding: '56px 56px' }}>
+          <p className="animate" style={{ ...mono(14, '#6B8CAE', 3), marginBottom: '32px' }}>
+            About
+          </p>
+          <div className="animate grid md:grid-cols-2 gap-8" style={{ transitionDelay: '100ms' }}>
+            <div>
+              <blockquote style={{
+                ...pf(18, 400, '#F2EEF5', true),
+                borderLeft: '2px solid #B08090',
+                paddingLeft: '16px',
+                margin: '0 0 24px 0',
+                lineHeight: 1.6,
+              }}>
+                &ldquo;I don&apos;t wait until I&apos;m ready. I jump, and figure it out on the way down.&rdquo;
+              </blockquote>
+              <div className="flex flex-wrap gap-2">
+                {aboutTags.map((t) => (
+                  <span key={t} style={{
+                    ...mono(12, '#6B8CAE'),
+                    border: '0.5px solid #1E1B22',
+                    borderRadius: '4px',
+                    padding: '4px 10px',
+                  }}>
+                    {t}
+                  </span>
+                ))}
               </div>
             </div>
-          </motion.div>
-        </div>
-      </section>
+            <div style={{ ...dm(13, 400, '#8A8590'), lineHeight: 1.8 }}>
+              <p style={{ marginBottom: '16px' }}>
+                Backend engineer with 3 years of production experience building systems at real scale. At SIXT, I worked on platforms serving 8M+ monthly users across 110+ countries — optimizing reservation flows, migrating monoliths to microservices, and building fault-tolerant pipelines processing 1M+ bookings/month.
+              </p>
+              <p>
+                Outside of code, I&apos;m endlessly curious — always finding energy in new ideas and people who challenge me to think differently.
+              </p>
+            </div>
+          </div>
+        </section>
 
-      {/* From My Colleagues Section */}
-      <section id="testimonials" className="py-20 section-padding bg-sky-light/10">
-        <div className="container-max">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+        {/* ─── EXPERIENCE ─── */}
+        <section id="experience" style={{ padding: '56px 56px' }}>
+          <p className="animate" style={{ ...mono(14, '#6B8CAE', 3), marginBottom: '32px' }}>
+            Experience
+          </p>
+          {experiences.map((exp, i) => (
+            <div
+              key={i}
+              className="animate"
+              style={{ ...cardStyle, transitionDelay: `${(i + 1) * 100}ms` }}
+              onMouseEnter={onCardEnter}
+              onMouseLeave={onCardLeave}
+            >
+              <p style={{ ...dm(15, 500, '#F2EEF5'), margin: 0 }}>{exp.title}</p>
+              <p style={{ ...dm(13, 400, '#B08090'), margin: '2px 0 0' }}>{exp.company}</p>
+              <p style={{ ...mono(12, '#4A4550'), margin: '2px 0 0' }}>{exp.date} · {exp.location}</p>
+              <p style={{ ...dm(13, 400, '#8A8590'), margin: '10px 0 0', lineHeight: 1.7 }}>{exp.impact}</p>
+              {exp.mvp && (
+                <span style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  marginTop: '8px',
+                  background: '#16101A',
+                  border: '0.5px solid #B08090',
+                  borderRadius: '4px',
+                  padding: '3px 10px',
+                  ...mono(11, '#C9A0AC'),
+                }}>
+                  ★ Most Valuable Player Award
+                </span>
+              )}
+            </div>
+          ))}
+        </section>
+
+        {/* ─── EDUCATION ─── */}
+        <section id="education" style={{ padding: '56px 56px' }}>
+          <p className="animate" style={{ ...mono(14, '#6B8CAE', 3), marginBottom: '32px' }}>
+            Education
+          </p>
+          {education.map((edu, i) => (
+            <div
+              key={i}
+              className="animate"
+              style={{ ...cardStyle, transitionDelay: `${(i + 1) * 100}ms` }}
+              onMouseEnter={onCardEnter}
+              onMouseLeave={onCardLeave}
+            >
+              <p style={{ ...dm(15, 500, '#F2EEF5'), margin: 0 }}>{edu.degree}</p>
+              <p style={{ ...dm(13, 400, '#B08090'), margin: '2px 0 0' }}>{edu.institution}</p>
+              <p style={{ ...mono(12, '#4A4550'), margin: '2px 0 0' }}>
+                {edu.date}{edu.detail ? ` · ${edu.detail}` : ''}
+              </p>
+            </div>
+          ))}
+        </section>
+
+        {/* ─── PROJECTS ─── */}
+        <section id="projects" style={{ padding: '56px 56px' }}>
+          <div className="animate flex justify-between items-end" style={{ marginBottom: '24px' }}>
+            <p style={mono(14, '#6B8CAE', 3)}>Projects</p>
+            <Link href="/projects" style={{ ...mono(12, '#4A4550'), transition: 'color 0.2s' }}>
+              view all →
+            </Link>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {projects.map((p, i) => (
+              <div
+                key={i}
+                className="animate"
+                style={{
+                  background: '#120F15',
+                  border: '0.5px solid #1E1B22',
+                  borderRadius: '8px',
+                  padding: '16px',
+                  transition: 'border-color 0.2s ease, opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1)',
+                  transitionDelay: `${(i + 1) * 100}ms`,
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#B08090')}
+                onMouseLeave={(e) => (e.currentTarget.style.borderColor = '#1E1B22')}
+              >
+                <p style={{ ...dm(15, 500, '#F2EEF5'), margin: '0 0 6px' }}>{p.title}</p>
+                <p style={{ ...dm(13, 400, '#8A8590'), lineHeight: 1.6, margin: '0 0 12px' }}>{p.description}</p>
+                <div className="flex flex-wrap gap-1.5" style={{ marginBottom: '12px' }}>
+                  {p.tech.map((t, ti) => (
+                    <span key={ti} style={{
+                      ...mono(11, '#6B8CAE'),
+                      background: '#0F0E12',
+                      border: '0.5px solid #1E1B22',
+                      borderRadius: '3px',
+                      padding: '3px 7px',
+                    }}>
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex gap-3">
+                  <a href={p.github} target="_blank" rel="noopener noreferrer" style={{ ...mono(12, '#B08090'), transition: 'color 0.2s' }}>
+                    github →
+                  </a>
+                  {p.blogLink && (
+                    <Link href={p.blogLink} style={{ ...mono(12, '#B08090'), transition: 'color 0.2s' }}>
+                      read more →
+                    </Link>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ─── BLOGS ─── */}
+        <section id="blogs" style={{ padding: '56px 56px' }}>
+          <div className="animate flex justify-between items-end" style={{ marginBottom: '24px' }}>
+            <p style={mono(14, '#6B8CAE', 3)}>Blogs</p>
+            <Link href="/blogs" style={{ ...mono(12, '#4A4550'), transition: 'color 0.2s' }}>
+              all posts →
+            </Link>
+          </div>
+          {blogs.map((post, i) => (
+            <Link key={post.id} href={`/blogs/${post.id}`}>
+              <div
+                className="animate group"
+                style={{
+                  padding: '14px 0',
+                  borderBottom: '0.5px solid #1A1820',
+                  transitionDelay: `${(i + 1) * 100}ms`,
+                }}
+              >
+                <div style={{ display: 'grid', gridTemplateColumns: '100px 1fr auto', gap: '20px', alignItems: 'baseline' }}>
+                  <span style={{ ...mono(12, '#4A4550'), whiteSpace: 'nowrap' }}>{post.date}</span>
+                  <span className="blog-title-underline" style={dm(15, 400, '#F2EEF5')}>
+                    {post.title}
+                  </span>
+                  <span style={mono(12, '#4A4550')}>{post.readTime}</span>
+                </div>
+                <p style={{ ...dm(13, 400, '#B08090'), fontStyle: 'italic', margin: '4px 0 0 0', paddingLeft: '120px' }}>
+                  {post.excerpt}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </section>
+
+        {/* ─── TESTIMONIALS ─── */}
+        <section id="testimonials" style={{ padding: '56px 56px' }}>
+          <p className="animate" style={{ ...mono(14, '#6B8CAE', 3), marginBottom: '24px' }}>
+            From people I&apos;ve built with
+          </p>
+
+          <div
+            className="animate"
+            style={{
+              overflow: 'hidden',
+              width: '100%',
+              position: 'relative',
+              borderRadius: '8px',
+              transitionDelay: '100ms',
+            }}
           >
-            <h2 className="text-center">From My Colleagues</h2>
-            <div className="max-w-4xl mx-auto space-y-6">
-              {testimonials.map((testimonial, index) => (
-                <motion.div
-                  key={index}
-                  className="card-bg rounded-lg p-8 shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-accent/50"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -5 }}
+            {/* Horizontal sliding track */}
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'nowrap',
+                width: '100%',
+                transform: `translateX(-${slide * 100}%)`,
+                transition: slideTransition ? 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' : 'none',
+                willChange: 'transform',
+              }}
+            >
+              {[...testimonials, testimonials[0]].map((t, i) => (
+                <div
+                  key={i}
+                  style={{
+                    minWidth: '100%',
+                    width: '100%',
+                    flexShrink: 0,
+                    flexGrow: 0,
+                    boxSizing: 'border-box',
+                  }}
                 >
-                  <div className="mb-6">
-                    <p className="text-muted italic text-lg leading-relaxed text-center">"{testimonial.text}"</p>
+                  <div style={{
+                    width: '100%',
+                    boxSizing: 'border-box',
+                    padding: '24px',
+                    background: '#120F15',
+                    border: '0.5px solid #1E1B22',
+                    borderRadius: '8px',
+                    overflow: 'hidden',
+                  }}>
+                    <span style={{
+                      fontFamily: '"Playfair Display", serif',
+                      fontSize: '64px',
+                      color: '#B08090',
+                      lineHeight: 1,
+                      display: 'block',
+                      marginBottom: '12px',
+                    }}>
+                      {'"'}
+                    </span>
+                    <p style={{
+                      ...dm(14, 400, '#8A8590'),
+                      fontStyle: 'italic',
+                      lineHeight: 1.8,
+                      margin: 0,
+                    }}>
+                      {t.text}
+                    </p>
+                    <p style={{ ...dm(13, 500, '#F2EEF5'), marginTop: '20px', marginBottom: 0 }}>
+                      {t.name}
+                    </p>
+                    <p style={{ ...mono(12, '#B08090'), marginTop: '2px', marginBottom: 0 }}>
+                      {t.role}
+                    </p>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <div className="text-center flex-1">
-                      <h4 className="text-xl">{testimonial.name}</h4>
-                      <p className="text-accent font-medium">{testimonial.role}</p>
-                      <p className="text-muted">{testimonial.company}</p>
-                    </div>
-                    <motion.a
-                      href={testimonial.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted hover:text-accent transition-colors duration-200 ml-4"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Linkedin size={20} />
-                    </motion.a>
-                  </div>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
-        </div>
-      </section>
+          </div>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 section-padding">
-        <div className="container-max text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2>Let's Connect</h2>
-            <p className="text-lg text-muted mb-8 max-w-2xl mx-auto">
-              I'm always interested in hearing about new opportunities and exciting projects. 
-              Feel free to reach out if you'd like to collaborate or discuss potential roles!
-            </p>
-            <div className="flex justify-center space-x-4">
-              <motion.a
-                href="mailto:connectwithnavneetha08@gmail.com"
-                className="btn-primary inline-flex items-center space-x-2"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Mail size={20} />
-                <span>Email Me</span>
-              </motion.a>
-              <motion.a
-                href="https://www.linkedin.com/in/navneetha-rajan"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary inline-flex items-center space-x-2"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Linkedin size={20} />
-                <span>Connect on LinkedIn</span>
-              </motion.a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+          {/* Dots */}
+          <div className="flex gap-1.5 justify-center" style={{ marginTop: '16px' }}>
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goToSlide(i)}
+                style={{
+                  width: i === (slide % testimonials.length) ? '20px' : '6px',
+                  height: '6px',
+                  background: i === (slide % testimonials.length) ? '#B08090' : '#1E1B22',
+                  borderRadius: i === (slide % testimonials.length) ? '3px' : '50%',
+                  border: 'none',
+                  padding: 0,
+                  cursor: 'pointer',
+                  transition: 'width 0.3s ease, background 0.3s ease, border-radius 0.3s ease',
+                }}
+                aria-label={`Testimonial ${i + 1}`}
+              />
+            ))}
+          </div>
+        </section>
 
-      {/* Footer */}
-      <footer className="py-8 section-padding border-t border-sky-medium/20">
-        <div className="container-max text-center">
-          <p className="text-muted text-sm">
-            © 2025 Navneetha Rajan
+        {/* ─── CONTACT ─── */}
+        <section id="contact" style={{ padding: '56px 56px', textAlign: 'center' }}>
+          <p className="animate" style={{ ...mono(14, '#6B8CAE', 3), marginBottom: '24px' }}>
+            Contact
           </p>
-        </div>
-      </footer>
-    </main>
+          <h2 className="animate" style={{ ...pf(32, 700, '#F2EEF5'), marginBottom: '12px', transitionDelay: '100ms' }}>
+            Let&apos;s build something.
+          </h2>
+          <p className="animate" style={{ ...dm(13, 400, '#8A8590'), marginBottom: '28px', transitionDelay: '150ms' }}>
+            Open to backend and full-stack roles · New York City
+          </p>
+          <div className="animate flex flex-wrap justify-center gap-3" style={{ transitionDelay: '200ms' }}>
+            <a
+              href="mailto:navneetharajan08@gmail.com"
+              style={{
+                ...mono(12, '#0A090C', 1),
+                background: '#B08090',
+                borderRadius: '4px',
+                padding: '10px 24px',
+                textDecoration: 'none',
+                transition: 'opacity 0.2s',
+              }}
+            >
+              Email me
+            </a>
+            <a
+              href="https://www.linkedin.com/in/navneetha-rajan"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                ...mono(12, '#B08090', 1),
+                border: '0.5px solid #B08090',
+                borderRadius: '4px',
+                padding: '10px 24px',
+                textDecoration: 'none',
+                transition: 'opacity 0.2s',
+              }}
+            >
+              LinkedIn
+            </a>
+          </div>
+        </section>
+
+        {/* ─── FOOTER ─── */}
+        <footer style={{ padding: '24px 56px', textAlign: 'center', borderTop: '0.5px solid #1A1820' }}>
+          <p style={mono(12, '#4A4550')}>© 2025 Navneetha Rajan</p>
+        </footer>
+      </div>
+    </>
   )
-} 
+}

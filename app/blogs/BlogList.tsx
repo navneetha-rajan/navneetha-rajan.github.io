@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowLeft, Calendar, Clock } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import { BlogPost } from '../data/blogs'
 
@@ -11,75 +11,58 @@ interface BlogListProps {
 
 export default function BlogList({ blogPosts }: BlogListProps) {
   return (
-    <main className="min-h-screen">
-      {/* Header */}
-      <section className="py-20 section-padding pt-24">
-        <div className="container-max">
+    <main style={{ minHeight: '100vh', background: 'var(--color-bg-outer)' }}>
+      <div style={{ maxWidth: '860px', margin: '0 auto', background: 'var(--color-bg-content)', borderLeft: '0.5px solid var(--color-border-subtle)', borderRight: '0.5px solid var(--color-border-subtle)', minHeight: '100vh' }}>
+        <section style={{ paddingTop: '112px', paddingBottom: '64px', paddingLeft: '24px', paddingRight: '24px' }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="flex items-center mb-8">
-              <Link 
-                href="/"
-                className="flex items-center space-x-2 text-muted hover:text-foreground transition-colors duration-200 mr-6"
-              >
-                <ArrowLeft size={20} />
-                <span>Back to Home</span>
-              </Link>
-            </div>
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6">Blogs</h1>
-            <p className="text-xl text-muted max-w-3xl">
-              Thoughts, insights, and experiences from my journey in software development, 
-              cloud architecture, and technology innovation.
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2"
+              style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '10px', color: 'var(--color-text-muted)', marginBottom: '48px', display: 'inline-flex', transition: 'color 0.2s' }}
+            >
+              <ArrowLeft size={14} />
+              Back to Home
+            </Link>
+            <h1 style={{ fontFamily: '"Playfair Display", serif', fontSize: '38px', fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: '12px' }}>
+              Blogs
+            </h1>
+            <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '13px', color: 'var(--color-text-secondary)', maxWidth: '500px', lineHeight: 1.7 }}>
+              Thoughts, insights, and experiences from my journey in software development, cloud architecture, and technology innovation.
             </p>
           </motion.div>
-        </div>
-      </section>
+        </section>
 
-      {/* Blog Posts Grid */}
-      <section className="py-20 section-padding">
-        <div className="container-max">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <section style={{ paddingBottom: '128px', paddingLeft: '24px', paddingRight: '24px' }}>
+          <div style={{ borderTop: '0.5px solid var(--color-border-subtle)' }}>
             {blogPosts.map((post, index) => (
-              <Link 
-                key={post.id}
-                href={`/blogs/${post.id}`}
-                className="group"
-              >
-                <motion.article
-                  className="card-bg rounded-lg overflow-hidden hover:border-accent/50 transition-all duration-300 cursor-pointer h-full flex flex-col"
-                  whileHover={{ y: -5 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
+              <Link key={post.id} href={`/blogs/${post.id}`}>
+                <div
+                  className="group flex items-baseline gap-5"
+                  style={{
+                    padding: '14px 0',
+                    borderBottom: '0.5px solid var(--color-border-subtle)',
+                    transition: 'border-color 0.2s',
+                  }}
                 >
-                  <div className="p-6 flex flex-col h-full">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-sm text-muted">{post.date}</span>
-                      <span className="text-sm text-muted">{post.readTime}</span>
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3 group-hover:text-accent transition-colors duration-200">
-                      {post.title}
-                    </h3>
-                    <p className="text-muted mb-4 line-clamp-3 flex-grow">
-                      {post.excerpt}
-                    </p>
-
-                    <div className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200 mt-auto">
-                      Read more →
-                    </div>
-                  </div>
-                </motion.article>
+                  <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '10px', color: 'var(--color-text-muted)', minWidth: '80px', flexShrink: 0 }}>
+                    {post.date}
+                  </span>
+                  <span className="blog-title-underline" style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '13px', color: 'var(--color-text-primary)' }}>
+                    {post.title}
+                  </span>
+                  <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '10px', color: 'var(--color-text-muted)', marginLeft: 'auto', flexShrink: 0 }}>
+                    {post.readTime}
+                  </span>
+                </div>
               </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-
+        </section>
+      </div>
     </main>
   )
-} 
+}
