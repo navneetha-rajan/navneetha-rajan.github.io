@@ -88,13 +88,68 @@ export default function Home() {
             </div>
           </motion.div>
 
+        {/* Projects Column */}
+        <div className="col-span-1 row-span-2 flex flex-col gap-6">
+          {/* Project 1: MindMate */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+            className="bg-white rounded-[2rem] p-6 border-2 border-pink-50 shadow-sticker flex flex-col items-center text-center hover:shadow-sticker-hover transition-all duration-300 group relative overflow-hidden"
+          >
+            <div className="absolute top-0 left-0 w-full h-2 bg-pink-200/50"></div>
+            <div className="w-full aspect-video bg-pink-50 rounded-2xl mb-4 overflow-hidden relative flex items-center justify-center">
+              <Image
+                src="/mindmate-logo.png"
+                alt="MindMate pastel AI companion logo"
+                fill
+                className="object-contain p-6 group-hover:scale-105 transition-transform duration-500"
+                sizes="(min-width: 1024px) 30vw, 80vw"
+              />
+            </div>
+            <h3 className="font-bold text-xl text-text-charcoal font-heading mb-1">MindMate</h3>
+            <p className="text-sm text-text-charcoal/70 mb-3 line-clamp-2">An AI-powered mental health companion.</p>
+            <div className="flex gap-2 mt-auto">
+              <span className="text-xs bg-pink-100 text-pink-600 px-2 py-1 rounded-lg font-bold">React</span>
+              <span className="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded-lg font-bold">AI</span>
+            </div>
+            <Link href="/projects" className="absolute inset-0" aria-label="View Project"></Link>
+          </motion.div>
+
+          {/* Project 2: Ride Share */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3 }}
+            className="bg-white rounded-[2rem] p-6 border-2 border-blue-50 shadow-sticker flex flex-col items-center text-center hover:shadow-sticker-hover transition-all duration-300 group relative overflow-hidden"
+          >
+            <div className="absolute top-0 left-0 w-full h-2 bg-blue-200/50"></div>
+            <div className="w-full aspect-video bg-blue-50 rounded-2xl mb-4 overflow-hidden relative flex items-center justify-center">
+              <Image
+                src="/ride-share-logo.png"
+                alt="Ride Share pastel friendly car logo"
+                fill
+                className="object-contain p-6 group-hover:scale-105 transition-transform duration-500"
+                sizes="(min-width: 1024px) 30vw, 80vw"
+              />
+            </div>
+            <h3 className="font-bold text-xl text-text-charcoal font-heading mb-1">Ride Share</h3>
+            <p className="text-sm text-text-charcoal/70 mb-3 line-clamp-2">Carpooling app for sustainable travel.</p>
+            <div className="flex gap-2 mt-auto">
+              <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-lg font-bold">Go</span>
+              <span className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-lg font-bold">Docker</span>
+            </div>
+            <Link href="/projects" className="absolute inset-0" aria-label="View Project"></Link>
+          </motion.div>
+        </div>
+
         {/* Work Journal */}
           <motion.div
           id="experience"
             initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="col-span-1 row-span-2 bg-[#e3f0e6] rounded-[2rem] p-6 border-2 border-green-100 shadow-sticker flex flex-col hover:shadow-sticker-hover transition-all duration-300"
+          transition={{ delay: 0.4 }}
+          className="col-span-1 md:col-span-2 lg:col-span-3 bg-[#e3f0e6] rounded-[2rem] p-8 border-2 border-green-100 shadow-sticker flex flex-col hover:shadow-sticker-hover transition-all duration-300"
         >
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-text-charcoal font-heading flex items-center gap-2">
@@ -167,60 +222,8 @@ export default function Home() {
                   </div>
                 </motion.div>
 
-        {/* Project 1: MindMate */}
-                <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.3 }}
-          className="bg-white rounded-[2rem] p-6 border-2 border-pink-50 shadow-sticker flex flex-col items-center text-center hover:shadow-sticker-hover transition-all duration-300 group relative overflow-hidden"
-        >
-           <div className="absolute top-0 left-0 w-full h-2 bg-pink-200/50"></div>
-          <div className="w-full aspect-video bg-pink-50 rounded-2xl mb-4 overflow-hidden relative flex items-center justify-center">
-            <Image
-              src="/mindmate-logo.png"
-              alt="MindMate pastel AI companion logo"
-              fill
-              className="object-contain p-6 group-hover:scale-105 transition-transform duration-500"
-              sizes="(min-width: 1024px) 30vw, 80vw"
-            />
-                        </div>
-          <h3 className="font-bold text-xl text-text-charcoal font-heading mb-1">MindMate</h3>
-          <p className="text-sm text-text-charcoal/70 mb-3 line-clamp-2">An AI-powered mental health companion.</p>
-          <div className="flex gap-2 mt-auto">
-             <span className="text-xs bg-pink-100 text-pink-600 px-2 py-1 rounded-lg font-bold">React</span>
-             <span className="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded-lg font-bold">AI</span>
-        </div>
-          <Link href="/projects" className="absolute inset-0" aria-label="View Project"></Link>
-          </motion.div>
-
-        {/* Project 2: Ride Share */}
-            <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.4 }}
-          className="bg-white rounded-[2rem] p-6 border-2 border-blue-50 shadow-sticker flex flex-col items-center text-center hover:shadow-sticker-hover transition-all duration-300 group relative overflow-hidden"
-        >
-          <div className="absolute top-0 left-0 w-full h-2 bg-blue-200/50"></div>
-          <div className="w-full aspect-video bg-blue-50 rounded-2xl mb-4 overflow-hidden relative flex items-center justify-center">
-            <Image
-              src="/ride-share-logo.png"
-              alt="Ride Share pastel friendly car logo"
-              fill
-              className="object-contain p-6 group-hover:scale-105 transition-transform duration-500"
-              sizes="(min-width: 1024px) 30vw, 80vw"
-            />
-              </div>
-          <h3 className="font-bold text-xl text-text-charcoal font-heading mb-1">Ride Share</h3>
-          <p className="text-sm text-text-charcoal/70 mb-3 line-clamp-2">Carpooling app for sustainable travel.</p>
-          <div className="flex gap-2 mt-auto">
-             <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-lg font-bold">Go</span>
-             <span className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-lg font-bold">Docker</span>
-          </div>
-           <Link href="/projects" className="absolute inset-0" aria-label="View Project"></Link>
-        </motion.div>
-
         {/* Nightstand Card */}
-          <motion.div
+                <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5 }}
@@ -245,14 +248,14 @@ export default function Home() {
         {/* Love Notes */}
                 <motion.div
           id="testimonials"
-          initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
           className="col-span-1 md:col-span-2 bg-[url('/floral-pattern.svg')] bg-pink-50/30 backdrop-blur-md rounded-[2rem] p-8 border-2 border-pink-100 shadow-sticker relative hover:shadow-sticker-hover transition-all duration-300 group cursor-pointer"
         >
            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-8 bg-gray-100/50 rounded-b-xl flex items-center justify-center">
               <div className="w-16 h-1.5 bg-gray-300 rounded-full"></div>
-           </div>
+                    </div>
           <h2 className="text-2xl font-bold text-text-charcoal font-heading mb-6 flex items-center gap-2">
             <span className="bg-red-100 p-2 rounded-full text-red-500">💌</span> Love Notes
           </h2>
@@ -265,13 +268,13 @@ export default function Home() {
               </p>
               <div className="flex items-center gap-3 mt-auto">
                 <div className="w-8 h-8 bg-yellow-200 rounded-full flex items-center justify-center font-bold text-yellow-700 text-xs">A</div>
-                <div>
+                      <div>
                   <p className="font-bold text-sm text-text-charcoal font-heading">Amey</p>
                   <p className="text-[10px] text-text-charcoal/70 font-sans">Colleague</p>
-                </div>
-              </div>
-            </div>
-
+                      </div>
+                    </div>
+                  </div>
+                  
             {/* Bhushan */}
             <div className="bg-[#e0f2fe] p-6 rounded-sm shadow-sm transform rotate-1 hover:rotate-0 transition-transform relative border border-blue-100/50">
                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 bg-blue-200/60 -rotate-1 shadow-sm"></div>
