@@ -7,6 +7,15 @@ import Navigation from '../components/Navigation'
 
 const allProjects = [
   {
+    title: 'Relay',
+    subtitle: 'Real-Time Chat Platform',
+    description:
+      'Real-time chat application with WebSocket messaging, JWT auth, typing indicators, read receipts, and message search.',
+    tech: ['FastAPI', 'React', 'SQLite', 'WebSockets', 'JWT'],
+    github: 'https://github.com/navneetha-rajan/relay-chat-room',
+    featured: true,
+  },
+  {
     title: 'MindMate',
     subtitle: 'Autonomous Mental Wellness Companion',
     description:
@@ -31,7 +40,7 @@ const allProjects = [
       'Recommendation engine trained on 270K+ readers. Collaborative filtering meets content-based analysis for personalized book discovery.',
     tech: ['Python', 'Machine Learning', 'Data Mining', 'Recommender Systems'],
     github: 'https://github.com/navneetha-rajan/Bookify',
-    featured: true,
+    featured: false,
   },
   {
     title: 'Boolean Oracle',

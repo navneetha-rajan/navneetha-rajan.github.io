@@ -60,6 +60,12 @@ const education = [
 
 const projects = [
   {
+    title: 'Relay',
+    description: 'Real-time chat application with WebSocket messaging, JWT auth, typing indicators, read receipts, and message search.',
+    tech: ['FastAPI', 'React', 'SQLite', 'WebSockets', 'JWT'],
+    github: 'https://github.com/navneetha-rajan/relay-chat-room',
+  },
+  {
     title: 'MindMate',
     description: 'Privacy-first AI agent for reflective journaling and mood tracking. Socratic dialogue meets emotion intelligence.',
     tech: ['Python', 'LLMs', 'LangChain', 'React', 'NLP'],
@@ -71,12 +77,6 @@ const projects = [
     description: 'Cloud-native ride-sharing platform engineered for millions of concurrent requests with fault-tolerant microservices.',
     tech: ['AWS', 'Microservices', 'Docker', 'Load Balancing'],
     github: 'https://github.com/navneetha-rajan/Ride-Share-Application',
-  },
-  {
-    title: 'Bookify',
-    description: 'Recommendation engine trained on 270K+ readers. Collaborative filtering meets content-based analysis.',
-    tech: ['Python', 'ML', 'Data Mining', 'Recommender Systems'],
-    github: 'https://github.com/navneetha-rajan/Bookify',
   },
 ]
 
