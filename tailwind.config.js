@@ -8,36 +8,25 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: '#0f172a',
-        foreground: '#f8fafc',
-        muted: '#94a3b8',
-        accent: '#0ea5e9',
-        'accent-light': '#38bdf8',
-        'accent-dark': '#0284c7',
-        'sky-light': '#0c4a6e',
-        'sky-medium': '#0369a1',
-        'sky-dark': '#075985',
-        'card-bg': '#1e293b',
+        'bg-outer': 'var(--color-bg-outer)',
+        'bg-content': 'var(--color-bg-content)',
+        'bg-card': 'var(--color-bg-card)',
+        'border-subtle': 'var(--color-border-subtle)',
+        'border-card': 'var(--color-border-card)',
+        'accent-mauve': 'var(--color-accent-mauve)',
+        'accent-mauve-light': 'var(--color-accent-mauve-light)',
+        'accent-slate': 'var(--color-accent-slate)',
+        'text-primary': 'var(--color-text-primary)',
+        'text-secondary': 'var(--color-text-secondary)',
+        'text-muted': 'var(--color-text-muted)',
+        'mvp-bg': 'var(--color-mvp-bg)',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
-      },
-      animation: {
-        'fade-in': 'fadeIn 0.5s ease-in-out',
-        'slide-up': 'slideUp 0.5s ease-out',
-      },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        slideUp: {
-          '0%': { transform: 'translateY(20px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
+        display: ['"Playfair Display"', 'serif'],
+        body: ['"DM Sans"', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
       },
     },
   },
   plugins: [],
-} 
+}

@@ -13,133 +13,115 @@ interface BlogContentProps {
 
 export default function BlogContent({ blog, otherBlogs }: BlogContentProps) {
   return (
-    <main className="min-h-screen">
+    <main style={{ minHeight: '100vh', background: 'var(--color-bg-outer)' }}>
       <Navigation />
-      {/* Header */}
-      <section className="py-20 section-padding pt-24">
-        <div className="container-max">
+
+      <div style={{ maxWidth: '860px', margin: '0 auto', background: 'var(--color-bg-content)', borderLeft: '0.5px solid var(--color-border-subtle)', borderRight: '0.5px solid var(--color-border-subtle)', minHeight: '100vh' }}>
+        <section style={{ paddingTop: '112px', paddingBottom: '32px', paddingLeft: '24px', paddingRight: '24px' }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="flex items-center mb-8">
-              <Link 
-                href="/blogs"
-                className="flex items-center space-x-2 text-muted hover:text-foreground transition-colors duration-200 mr-6"
-              >
-                <ArrowLeft size={20} />
-                <span>Back to Blogs</span>
-              </Link>
-            </div>
+            <Link
+              href="/blogs"
+              className="inline-flex items-center gap-2"
+              style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '10px', color: 'var(--color-text-muted)', marginBottom: '48px', display: 'inline-flex', transition: 'color 0.2s' }}
+            >
+              <ArrowLeft size={14} />
+              Back to Blogs
+            </Link>
           </motion.div>
-        </div>
-      </section>
+        </section>
 
-      {/* Blog Content */}
-      <section className="py-20 section-padding">
-        <div className="container-max">
+        <section style={{ paddingBottom: '80px', paddingLeft: '24px', paddingRight: '24px' }}>
           <motion.article
-            className="max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {/* Blog Header */}
-            <div className="mb-12">
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center space-x-4 text-base text-muted">
-                  <div className="flex items-center space-x-1">
-                    <Calendar size={18} />
-                    <span>{blog.date}</span>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <Clock size={18} />
-                    <span>{blog.readTime}</span>
-                  </div>
+            <div style={{ marginBottom: '48px' }}>
+              <div className="flex items-center gap-6" style={{ marginBottom: '24px' }}>
+                <div className="flex items-center gap-1.5" style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '10px', color: 'var(--color-text-muted)' }}>
+                  <Calendar size={14} />
+                  <span>{blog.date}</span>
                 </div>
-
+                <div className="flex items-center gap-1.5" style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '10px', color: 'var(--color-text-muted)' }}>
+                  <Clock size={14} />
+                  <span>{blog.readTime}</span>
+                </div>
               </div>
-              <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-elegant">
+              <h1 style={{ fontFamily: '"Playfair Display", serif', fontSize: '32px', fontWeight: 700, color: 'var(--color-text-primary)', lineHeight: 1.25, marginBottom: '24px' }}>
                 {blog.title}
               </h1>
-              <p className="text-2xl text-muted mb-6">
+              <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '14px', color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>
                 {blog.excerpt}
               </p>
-
-
             </div>
 
-            {/* Blog Content */}
-            <div 
-              className="prose prose-invert max-w-none prose-xl"
+            <div
+              className="prose max-w-none"
               dangerouslySetInnerHTML={{ __html: blog.content }}
             />
           </motion.article>
-        </div>
-      </section>
+        </section>
 
-      {/* View More Blogs Section */}
-      {otherBlogs.length > 0 && (
-        <section className="py-20 section-padding bg-sky-light/10">
-          <div className="container-max">
+        {otherBlogs.length > 0 && (
+          <section style={{ padding: '80px 24px', borderTop: '0.5px solid var(--color-border-subtle)' }}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-bold mb-12 text-center">View More Blogs</h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {otherBlogs.map((post, index) => (
-                  <Link 
-                    key={post.id}
-                    href={`/blogs/${post.id}`}
-                    className="group"
-                  >
-                    <motion.article
-                      className="card-bg rounded-lg overflow-hidden hover:border-accent/50 transition-all duration-300 cursor-pointer h-full flex flex-col"
-                      whileHover={{ y: -5 }}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
+              <h2 style={{ fontFamily: '"Playfair Display", serif', fontSize: '24px', fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: '32px', textAlign: 'center' }}>
+                More Posts
+              </h2>
+              <div style={{ borderTop: '0.5px solid var(--color-border-subtle)' }}>
+                {otherBlogs.map((post) => (
+                  <Link key={post.id} href={`/blogs/${post.id}`}>
+                    <div
+                      className="group flex items-baseline gap-5"
+                      style={{
+                        padding: '14px 0',
+                        borderBottom: '0.5px solid var(--color-border-subtle)',
+                      }}
                     >
-                      <div className="p-6 flex flex-col h-full">
-                        <div className="flex items-center justify-between mb-3">
-                          <span className="text-sm text-muted">{post.date}</span>
-                          <span className="text-sm text-muted">{post.readTime}</span>
-                        </div>
-                        <h3 className="text-xl font-semibold mb-3 group-hover:text-accent transition-colors duration-200">
-                          {post.title}
-                        </h3>
-                        <p className="text-muted mb-4 line-clamp-3 flex-grow">
-                          {post.excerpt}
-                        </p>
-
-                        <div className="text-accent hover:text-accent/80 font-medium text-sm group-hover:underline transition-all duration-200 mt-auto">
-                          Read more →
-                        </div>
-                      </div>
-                    </motion.article>
+                      <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '10px', color: 'var(--color-text-muted)', minWidth: '80px', flexShrink: 0 }}>
+                        {post.date}
+                      </span>
+                      <span className="blog-title-underline" style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '13px', color: 'var(--color-text-primary)' }}>
+                        {post.title}
+                      </span>
+                      <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '10px', color: 'var(--color-text-muted)', marginLeft: 'auto', flexShrink: 0 }}>
+                        {post.readTime}
+                      </span>
+                    </div>
                   </Link>
                 ))}
               </div>
-              <div className="text-center mt-12">
-                <Link 
+              <div style={{ textAlign: 'center', marginTop: '40px' }}>
+                <Link
                   href="/blogs"
-                  className="inline-flex items-center space-x-2 bg-accent hover:bg-accent-dark text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
+                  style={{
+                    fontFamily: '"JetBrains Mono", monospace',
+                    fontSize: '11px',
+                    color: 'var(--color-accent-mauve)',
+                    border: '0.5px solid var(--color-accent-mauve)',
+                    borderRadius: '4px',
+                    padding: '10px 24px',
+                    letterSpacing: '1px',
+                    textDecoration: 'none',
+                    transition: 'opacity 0.2s',
+                  }}
                 >
-                  <span>View All Blogs</span>
-                  <ArrowLeft size={20} className="rotate-180" />
+                  View All Blogs
                 </Link>
               </div>
             </motion.div>
-          </div>
-        </section>
-      )}
-
-
+          </section>
+        )}
+      </div>
     </main>
   )
-} 
+}
