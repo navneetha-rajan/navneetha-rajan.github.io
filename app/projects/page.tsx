@@ -13,6 +13,7 @@ const allProjects = [
       'Real-time drug coverage intelligence for market access analysts. Cross-payer comparison across 400+ payers, PA Friction Score, and field-level policy change detection from 1,400+ ingested documents.',
     tech: ['Python', 'FastAPI', 'React', 'Claude API', 'Ollama', 'Qwen', 'PostgreSQL', 'Playwright', 'PyMuPDF'],
     github: 'https://github.com/navneetha-rajan/policy-lens',
+    award: '🏆 Winner · Innovation Hacks 2.0 · ASU',
     featured: true,
   },
   {
@@ -159,6 +160,21 @@ export default function ProjectsPage() {
                     </span>
                   )}
                 </div>
+                {'award' in project && project.award && (
+                  <p style={{
+                    fontFamily: '"JetBrains Mono", monospace',
+                    fontSize: '9px',
+                    color: '#C4A882',
+                    background: 'rgba(196, 168, 130, 0.08)',
+                    border: '0.5px solid rgba(196, 168, 130, 0.25)',
+                    borderRadius: '3px',
+                    padding: '3px 7px',
+                    marginBottom: '8px',
+                    display: 'inline-block',
+                  }}>
+                    {project.award as string}
+                  </p>
+                )}
                 <p style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '10px', color: 'var(--color-accent-slate)', marginBottom: '8px' }}>
                   {project.subtitle}
                 </p>

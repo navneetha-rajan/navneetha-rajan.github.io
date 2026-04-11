@@ -64,6 +64,7 @@ const projects = [
     description: 'Real-time drug coverage intelligence for market access analysts. Cross-payer comparison across 400+ payers, PA Friction Score, and field-level policy change detection from 1,400+ ingested documents.',
     tech: ['Python', 'FastAPI', 'React', 'Claude API', 'PostgreSQL'],
     github: 'https://github.com/navneetha-rajan/policy-lens',
+    award: '🏆 Winner · Innovation Hacks 2.0 · ASU',
   },
   {
     title: 'QuestMind',
@@ -373,11 +374,11 @@ export default function Home() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   marginTop: '8px',
-                  background: '#16101A',
-                  border: '0.5px solid #B08090',
+                  background: 'rgba(196, 168, 130, 0.08)',
+                  border: '0.5px solid rgba(196, 168, 130, 0.25)',
                   borderRadius: '4px',
                   padding: '3px 10px',
-                  ...mono(11, '#C9A0AC'),
+                  ...mono(11, '#C4A882'),
                 }}>
                   ★ Most Valuable Player Award
                 </span>
@@ -433,6 +434,21 @@ export default function Home() {
                 onMouseLeave={(e) => (e.currentTarget.style.borderColor = '#1E1B22')}
               >
                 <p style={{ ...dm(15, 500, '#F2EEF5'), margin: '0 0 6px' }}>{p.title}</p>
+                {'award' in p && !!p.award && (
+                  <p style={{
+                    fontFamily: '"JetBrains Mono", monospace',
+                    fontSize: '9px',
+                    color: '#C4A882',
+                    background: 'rgba(196, 168, 130, 0.08)',
+                    border: '0.5px solid rgba(196, 168, 130, 0.25)',
+                    borderRadius: '3px',
+                    padding: '3px 7px',
+                    marginBottom: '8px',
+                    display: 'inline-block',
+                  }}>
+                    {p.award as string}
+                  </p>
+                )}
                 <p style={{ ...dm(13, 400, '#8A8590'), lineHeight: 1.6, margin: '0 0 12px' }}>{p.description}</p>
                 <div className="flex flex-wrap gap-1.5" style={{ marginBottom: '12px' }}>
                   {p.tech.map((t, ti) => (
