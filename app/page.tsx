@@ -60,17 +60,17 @@ const education = [
 
 const projects = [
   {
-    title: 'Relay',
-    description: 'Real-time chat application with WebSocket messaging, JWT auth, typing indicators, read receipts, and message search.',
-    tech: ['FastAPI', 'React', 'SQLite', 'WebSockets', 'JWT'],
-    github: 'https://github.com/navneetha-rajan/relay-chat-room',
+    title: 'Policy Lens',
+    description: 'Real-time drug coverage intelligence for market access analysts. Cross-payer comparison across 400+ payers, PA Friction Score, and field-level policy change detection from 1,400+ ingested documents.',
+    tech: ['Python', 'FastAPI', 'React', 'Claude API', 'PostgreSQL'],
+    github: 'https://github.com/navneetha-rajan/policy-lens',
   },
   {
-    title: 'MindMate',
-    description: 'Privacy-first AI agent for reflective journaling and mood tracking. Socratic dialogue meets emotion intelligence.',
-    tech: ['Python', 'LLMs', 'LangChain', 'React', 'NLP'],
-    github: 'https://github.com/navneetha-rajan/MindMate',
-    blogLink: '/blogs/mindmate',
+    title: 'QuestMind',
+    description: 'Retro RPG where the enemy is your psychological state. 4-phase LLM pipeline with confidence-gated classification, schema validation, and a crisis intercept layer active across all game states.',
+    tech: ['React 19', 'Vite 6', 'Claude API', 'JWT'],
+    github: 'https://github.com/navneetha-rajan/quest-mind',
+    demo: 'https://questmind.insforge.site/',
   },
   {
     title: 'Ride Share',
@@ -451,8 +451,13 @@ export default function Home() {
                   <a href={p.github} target="_blank" rel="noopener noreferrer" style={{ ...mono(12, '#B08090'), transition: 'color 0.2s' }}>
                     github →
                   </a>
-                  {p.blogLink && (
-                    <Link href={p.blogLink} style={{ ...mono(12, '#B08090'), transition: 'color 0.2s' }}>
+                  {'demo' in p && p.demo && (
+                    <a href={p.demo as string} target="_blank" rel="noopener noreferrer" style={{ ...mono(12, '#B08090'), transition: 'color 0.2s' }}>
+                      demo →
+                    </a>
+                  )}
+                  {'blogLink' in p && !!p.blogLink && (
+                    <Link href={p.blogLink as string} style={{ ...mono(12, '#B08090'), transition: 'color 0.2s' }}>
                       read more →
                     </Link>
                   )}

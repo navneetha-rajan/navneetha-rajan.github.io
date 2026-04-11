@@ -7,21 +7,22 @@ import Navigation from '../components/Navigation'
 
 const allProjects = [
   {
-    title: 'Relay',
-    subtitle: 'Real-Time Chat Platform',
+    title: 'Policy Lens',
+    subtitle: 'Real-Time Drug Coverage Intelligence',
     description:
-      'Real-time chat application with WebSocket messaging, JWT auth, typing indicators, read receipts, and message search.',
-    tech: ['FastAPI', 'React', 'SQLite', 'WebSockets', 'JWT'],
-    github: 'https://github.com/navneetha-rajan/relay-chat-room',
+      'Real-time drug coverage intelligence for market access analysts. Cross-payer comparison across 400+ payers, PA Friction Score, and field-level policy change detection from 1,400+ ingested documents.',
+    tech: ['Python', 'FastAPI', 'React', 'Claude API', 'Ollama', 'Qwen', 'PostgreSQL', 'Playwright', 'PyMuPDF'],
+    github: 'https://github.com/navneetha-rajan/policy-lens',
     featured: true,
   },
   {
-    title: 'MindMate',
-    subtitle: 'Autonomous Mental Wellness Companion',
+    title: 'QuestMind',
+    subtitle: 'Mental Health RPG',
     description:
-      'Privacy-first AI agent that guides users through reflective journaling, mood analysis, and weekly planning via Socratic dialogue and emotion tracking.',
-    tech: ['Python', 'LLMs', 'LangGraph', 'FastAPI', 'NLP', 'Data Visualization'],
-    github: 'https://github.com/navneetha-rajan/MindMate',
+      'Retro RPG where the enemy is your psychological state. 4-phase LLM pipeline with confidence-gated classification, schema validation, and a crisis intercept layer active across all game states.',
+    tech: ['React 19', 'Vite 6', 'Claude API', 'Google Calendar', 'JWT'],
+    github: 'https://github.com/navneetha-rajan/quest-mind',
+    demo: 'https://questmind.insforge.site/',
     featured: true,
   },
   {
@@ -32,6 +33,24 @@ const allProjects = [
     tech: ['AWS', 'Microservices', 'Docker', 'Load Balancing', 'RabbitMQ', 'Python', 'Flask'],
     github: 'https://github.com/navneetha-rajan/Ride-Share-Application',
     featured: true,
+  },
+  {
+    title: 'Relay',
+    subtitle: 'Real-Time Chat Platform',
+    description:
+      'Real-time chat application with WebSocket messaging, JWT auth, typing indicators, read receipts, and message search.',
+    tech: ['FastAPI', 'React', 'SQLite', 'WebSockets', 'JWT'],
+    github: 'https://github.com/navneetha-rajan/relay-chat-room',
+    featured: false,
+  },
+  {
+    title: 'MindMate',
+    subtitle: 'Autonomous Mental Wellness Companion',
+    description:
+      'Privacy-first AI agent that guides users through reflective journaling, mood analysis, and weekly planning via Socratic dialogue and emotion tracking.',
+    tech: ['Python', 'LLMs', 'LangGraph', 'FastAPI', 'NLP', 'Data Visualization'],
+    github: 'https://github.com/navneetha-rajan/MindMate',
+    featured: false,
   },
   {
     title: 'Bookify',
@@ -161,22 +180,38 @@ export default function ProjectsPage() {
                     </span>
                   ))}
                 </div>
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2"
-                  style={{
-                    fontFamily: '"JetBrains Mono", monospace',
-                    fontSize: '10px',
-                    color: 'var(--color-text-muted)',
-                    transition: 'color 0.2s',
-                    marginTop: 'auto',
-                  }}
-                >
-                  <Github size={12} />
-                  View Code →
-                </a>
+                <div className="flex gap-3" style={{ marginTop: 'auto' }}>
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2"
+                    style={{
+                      fontFamily: '"JetBrains Mono", monospace',
+                      fontSize: '10px',
+                      color: 'var(--color-accent-mauve)',
+                      transition: 'color 0.2s',
+                    }}
+                  >
+                    <Github size={12} />
+                    View Code →
+                  </a>
+                  {'demo' in project && project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        fontFamily: '"JetBrains Mono", monospace',
+                        fontSize: '10px',
+                        color: 'var(--color-accent-mauve)',
+                        transition: 'color 0.2s',
+                      }}
+                    >
+                      Live Demo →
+                    </a>
+                  )}
+                </div>
               </motion.article>
             ))}
           </div>
