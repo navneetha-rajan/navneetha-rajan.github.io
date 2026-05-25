@@ -67,17 +67,20 @@ const projects = [
     award: '🏆 Winner · Innovation Hacks 2.0 · ASU',
   },
   {
-    title: 'QuestMind',
-    description: 'Retro RPG where the enemy is your psychological state. 4-phase LLM pipeline with confidence-gated classification, schema validation, and a crisis intercept layer active across all game states.',
-    tech: ['React 19', 'Vite 6', 'Claude API', 'JWT'],
-    github: 'https://github.com/navneetha-rajan/quest-mind',
-    demo: 'https://questmind.insforge.site/',
+    title: 'GridSense-AZ',
+    description:
+      'Day-ahead electricity load forecasting for the Arizona power grid. Spatio-temporal Graph WaveNet trained on 16 months of real grid data, forecasting demand across 132 buses with OpenDSS physics validation.',
+    tech: ['Python', 'PyTorch', 'Graph WaveNet', 'OpenDSS'],
+    github: 'https://github.com/navneetha-rajan/gridsense',
+    demo: 'https://gridsense-az.vercel.app/',
   },
   {
-    title: 'Ride Share',
-    description: 'Cloud-native ride-sharing platform engineered for millions of concurrent requests with fault-tolerant microservices.',
-    tech: ['AWS', 'Microservices', 'Docker', 'Load Balancing'],
-    github: 'https://github.com/navneetha-rajan/Ride-Share-Application',
+    title: 'Arbiter',
+    description:
+      'Autonomous delivery readiness agent for GitHub repositories. Five sequential AI agents analyze CI/CD, test coverage, security, and documentation — streaming live findings to a dashboard with confidence scores and one-click fix prompts.',
+    tech: ['Next.js', 'React', 'Claude API', 'GitHub API'],
+    github: 'https://github.com/navneetha-rajan/Arbiter',
+    award: '🏆 Winner · VillageHacks \'26 · ASU',
   },
 ]
 

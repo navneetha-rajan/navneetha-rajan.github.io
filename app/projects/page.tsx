@@ -24,6 +24,26 @@ const allProjects = [
     tech: ['React 19', 'Vite 6', 'Claude API', 'Google Calendar', 'JWT'],
     github: 'https://github.com/navneetha-rajan/quest-mind',
     demo: 'https://questmind.insforge.site/',
+    featured: false,
+  },
+  {
+    title: 'GridSense-AZ',
+    subtitle: 'Day-Ahead Grid Load Forecasting',
+    description:
+      'Day-ahead electricity load forecasting for the Arizona power grid. Spatio-temporal Graph WaveNet trained on 16 months of real grid data, forecasting demand across 132 buses with OpenDSS physics validation.',
+    tech: ['Python', 'PyTorch', 'Graph WaveNet', 'OpenDSS'],
+    github: 'https://github.com/navneetha-rajan/gridsense',
+    demo: 'https://gridsense-az.vercel.app/',
+    featured: true,
+  },
+  {
+    title: 'Arbiter',
+    subtitle: 'Repo Delivery Readiness Agent',
+    description:
+      'Autonomous delivery readiness agent for GitHub repositories. Five sequential AI agents analyze CI/CD, test coverage, security, and documentation — streaming live findings to a dashboard with confidence scores and one-click fix prompts.',
+    tech: ['Next.js', 'React', 'Claude API', 'GitHub API'],
+    github: 'https://github.com/navneetha-rajan/Arbiter',
+    award: '🏆 Winner · VillageHacks \'26 · ASU',
     featured: true,
   },
   {
@@ -33,7 +53,7 @@ const allProjects = [
       'Cloud-native ride-sharing platform engineered for millions of concurrent requests with fault-tolerant microservices and sub-second response times.',
     tech: ['AWS', 'Microservices', 'Docker', 'Load Balancing', 'RabbitMQ', 'Python', 'Flask'],
     github: 'https://github.com/navneetha-rajan/Ride-Share-Application',
-    featured: true,
+    featured: false,
   },
   {
     title: 'Relay',
