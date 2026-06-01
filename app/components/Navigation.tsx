@@ -7,19 +7,15 @@ import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 
 const navItems = [
-  { id: 'about', label: 'About' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'education', label: 'Education' },
+  { id: 'impact', label: 'Impact' },
   { id: 'projects', label: 'Projects' },
-  { id: 'blogs', label: 'Blogs' },
-  { id: 'testimonials', label: 'Testimonials' },
+  { id: 'about', label: 'About' },
   { id: 'contact', label: 'Contact' },
 ]
 
 const pageNavItems = [
   { label: 'Home', href: '/' },
   { label: 'Projects', href: '/projects' },
-  { label: 'Blogs', href: '/blogs' },
 ]
 
 export default function Navigation() {
@@ -54,7 +50,6 @@ export default function Navigation() {
         style={{ borderBottom: '0.5px solid var(--color-border-subtle)' }}
       >
         <div className="max-w-[1100px] mx-auto px-6 flex items-center justify-between h-12">
-          {/* Left — NR */}
           <div
             onClick={logoClick}
             className="cursor-pointer select-none"
@@ -68,7 +63,6 @@ export default function Navigation() {
             NR
           </div>
 
-          {/* Center — links */}
           <div className="hidden md:flex items-center gap-6">
             {isHome
               ? navItems.map((item) => (
@@ -108,18 +102,21 @@ export default function Navigation() {
                 ))}
           </div>
 
-          {/* Right — available + mobile toggle */}
           <div className="flex items-center gap-4">
             <span
               className="hidden sm:inline-flex items-center"
               style={{
                 fontFamily: '"JetBrains Mono", monospace',
-                fontSize: '12px',
-                color: 'var(--color-text-muted)',
+                fontSize: '11px',
+                color: '#C9A0AC',
+                background: 'rgba(176, 128, 144, 0.1)',
+                border: '0.5px solid rgba(176, 128, 144, 0.3)',
+                borderRadius: '20px',
+                padding: '4px 12px',
               }}
             >
               <span className="available-dot" />
-              available
+              Open to Work
             </span>
             <button
               className="md:hidden"
@@ -133,7 +130,6 @@ export default function Navigation() {
         </div>
       </nav>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {isMobileOpen && (
           <>

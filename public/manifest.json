@@ -1,0 +1,16 @@
+{
+  "name": "Navneetha Rajan",
+  "short_name": "NR",
+  "description": "Backend engineer with 3 years of production experience at SIXT and 5 hackathon wins.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A090C",
+  "theme_color": "#0A090C",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

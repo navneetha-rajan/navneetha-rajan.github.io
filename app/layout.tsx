@@ -1,18 +1,15 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Navneetha Rajan - Software Development Engineer | Full-Stack Developer | Cloud Architect',
-  description: 'Software Development Engineer with expertise in microservices, cloud technologies, and full-stack development. Currently pursuing MS in Information Technology at Arizona State University. Specializing in Java, Spring Boot, AWS, and modern web technologies.',
+  title: 'Navneetha Rajan - Backend Engineer | Distributed Systems | Hackathon Winner',
+  description: 'Backend engineer with 3 years of production experience at SIXT and 5 hackathon wins. Building distributed systems at scale.',
   keywords: [
-    'Navneetha Rajan', 'Software Engineer', 'Software Development Engineer',
-    'Full-Stack Developer', 'Backend Developer', 'Cloud Architect',
-    'Microservices', 'AWS', 'Java', 'Spring Boot', 'Python',
-    'Machine Learning', 'React', 'Next.js', 'TypeScript',
-    'Arizona State University', 'MS Information Technology', 'SIXT',
-    'Portfolio', 'Developer Portfolio', 'Tech Resume',
-    'Software Development', 'Cloud Computing', 'API Development',
-    'Database Design', 'DevOps', 'Docker', 'Kubernetes', 'Git', 'Agile', 'Scrum'
+    'Navneetha Rajan', 'Software Engineer', 'Backend Developer',
+    'Distributed Systems', 'Microservices', 'AWS', 'Java', 'Spring Boot',
+    'Python', 'Kafka', 'Kubernetes', 'FastAPI', 'Docker',
+    'Arizona State University', 'SIXT', 'Hackathon Winner',
   ],
   authors: [{ name: 'Navneetha Rajan', url: 'https://github.com/navneetha-rajan' }],
   creator: 'Navneetha Rajan',
@@ -31,17 +28,17 @@ export const metadata: Metadata = {
   },
   verification: { google: '0wv6E1R30LY0sfflwgR1azAYKLvJTlZm0OOHfsi8fzM' },
   openGraph: {
-    title: 'Navneetha Rajan - Software Development Engineer | Full-Stack Developer',
-    description: 'Software Development Engineer with expertise in microservices, cloud technologies, and full-stack development.',
+    title: 'Navneetha Rajan - Backend Engineer | Hackathon Winner',
+    description: 'Backend engineer with 3 years of production experience at SIXT and 5 hackathon wins. Building distributed systems at scale.',
     type: 'website', url: 'https://navneetha-rajan.github.io/',
     siteName: 'Navneetha Rajan Portfolio', locale: 'en_US',
-    images: [{ url: '/neetz-profile.png', width: 1200, height: 630, alt: 'Navneetha Rajan Portfolio', type: 'image/png' }],
+    images: [{ url: '/neetz-profile.jpg', width: 1200, height: 630, alt: 'Navneetha Rajan Portfolio', type: 'image/jpeg' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Navneetha Rajan - Software Development Engineer',
-    description: 'Software Development Engineer with expertise in microservices, cloud technologies, and full-stack development.',
-    site: '@navneetha_rajan', creator: '@navneetha_rajan', images: ['/neetz-profile.png'],
+    title: 'Navneetha Rajan - Backend Engineer',
+    description: 'Backend engineer with 3 years of production experience at SIXT and 5 hackathon wins. Building distributed systems at scale.',
+    site: '@navneetha_rajan', creator: '@navneetha_rajan', images: ['/neetz-profile.jpg'],
   },
   other: {
     'application-name': 'Navneetha Rajan Portfolio',
@@ -59,7 +56,63 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="font-body antialiased">{children}</body>
+      <body className="font-body antialiased">
+        {children}
+        <Script id="cal-embed-init" strategy="afterInteractive">
+          {`
+            (function (C, A, L) {
+              let p = function (a, ar) { a.q.push(ar); };
+              let d = C.document;
+              C.Cal = C.Cal || function () {
+                let cal = C.Cal;
+                let ar = arguments;
+                if (!cal.loaded) {
+                  cal.ns = {};
+                  cal.q = cal.q || [];
+                  d.head.appendChild(d.createElement("script")).src = A;
+                  cal.loaded = true;
+                }
+                if (ar[0] === L) {
+                  const api = function () { p(api, arguments); };
+                  const namespace = ar[1];
+                  api.q = api.q || [];
+                  if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar);
+                  return;
+                }
+                p(cal, ar);
+              };
+            })(window, "https://app.cal.com/embed/embed.js", "init");
+            Cal("init", {origin:"https://cal.com"});
+            Cal("ui", {"styles":{"branding":{"brandColor":"#B08090"}},"hideEventTypeDetails":false,"layout":"month_view"});
+
+            // Close Cal modal on browser back button
+            (function() {
+              var observer = new MutationObserver(function() {
+                var modal = document.querySelector('cal-modal-box');
+                if (modal && !window.__calModalOpen) {
+                  window.__calModalOpen = true;
+                  history.pushState({calModal: true}, '');
+                } else if (!modal && window.__calModalOpen) {
+                  window.__calModalOpen = false;
+                }
+              });
+              observer.observe(document.body, {childList: true, subtree: true});
+
+              window.addEventListener('popstate', function(e) {
+                if (window.__calModalOpen) {
+                  var modal = document.querySelector('cal-modal-box');
+                  if (modal) {
+                    var closeBtn = modal.querySelector('[data-testid="close-button"], button[aria-label="Close"], .close-button');
+                    if (closeBtn) closeBtn.click();
+                    else modal.remove();
+                  }
+                  window.__calModalOpen = false;
+                }
+              });
+            })();
+          `}
+        </Script>
+      </body>
     </html>
   )
 }
