@@ -244,8 +244,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.5 }}
               style={{ ...dm(17, 400, '#8A8590'), marginTop: '12px', lineHeight: 1.6 }}
             >
-              3 years building backend systems at global scale.{' '}
-              <span style={{ color: '#C9A0AC' }}>Weekends, I ship at hackathons.</span>
+              3 years building backend systems at global scale.
             </motion.p>
 
             <motion.p
