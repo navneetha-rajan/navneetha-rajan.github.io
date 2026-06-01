@@ -32,13 +32,13 @@ export const metadata: Metadata = {
     description: 'Backend engineer with 3 years of production experience at SIXT and 5 hackathon wins. Building distributed systems at scale.',
     type: 'website', url: 'https://navneetha-rajan.github.io/',
     siteName: 'Navneetha Rajan Portfolio', locale: 'en_US',
-    images: [{ url: '/neetz-profile.jpg', width: 1200, height: 630, alt: 'Navneetha Rajan Portfolio', type: 'image/jpeg' }],
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Navneetha Rajan - Backend Engineer', type: 'image/jpeg' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Navneetha Rajan - Backend Engineer',
     description: 'Backend engineer with 3 years of production experience at SIXT and 5 hackathon wins. Building distributed systems at scale.',
-    site: '@navneetha_rajan', creator: '@navneetha_rajan', images: ['/neetz-profile.jpg'],
+    site: '@navneetha_rajan', creator: '@navneetha_rajan', images: ['/og-image.jpg'],
   },
   other: {
     'application-name': 'Navneetha Rajan Portfolio',
