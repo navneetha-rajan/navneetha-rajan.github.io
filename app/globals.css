@@ -106,6 +106,184 @@ body::after {
   transform: scaleX(1);
 }
 
+/* ── Hackathon photo collage ── */
+/* 7 photos: 3 big (2-col span) + 4 small (1-col span)
+   Layout (4-col grid):
+   Row 1: [ BIG antonrx (2col) ] [ small energy ] [ small codechallenge ]
+   Row 2: [ small globehacks ] [ BIG innovationhacks (2col) ] [ small sunhacks ]  -- innovationhacks is portrait, spans 2 rows
+   Row 3: [      BIG villagehacks (2col)       ] [  innovationhacks cont  ] [ — ] */
+.hackathon-collage {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 220px 220px 220px;
+  gap: 6px;
+}
+
+.hackathon-collage-item {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--color-bg-card);
+  border: 0.5px solid var(--color-border-card);
+  transition: border-color 0.2s ease;
+}
+
+.hackathon-collage-item:hover {
+  border-color: var(--color-accent-mauve);
+}
+
+.hackathon-collage-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hackathon-collage-item .collage-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #120F15 0%, #1A1520 100%);
+}
+
+.hackathon-collage-item .collage-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 10px;
+  background: linear-gradient(transparent, rgba(10, 9, 12, 0.85));
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--color-text-primary);
+  letter-spacing: 0.5px;
+}
+
+/* 8 photos in 4-col grid, 3 rows:
+   Row 1: [ BIG antonrx (2col) ] [ small energy ] [ small codechallenge ]
+   Row 2: [ small arbiter ] [ small innovationhacks ] [ BIG globehacks (2col) ]
+   Row 3: [ BIG sunhacks (2col) ] [ BIG villagehacks (2col) ] */
+
+/* Big photos: 1=antonrx, 4=globehacks, 7=sunhacks, 8=villagehacks */
+.hackathon-collage-item:nth-child(1) { grid-column: span 2; }
+.hackathon-collage-item:nth-child(4) { grid-column: span 2; }
+.hackathon-collage-item:nth-child(7) { grid-column: span 2; }
+.hackathon-collage-item:nth-child(8) { grid-column: span 2; }
+
+@media (max-width: 768px) {
+  .hackathon-collage {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 160px);
+  }
+  .hackathon-collage-item:nth-child(1) { grid-column: span 2; }
+  .hackathon-collage-item:nth-child(4) { grid-column: span 2; }
+  .hackathon-collage-item:nth-child(7) { grid-column: span 1; }
+  .hackathon-collage-item:nth-child(8) { grid-column: span 1; }
+}
+
+@media (max-width: 480px) {
+  .hackathon-collage {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 130px);
+    gap: 4px;
+  }
+  .hackathon-collage-item:nth-child(1) { grid-column: span 2; }
+  .hackathon-collage-item:nth-child(4) { grid-column: span 2; }
+  .hackathon-collage-item:nth-child(7) { grid-column: span 1; }
+  .hackathon-collage-item:nth-child(8) { grid-column: span 1; }
+}
+
+/* ── Impact metrics grid ── */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Hackathon table ── */
+.hackathon-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+}
+
+.hackathon-table th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--color-text-muted);
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 0.5px solid var(--color-border-card);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.hackathon-table td {
+  padding: 12px;
+  border-bottom: 0.5px solid var(--color-border-subtle);
+  color: var(--color-text-secondary);
+  vertical-align: top;
+}
+
+.hackathon-table tr:hover td {
+  background: var(--color-bg-card);
+}
+
+.hackathon-table td:last-child {
+  white-space: nowrap;
+}
+
+/* ── Mobile responsive padding ── */
+@media (max-width: 640px) {
+  /* Reduce section padding on small screens */
+  section {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Hero grid: single column on mobile */
+  #hero {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    padding-top: 48px !important;
+  }
+
+  /* Hackathon table: hide "Built" column on mobile */
+  .hackathon-table th:nth-child(3),
+  .hackathon-table td:nth-child(3) {
+    display: none;
+  }
+
+  /* Testimonial arrows tighter */
+  [aria-label="Previous testimonial"] {
+    left: -8px !important;
+  }
+  [aria-label="Next testimonial"] {
+    right: -8px !important;
+  }
+
+  /* Footer padding */
+  footer {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+
 /* ── Prose styles for blog content ── */
 .prose {
   color: var(--color-text-secondary);
